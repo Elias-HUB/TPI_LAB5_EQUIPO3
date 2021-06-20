@@ -6,11 +6,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Home</title>
 	
-<jsp:include page="estilos.jsp"></jsp:include>
+<%-- <jsp:include page="estilos.jsp"></jsp:include> --%>
 
 </head>
 <body>
-	<jsp:include page="myNavbar.jsp"></jsp:include>
+<%-- 	<jsp:include page="myNavbar.jsp"></jsp:include> --%>
 	<div class="container mt-4">
 		<h1>Bienvenido Salame</h1>
 	</div>
