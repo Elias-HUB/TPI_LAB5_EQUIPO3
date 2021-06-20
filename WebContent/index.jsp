@@ -13,6 +13,11 @@
 	<jsp:include page="myNavbar.jsp"></jsp:include>
 	<div class="container mt-4">
 		<h1>Bienvenido Salame</h1>
-	</div>	
+	</div>
+	
+<!-- <form action="login.html" method="get"> -->
+	<form action="altaCliente.html" method="get">
+		<input type="submit" value="Redireccionar a login" name="btnIrLogin">
+	</form>
 </body>
 </html>
