@@ -13,6 +13,13 @@ public class UsuarioController {
 		return mv;
 	}
 	
+	@RequestMapping("inicioSessionUsuario")
+	public ModelAndView inicioSessionUsuario() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("movimiento");
+		return mv;
+	}
+	
 	@RequestMapping("modificacionUsuario")
 	public ModelAndView modificacionUsuario() {
 		ModelAndView mv = new ModelAndView();

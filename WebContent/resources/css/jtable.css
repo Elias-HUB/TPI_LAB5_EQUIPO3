@@ -1,0 +1,62 @@
+@charset "ISO-8859-1";
+/* STRUCTURE */
+body {
+  font-family: "Roboto", sans-serif;
+  height: 100vh;
+  margin: 0px;
+  position: Relative;
+  height: 100%;
+  background: #373b44; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #4286f4,
+    #373b44
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #4286f4,
+    #373b44
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+/* STRUCTURE */
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  padding: 25px;
+  padding-top: 20px;
+}
+
+#formContent {
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
+  background: #fff;
+  padding: 30px;
+  width: 95%;
+  max-width: 95%;
+  position: relative;
+  padding: 0px;
+  -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+thead {
+  background: #305088; /* fallback for old browsers */
+  color: white;
+}
+
+th {
+  vertical-align: middle !important;
+}
+
+tr {
+  text-align: left;
+}

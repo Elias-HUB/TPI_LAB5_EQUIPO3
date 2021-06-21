@@ -11,11 +11,11 @@
     </head>
 
     <body>
-        <form action="" method="POST">
+        <form action="inicioSessionUsuario.html" method="get">
             <div class="wrapper mt-5">
                 <div id="formContent">
+<%--                     <input type="image" src="${pageContext.request.contextPath}/resources/images/dni1.jpeg" alt=""> --%>
                     <h1 class="mr-4"><i class="bi bi-bank"></i> Banco</h1>
-
                     <!-- Login -->
                     <div class="mb-3 px-3">
                         <input type="text" class="form-control mt-3" placeholder="Usuario" required>
@@ -26,7 +26,7 @@
                 </div>
             </div>
         </form>
+        <jsp:include page="myFooter.jsp"></jsp:include>
     </body>
-    <jsp:include page="myFooter.jsp"></jsp:include>
 
     </html>
