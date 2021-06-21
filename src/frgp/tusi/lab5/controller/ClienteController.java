@@ -29,6 +29,7 @@ public class ClienteController {
 	@RequestMapping("listarClientes")
 	public ModelAndView listarClientes() {
 		ModelAndView mv = new ModelAndView();
+		mv.setViewName("cliente");
 		return mv;
 	}
 
