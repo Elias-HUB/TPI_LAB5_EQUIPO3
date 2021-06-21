@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<nav class="navbar navbar-expand-lg bg-primary navbar-dark ">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+    <nav class="navbar navbar-expand-lg bg-primary navbar-dark ">
         <div class="container">
             <a class="navbar-brand mr-4" href="index.html"><i class="bi bi-server"></i> BANCO TU VIEJA</a>
 

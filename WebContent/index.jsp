@@ -5,8 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Home</title>
-	
-<%-- <jsp:include page="estilos.jsp"></jsp:include> --%>
+<link rel="stylesheet" href="/resources/Css/login.css">	
+<link rel="stylesheet" type="css/text" href="estilos/pru.css">
+<jsp:include page="WEB-INF/vistas/estilos.jsp"></jsp:include>
 
 </head>
 <body>
@@ -14,7 +15,9 @@
 	<div class="container mt-4">
 		<h1>Bienvenido Salame</h1>
 	</div>
-	
+	<img src="WebContent/Logo.png">
+	   <img src="/resources/Logo.png" />
+	<button type="button" class="btn btn-primary">Primary</button>
 <!-- <form action="login.html" method="get"> -->
 	<form action="altaCliente.html" method="get">
 		<input type="submit" value="Redireccionar a login" name="btnIrLogin">

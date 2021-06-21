@@ -1,0 +1,74 @@
+@charset "ISO-8859-1";
+/* STRUCTURE */
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+/*   max-width: 600px; */
+/*   transform: translate(-50%,-50%)!important; */
+/*   left: 50%!important; */
+/*   top: 50%!important; */
+/*   position: absolute!important; */
+}
+
+#formContent {
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
+  background: #fff;
+  padding: 30px;
+  width: 90%;
+  max-width: 600px;
+/*   position: relative; */
+/*   padding: 0px; */
+  -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: 'Roboto', sans-serif !important;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #2980b9; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #ffffff,
+    #6dd5fa,
+    #2980b9
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #ffffff,
+    #6dd5fa,
+    #2980b9
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+header {
+  /* We want the header to have a static height, 
+   it will always take up just as much space as it needs.  */
+  /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
+  flex: 0 0 auto;
+}
+
+.main-content {
+  /* By setting flex-grow to 1, the main content will take up 
+   all of the remaining space on the page. 
+   The other elements have flex-grow: 0 and won't contest the free space. */
+  /* 1 flex-grow, 0 flex-shrink, auto flex-basis */
+  flex: 1 0 auto;
+}
+
+footer {
+  width: 100%;
+  position: fixed;
+  bottom: 0; /* NUEVO */
+  text-align: center;
+}
