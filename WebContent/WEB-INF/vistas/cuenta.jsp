@@ -4,7 +4,7 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>Clientes</title>
+        <title>Cuentas</title>
         <jsp:include page="estilos.jsp"></jsp:include>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/estilo.css" />
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jtable.css" />
@@ -15,10 +15,11 @@
 
 
         <div class="m-5 p-5 rounded bg-white" id="">
-            <h1>Clientes</h1>
+            <h1>Cuentas</h1>
             <!-- <div class="container pb-3"> -->
             <div class="justify-content-between mt-3">
-                <button type="button" class="btn btn-primary"><i class="bi bi-person-plus"></i> Nuevo Cliente</button>
+                <button type="button" class="btn btn-primary"><i class="bi bi-layout-text-window-reverse"></i></i> Nueva
+                    Cuenta</button>
             </div>
             <!-- </div> -->
             <br>
@@ -26,34 +27,36 @@
                 cellspacing="0" width="100%">
                 <thead>
                     <tr>
-                        <th style="text-align: center">Usuario</th>
+                        <th style="text-align: center">CBU</th>
+                        <th style="text-align: center">Nro Cuenta</th>
                         <th style="text-align: center">Nombre y Apellido</th>
-                        <th style="text-align: center">Dni</th>
-                        <th style="text-align: center">Domicilio</th>
+                        <th style="text-align: center">Tipo de Cuenta</th>
+                        <th style="text-align: center">Saldo</th>
                         <th style="text-align: center">Estado</th>
                         <th style="text-align: center">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Eze@gmail.com.ar</td>
-                        <td>Ezequiel Cordoba</td>
-                        <td>12976154</td>
-                        <td>Avenida Falsa 1234</td>
+                        <td>0170231820000000010500</td>
+                        <td>20164</td>
+                        <td>Valenzuela Elias</td>
+                        <td>Caja de ahorro en pesos</td>
+                        <td>$10299.5</td>
                         <td>Activo</td>
                         <td class="text-center" style="width: 190px">
                             <button type="button" id="" onClick="modalCliente(this)" name="BtnVer" class="btn btn-info">
                                 <i class="bi bi-file-person" data-toggle="tooltip" data-placement="bottom"
-                                    title="Ver Cliente"></i>
+                                    title="Ver Cuenta"></i>
                             </button>
                             <button type="button" id="" name="BtnModificar" class="btn btn-warning">
                                 <i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="bottom"
-                                    title="Modificar Cliente"></i>
+                                    title="Modificar Cuenta"></i>
                             </button>
                             <button type="button" id="" onClick="modalEliminar(this)" name="BtnEliminar"
                                 class="btn btn-danger">
                                 <i class="bi bi-x-circle" data-toggle="tooltip" data-placement="bottom"
-                                    title="Eliminar Cliente"></i>
+                                    title="Eliminar Cuenta"></i>
                             </button>
 
                         </td>
@@ -81,7 +84,7 @@
                 var AgenteID = btn.id;
                 Swal.fire({
                     icon: 'warning',
-                    title: "¿Desea dar de baja este Cliente?",
+                    title: "ï¿½Desea dar de baja esta Cuenta?",
                     showCancelButton: true,
                     confirmButtonColor: "#c82333",
                     cancelButtonText: "Cancelar",
@@ -100,14 +103,14 @@
                                 if (AgenteID == "Exitoso") {
                                     Toast.fire({
                                         icon: 'success',
-                                        title: 'El Cliente se esta dando de baja...'
+                                        title: 'El Cuenta se esta dando de baja...'
                                     }).then((result) => {
                                         location.replace('../Views/ListadoAgentes.php');
                                     })
                                 } else if (AgenteID == "ExitosoUsuario") {
                                     Toast.fire({
                                         icon: 'success',
-                                        title: 'El Agente y el Usuario se estan dando de baja...'
+                                        title: 'El Cuenta y el Usuario se estan dando de baja...'
                                     }).then((result) => {
                                         location.replace('../Views/ListadoAgentes.php');
                                     })

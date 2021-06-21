@@ -28,6 +28,7 @@ public class CuentaController {
 	@RequestMapping("listarCuentas")
 	private ModelAndView listarCuenta() {
 		ModelAndView mv = new ModelAndView();
+		mv.setViewName("cuenta");
 		return mv;
 	}
 
