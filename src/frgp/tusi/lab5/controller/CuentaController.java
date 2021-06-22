@@ -10,16 +10,18 @@ public class CuentaController {
 	@RequestMapping("altaCuenta")
 	private ModelAndView altaCuenta() {
 		ModelAndView mv = new ModelAndView();
+		mv.setViewName("altaCuenta");
 		return mv;
 	}
 	
-	@RequestMapping("modificacionCuenta")
+	@RequestMapping("modificarCuenta")
 	private ModelAndView modificacionCuenta() {
 		ModelAndView mv = new ModelAndView();
+		mv.setViewName("modificarCuenta");
 		return mv;
 	}
 	
-	@RequestMapping("eliminacionCuenta")
+	@RequestMapping("eliminarCuenta")
 	private ModelAndView eliminacionCuenta() {
 		ModelAndView mv = new ModelAndView();
 		return mv;
@@ -28,7 +30,7 @@ public class CuentaController {
 	@RequestMapping("listarCuentas")
 	private ModelAndView listarCuenta() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("cuenta");
+		mv.setViewName("listarCuentas");
 		return mv;
 	}
 
