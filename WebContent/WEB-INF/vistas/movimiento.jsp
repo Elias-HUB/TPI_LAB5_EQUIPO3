@@ -16,7 +16,7 @@
 
         <div class="m-5 p-5 rounded bg-white" id="">
             <!-- <div class="container pb-3"> -->
-            <div class="card rounded shadow p-3">
+            <div class="card rounded shadow p-4">
             <h2 class="my-3">Cuenta</h2>
             <div class="row d-flex justify-content-center">
                 <div class="form-group col-md-1">
@@ -59,7 +59,7 @@
             </div>
             <!-- </div> -->
             <br>
-            <div class="card rounded shadow p-3">
+            <div class="card rounded shadow p-4">
             
             <h2 class="my-3">Movimientos</h2>
             <table id="example" class="table table-striped table-bordered dt-responsive nowrap pt-1 "
