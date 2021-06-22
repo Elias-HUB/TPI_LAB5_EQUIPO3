@@ -22,14 +22,15 @@ public class ClienteController {
 	}
 	
 	
-	@RequestMapping("modificacionCliente")
-	public ModelAndView modificacionCliente() {
+	@RequestMapping("modificarCliente")
+	public ModelAndView modificarCliente() {
 		ModelAndView mv = new ModelAndView();
+		mv.setViewName("modificarCliente");
 		return mv;
 	}
 	
-	@RequestMapping("eliminacionCliente")
-	public ModelAndView eliminacionCliente() {
+	@RequestMapping("eliminarCliente")
+	public ModelAndView eliminarCliente() {
 		ModelAndView mv = new ModelAndView();
 		return mv;
 	}
@@ -37,6 +38,7 @@ public class ClienteController {
 	@RequestMapping("listarClientes")
 	public ModelAndView listarClientes() {
 		ModelAndView mv = new ModelAndView();
+		mv.setViewName("cliente");
 		return mv;
 	}
 
