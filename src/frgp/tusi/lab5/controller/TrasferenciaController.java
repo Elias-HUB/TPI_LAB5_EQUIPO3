@@ -10,6 +10,7 @@ public class TrasferenciaController {
 	@RequestMapping("transferencia")
 	public ModelAndView transferencia() {
 		ModelAndView mv = new ModelAndView();
+		mv.setViewName("transferencia");
 		return mv;
 	}
 	
