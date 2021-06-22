@@ -13,10 +13,10 @@
     <body>
         <jsp:include page="myNavbar.jsp"></jsp:include>
 
-        <div class="m-5 p-5 rounded bg-white" id="">
+        <div class="d-flex justify-content-center" id="">
+        <div class="card m-5 p-5 col-6 rounded shadow p-3">
             <h1 class="d-flex justify-content-center">Nuevo Cliente</h1>
-    		<div class="col-6 container d-flex justify-content-center">
-            	<div class="row d-flex justify-content-center">
+            	<div class="row">
             		<div class="form-group mt-4">
                     	<label class="control-label" for="txtNombre">Nombre </label>
                         <input class="form-control" id="txtNombre" type="text" placeholder="" value="">

@@ -15,11 +15,12 @@
 
 
         <div class="m-5 p-5 rounded bg-white" id="">
-            <h1>Movimientos</h1>
             <!-- <div class="container pb-3"> -->
-            <div class="row d-flex justify-content-center mt-3">
+            <div class="card rounded shadow p-4">
+            <h2 class="my-3">Cuenta</h2>
+            <div class="row d-flex justify-content-center">
                 <div class="form-group col-md-1">
-                    <label Class="control-label">Cuenta</label>
+                    <label class="control-label">Cuenta</label>
                     <select class="form-select">
                         <option value="1" selected>20164</option>
                         <option value="2">24567</option>
@@ -52,12 +53,16 @@
 
                 <div class="form-group col-md-1">
                     <label Class="control-label">Estado</label>
-                    <input id="TboxEstadoCuenta" name="TboxEstadoCuenta" Class="form-control" value="Alta" readonly>
+                    <input id="TboxEstadoCuenta" name="TboxEstadoCuenta" Class="form-control" value="Activo" readonly>
                 </div>
+            </div>
             </div>
             <!-- </div> -->
             <br>
-            <table id="example" class="table table-striped table-bordered dt-responsive nowrap pt-1 mt-5"
+            <div class="card rounded shadow p-4">
+            
+            <h2 class="my-3">Movimientos</h2>
+            <table id="example" class="table table-striped table-bordered dt-responsive nowrap pt-1 "
                 cellspacing="0" width="100%" style="font-size: small;">
                 <thead>
                     <tr>
@@ -92,6 +97,7 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
         </div>
 
 
