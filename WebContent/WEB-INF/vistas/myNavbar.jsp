@@ -25,7 +25,8 @@
                 </li>
             </ul>
             <form class="form-inline ms-auto me-5">
-                <button class="btn btn-primary mr-3 my-2 my-sm-0" type="submit">LOGOUT</button>
+            	<label class="text-white mx-4">¡Hola Elías! </label>
+                <button class="btn btn-primary my-2 my-sm-0" type="submit">LOGOUT</button>
             </form>
         </div>
     </nav>
