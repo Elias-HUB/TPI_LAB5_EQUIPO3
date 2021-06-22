@@ -1,29 +1,31 @@
 package frgp.tusi.lab5.model;
 
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public class Persona {
 
-	private Integer id;
-	private String nombre;
-	private String apellido;
-	private Integer dni;
-	private String sexo;
-	private String nacionalidad;
-	private String fechaNacimiento;
-	private String domicilio;
-	private Boolean estado;
-	private String fechaAlta;
-	private String fechaUltimaModificaion;
-	private Usuario usuario;
+	@Column
+	protected String nombre;
+	@Column
+	protected String apellido;
+	@Column
+	protected Integer dni;
+	@Column	
+	protected String sexo;
+	@Column
+	protected String nacionalidad;
+	@Column
+	protected String fechaNacimiento;
+	@Column
+	protected String domicilio;
+	@Column
+	protected Boolean estado;
+	@Column
+	protected Usuario usuario;
 	
 	public Persona() {}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public String getNombre() {
 		return nombre;
@@ -87,22 +89,6 @@ public class Persona {
 
 	public void setEstado(Boolean estado) {
 		this.estado = estado;
-	}
-
-	public String getFechaAlta() {
-		return fechaAlta;
-	}
-
-	public void setFechaAlta(String fechaAlta) {
-		this.fechaAlta = fechaAlta;
-	}
-
-	public String getFechaUltimaModificaion() {
-		return fechaUltimaModificaion;
-	}
-
-	public void setFechaUltimaModificaion(String fechaUltimaModificaion) {
-		this.fechaUltimaModificaion = fechaUltimaModificaion;
 	}
 
 	public Usuario getUsuario() {

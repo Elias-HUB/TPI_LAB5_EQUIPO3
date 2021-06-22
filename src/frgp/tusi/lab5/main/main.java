@@ -36,125 +36,105 @@ public class main {
         
         //////////////////////////////////////////////
     	
-//    	Cliente cli = new Cliente();
-//    	cli.setApellido("Arias");
-//    	cli.setNombre("Franco");
-//    	cli.setDni(1);
-//    	cli.setSexo("M");
-//    	cli.setNacionalidad("Argentina");
-//    	cli.setFechaNacimiento("");
-//    	cli.setDomicilio("");
-//    	cli.setFechaAlta(formattedDate);
-//    	cli.setFechaUltimaModificaion(formattedDate);
-//    	session.save(cli);
-//    	
-//    	cli = new Cliente();
-//    	cli.setApellido("");
-//    	cli.setNombre("Franco");
-//    	cli.setDni(1);
-//    	cli.setSexo("M");
-//    	cli.setNacionalidad("Argentina");
-//    	cli.setFechaNacimiento("");
-//    	cli.setDomicilio("");
-//    	cli.setFechaAlta(formattedDate);
-//    	cli.setFechaUltimaModificaion(formattedDate);
-//    	session.save(cli);
-//    	
-//    	cli = new Cliente();
-//    	cli.setApellido("");
-//    	cli.setNombre("Franco");
-//    	cli.setDni(1);
-//    	cli.setSexo("M");
-//    	cli.setNacionalidad("Argentina");
-//    	cli.setFechaNacimiento("");
-//    	cli.setDomicilio("");
-//    	cli.setFechaAlta(formattedDate);
-//    	cli.setFechaUltimaModificaion(formattedDate);
-//    	session.save(cli);
-//    	
-//    	cli = new Cliente();
-//    	cli.setApellido("");
-//    	cli.setNombre("Franco");
-//    	cli.setDni(1);
-//    	cli.setSexo("M");
-//    	cli.setNacionalidad("Argentina");
-//    	cli.setFechaNacimiento("");
-//    	cli.setDomicilio("");
-//    	cli.setFechaAlta(formattedDate);
-//    	cli.setFechaUltimaModificaion(formattedDate);
-//    	session.save(cli);
-//    	
-//    	cli = new Cliente();
-//    	cli.setApellido("");
-//    	cli.setNombre("Franco");
-//    	cli.setDni(1);
-//    	cli.setSexo("M");
-//    	cli.setNacionalidad("Argentina");
-//    	cli.setFechaNacimiento("");
-//    	cli.setDomicilio("");
-//    	cli.setFechaAlta(formattedDate);
-//    	cli.setFechaUltimaModificaion(formattedDate);
-//    	session.save(cli);
-//    	
-//    	cli = new Cliente();
-//    	cli.setApellido("");
-//    	cli.setNombre("Franco");
-//    	cli.setDni(1);
-//    	cli.setSexo("M");
-//    	cli.setNacionalidad("Argentina");
-//    	cli.setFechaNacimiento("");
-//    	cli.setDomicilio("");
-//    	cli.setFechaAlta(formattedDate);
-//    	cli.setFechaUltimaModificaion(formattedDate);
-//    	session.save(cli);
-//    	
-//    	cli = new Cliente();
-//    	cli.setApellido("");
-//    	cli.setNombre("Franco");
-//    	cli.setDni(1);
-//    	cli.setSexo("M");
-//    	cli.setNacionalidad("Argentina");
-//    	cli.setFechaNacimiento("");
-//    	cli.setDomicilio("");
-//    	cli.setFechaAlta(formattedDate);
-//    	cli.setFechaUltimaModificaion(formattedDate);
-//    	session.save(cli);
-//    	
-//    	cli = new Cliente();
-//    	cli.setApellido("");
-//    	cli.setNombre("Franco");
-//    	cli.setDni(1);
-//    	cli.setSexo("M");
-//    	cli.setNacionalidad("Argentina");
-//    	cli.setFechaNacimiento("");
-//    	cli.setDomicilio("");
-//    	cli.setFechaAlta(formattedDate);
-//    	cli.setFechaUltimaModificaion(formattedDate);
-//    	session.save(cli);
-//    	
-//    	cli = new Cliente();
-//    	cli.setApellido("");
-//    	cli.setNombre("Franco");
-//    	cli.setDni(1);
-//    	cli.setSexo("M");
-//    	cli.setNacionalidad("Argentina");
-//    	cli.setFechaNacimiento("");
-//    	cli.setDomicilio("");
-//    	cli.setFechaAlta(formattedDate);
-//    	cli.setFechaUltimaModificaion(formattedDate);
-//    	session.save(cli);
-//    	
-//    	cli = new Cliente();
-//    	cli.setApellido("");
-//    	cli.setNombre("Franco");
-//    	cli.setDni(1);
-//    	cli.setSexo("M");
-//    	cli.setNacionalidad("Argentina");
-//    	cli.setFechaNacimiento("");
-//    	cli.setDomicilio("");
-//    	cli.setFechaAlta(formattedDate);
-//    	cli.setFechaUltimaModificaion(formattedDate);
-//    	session.save(cli);
+    	Cliente cli = new Cliente();
+    	cli.setApellido("Arias");
+    	cli.setNombre("Franco");
+    	cli.setDni(1);
+    	cli.setSexo("M");
+    	cli.setNacionalidad("Argentina");
+    	cli.setFechaNacimiento("");
+    	cli.setDomicilio("");
+    	session.save(cli);
+    	
+    	cli = new Cliente();
+    	cli.setApellido("");
+    	cli.setNombre("Franco");
+    	cli.setDni(1);
+    	cli.setSexo("M");
+    	cli.setNacionalidad("Argentina");
+    	cli.setFechaNacimiento("");
+    	cli.setDomicilio("");
+    	session.save(cli);
+    	
+    	cli = new Cliente();
+    	cli.setApellido("");
+    	cli.setNombre("Franco");
+    	cli.setDni(1);
+    	cli.setSexo("M");
+    	cli.setNacionalidad("Argentina");
+    	cli.setFechaNacimiento("");
+    	cli.setDomicilio("");
+    	session.save(cli);
+    	
+    	cli = new Cliente();
+    	cli.setApellido("");
+    	cli.setNombre("Franco");
+    	cli.setDni(1);
+    	cli.setSexo("M");
+    	cli.setNacionalidad("Argentina");
+    	cli.setFechaNacimiento("");
+    	cli.setDomicilio("");
+    	session.save(cli);
+    	
+    	cli = new Cliente();
+    	cli.setApellido("");
+    	cli.setNombre("Franco");
+    	cli.setDni(1);
+    	cli.setSexo("M");
+    	cli.setNacionalidad("Argentina");
+    	cli.setFechaNacimiento("");
+    	cli.setDomicilio("");
+    	session.save(cli);
+    	
+    	cli = new Cliente();
+    	cli.setApellido("");
+    	cli.setNombre("Franco");
+    	cli.setDni(1);
+    	cli.setSexo("M");
+    	cli.setNacionalidad("Argentina");
+    	cli.setFechaNacimiento("");
+    	cli.setDomicilio("");
+    	session.save(cli);
+    	
+    	cli = new Cliente();
+    	cli.setApellido("");
+    	cli.setNombre("Franco");
+    	cli.setDni(1);
+    	cli.setSexo("M");
+    	cli.setNacionalidad("Argentina");
+    	cli.setFechaNacimiento("");
+    	cli.setDomicilio("");
+    	session.save(cli);
+    	
+    	cli = new Cliente();
+    	cli.setApellido("");
+    	cli.setNombre("Franco");
+    	cli.setDni(1);
+    	cli.setSexo("M");
+    	cli.setNacionalidad("Argentina");
+    	cli.setFechaNacimiento("");
+    	cli.setDomicilio("");
+    	session.save(cli);
+    	
+    	cli = new Cliente();
+    	cli.setApellido("");
+    	cli.setNombre("Franco");
+    	cli.setDni(1);
+    	cli.setSexo("M");
+    	cli.setNacionalidad("Argentina");
+    	cli.setFechaNacimiento("");
+    	cli.setDomicilio("");
+    	session.save(cli);
+    	
+    	cli = new Cliente();
+    	cli.setApellido("");
+    	cli.setNombre("Franco");
+    	cli.setDni(1);
+    	cli.setSexo("M");
+    	cli.setNacionalidad("Argentina");
+    	cli.setFechaNacimiento("");
+    	cli.setDomicilio("");
+    	session.save(cli);
     	
     	//////////////////////////////////////////////////
     	
