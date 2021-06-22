@@ -10,9 +10,17 @@ public class ClienteController {
 	@RequestMapping("altaCliente")
 	public ModelAndView altaCliente() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("login");
+		mv.setViewName("altaCliente");
 		return mv;
 	}
+	
+	@RequestMapping("detalleCliente")
+	public ModelAndView detalleCliente() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("detalleCliente");
+		return mv;
+	}
+	
 	
 	@RequestMapping("modificacionCliente")
 	public ModelAndView modificacionCliente() {

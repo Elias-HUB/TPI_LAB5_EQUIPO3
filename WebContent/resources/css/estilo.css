@@ -86,9 +86,17 @@ header {
   flex: 1 0 auto;
 }
 
+.navbar,
 footer {
-  width: 100%;
-  position: fixed;
-  bottom: 0; /* NUEVO */
-  text-align: center;
+  background: #0575e6; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    #021b79,
+    #0575e6
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    #021b79,
+    #0575e6
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }

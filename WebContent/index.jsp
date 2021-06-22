@@ -7,7 +7,7 @@
 <title>Home</title>
 <link rel="stylesheet" href="/resources/Css/login.css">	
 <link rel="stylesheet" type="css/text" href="estilos/pru.css">
-<jsp:include page="WEB-INF/vistas/estilos.jsp"></jsp:include>
+<%-- <jsp:include page="WEB-INF/vistas/estilos.jsp"></jsp:include> --%>
 
 </head>
 <body>
