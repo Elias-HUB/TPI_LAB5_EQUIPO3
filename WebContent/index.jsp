@@ -8,19 +8,18 @@
 <link rel="stylesheet" href="/resources/Css/login.css">	
 <link rel="stylesheet" type="css/text" href="estilos/pru.css">
 <%-- <jsp:include page="WEB-INF/vistas/estilos.jsp"></jsp:include> --%>
-
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
 </head>
 <body>
 <%-- 	<jsp:include page="myNavbar.jsp"></jsp:include> --%>
 	<div class="container mt-4">
-		<h1>Bienvenido Salame</h1>
+		<h1></h1>
 	</div>
-	<img src="WebContent/Logo.png">
-	   <img src="/resources/Logo.png" />
-	<button type="button" class="btn btn-primary">Primary</button>
-<!-- <form action="login.html" method="get"> -->
-	<form action="altaCliente.html" method="get">
-		<input type="submit" value="Redireccionar a login" name="btnIrLogin">
-	</form>
+	<script>
+$(document).ready(function () {
+	window.location.replace("login.html");
+});
+</script>
 </body>
+
 </html>
