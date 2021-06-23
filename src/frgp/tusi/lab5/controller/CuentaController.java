@@ -33,5 +33,12 @@ public class CuentaController {
 		mv.setViewName("listarCuentas");
 		return mv;
 	}
+	
+	@RequestMapping("resumen")
+	private ModelAndView resumen() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("resumen");
+		return mv;
+	}
 
 }

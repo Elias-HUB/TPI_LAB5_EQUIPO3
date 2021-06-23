@@ -19,8 +19,8 @@
                         <h1 class="mr-4"><i class="bi bi-bank"></i> Banco</h1>
                         <!-- Login -->
                         <div class="mb-3 px-3">
-                            <input type="text" class="form-control mt-3" placeholder="Usuario" required>
-                            <input type="password" class="form-control mt-3" autocomplete="off" placeholder="Contraseña"
+                            <input type="text" name="user" id="user" class="form-control mt-3" placeholder="Usuario" required>
+                            <input type="password" name="pass" id="pass" class="form-control mt-3" autocomplete="off" placeholder="Contraseña"
                                 required>
                         </div>
                         <button class="btn btn-primary mb-3">Iniciar Sesión</button>

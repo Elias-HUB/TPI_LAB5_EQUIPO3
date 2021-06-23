@@ -15,7 +15,7 @@ public class MovimientoController {
 	
 	@RequestMapping("listarMovimientos")
 	public ModelAndView listarMovimientos() {
-		ModelAndView mv = new ModelAndView();
+		ModelAndView mv = new ModelAndView();		
 		return mv;
 	}
 
