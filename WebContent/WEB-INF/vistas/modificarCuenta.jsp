@@ -20,10 +20,10 @@
                     <div class="form-group mt-4">
                         <label class="control-label" for="tipoCuenta">Tipo de cuenta </label>
 				  	<div class="form-control border-0 btn-group" role="group" aria-label="seleccionar tipo de cuenta">
-						<input type="radio" class="btn-check" name="btnradio" id="btnCajaPeso" autocomplete="off" disabled="disabled">
+						<input type="radio" class="btn-check" checked name="btnCaja" id="btnCajaPeso" autocomplete="off">
 						<label class="btn btn-outline-primary" for="btnCajaPeso">Caja de ahorro en pesos</label>
 						
-						<input type="radio" class="btn-check" name="btnradio" id="btnCajaDolar" autocomplete="off" disabled="disabled">
+						<input type="radio" class="btn-check" name="btnCaja" id="btnCajaDolar" autocomplete="off">
 						<label class="btn btn-outline-primary" for="btnCajaDolar">Caja de ahorro en dólares</label>
                      </div>
                      </div>
@@ -41,10 +41,10 @@
                     <div class="form-group mt-4">
                         <label class="control-label" for="cliente.sexo">Sexo </label>
 				  	<div class="form-control border-0 btn-group" role="group" aria-label="seleccionar sexo">
-						<input type="radio" class="btn-check" name="btnradio" id="btnFemenino" autocomplete="off">
+						<input type="radio" class="btn-check" name="btnradio" id="btnSexo" autocomplete="off" disabled="disabled">
 						<label class="btn btn-outline-primary" for="btnFemenino">Femenino</label>
 						
-						<input readonly type="radio" class="btn-check" checked name="btnradio" id="btnMasculino" autocomplete="off">
+						<input readonly type="radio" class="btn-check" checked name="btnSexo" id="btnMasculino" autocomplete="off" disabled="disabled">
 						<label class="btn btn-outline-primary" for="btnMasculino">Masculino</label>
                      </div>
                      </div>
@@ -54,15 +54,15 @@
                      </div>
                      <div class="form-group mt-4">
                          <label class="control-label" for="txtCalle">Calle</label>
-                         <input class="form-control" id="txtCalle" type="text" value="Calle Falsa">
+                         <input class="form-control" id="txtCalle" type="text" value="Calle Falsa" disabled="disabled">
                      </div>
                      <div class="form-group mt-4">
                          <label class="control-label" for="txtNumeroPuerta">Número de Puerta</label>
-                         <input class="form-control" id="txtNumeroPuerta" type="text" value="123">
+                         <input class="form-control" id="txtNumeroPuerta" type="text" value="123" disabled="disabled">
                      </div>
                      <div class="form-group mt-4">
                          <label class="control-label" for="txtCodigoPostal">Código Postal</label>
-                         <input class="form-control" id="txtCodigoPostal" type="text" value="9999">                                
+                         <input class="form-control" id="txtCodigoPostal" type="text" value="9999" disabled="disabled">                                
                      </div>
                      <div class="form-group mt-4 d-flex justify-content-center">
                          <button class="btn btn-primary mx-2" value="Volver">Volver</button>
