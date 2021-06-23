@@ -17,10 +17,12 @@
         <div class="m-5 p-5 rounded bg-white" id="">
             <h1>Cuentas</h1>
             <!-- <div class="container pb-3"> -->
+            <form action="altaCuenta.html" method="get">
             <div class="justify-content-between mt-3">
-                <button type="button" class="btn btn-primary"><i class="bi bi-layout-text-window-reverse"></i></i> Nueva
+                <button type="submit" class="btn btn-primary"><i class="bi bi-layout-text-window-reverse"></i></i> Nueva
                     Cuenta</button>
             </div>
+            </form>
             <!-- </div> -->
             <br>
             <table id="example" class="table table-striped table-bordered dt-responsive nowrap pt-1 mt-5"
@@ -45,11 +47,11 @@
                         <td>$10299.5</td>
                         <td>Activo</td>
                         <td class="text-center" style="width: 190px">
-                            <button type="button" id="" onClick="modalCliente(this)" name="BtnVer" class="btn btn-info">
-                                <i class="bi bi-file-person" data-toggle="tooltip" data-placement="bottom"
-                                    title="Ver Cuenta"></i>
-                            </button>
-                            <button type="button" id="" name="BtnModificar" class="btn btn-warning">
+<!--                             <button type="submit" id="" name="BtnVer" class="btn btn-info" onclick="location.href='detalleCuenta.html'"> -->
+<!--                                 <i class="bi bi-file-person" data-toggle="tooltip" data-placement="bottom" -->
+<!--                                     title="Ver Cuenta"></i> -->
+<!--                             </button> -->
+                            <button type="submit" id="" name="BtnModificar" class="btn btn-warning" onclick="location.href='modificarCuenta.html'">
                                 <i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="bottom"
                                     title="Modificar Cuenta"></i>
                             </button>

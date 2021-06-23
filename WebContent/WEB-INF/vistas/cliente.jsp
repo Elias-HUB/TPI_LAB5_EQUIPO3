@@ -17,9 +17,11 @@
         <div class="m-5 p-5 rounded bg-white" id="">
             <h1>Clientes</h1>
             <!-- <div class="container pb-3"> -->
+            <form action="altaCliente.html" method="get">
             <div class="justify-content-between mt-3">
-                <button type="button" class="btn btn-primary"><i class="bi bi-person-plus"></i> Nuevo Cliente</button>
+                <button type="submit" class="btn btn-primary"><i class="bi bi-person-plus"></i> Nuevo Cliente</button>
             </div>
+            </form>
             <!-- </div> -->
             <br>
             <table id="example" class="table table-striped table-bordered dt-responsive nowrap pt-1 mt-5"
@@ -42,11 +44,11 @@
                         <td>Avenida Falsa 1234</td>
                         <td>Activo</td>
                         <td class="text-center" style="width: 190px">
-                            <button type="button" id="" onClick="modalCliente(this)" name="BtnVer" class="btn btn-info">
+                            <button type="submit" id="" name="BtnVer" class="btn btn-info" onclick="location.href='detalleCliente.html'">
                                 <i class="bi bi-file-person" data-toggle="tooltip" data-placement="bottom"
                                     title="Ver Cliente"></i>
                             </button>
-                            <button type="button" id="" name="BtnModificar" class="btn btn-warning">
+                            <button type="submit" id="" name="BtnModificar" class="btn btn-warning" onclick="location.href='modificarCliente.html'">
                                 <i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="bottom"
                                     title="Modificar Cliente"></i>
                             </button>
@@ -55,7 +57,6 @@
                                 <i class="bi bi-x-circle" data-toggle="tooltip" data-placement="bottom"
                                     title="Eliminar Cliente"></i>
                             </button>
-
                         </td>
                     </tr>
                 </tbody>

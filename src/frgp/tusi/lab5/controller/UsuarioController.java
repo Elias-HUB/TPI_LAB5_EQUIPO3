@@ -1,5 +1,6 @@
 package frgp.tusi.lab5.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -34,15 +35,16 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping("inicioSessionUsuario")
-	public ModelAndView inicioSessionUsuario(String user) {
+	public ModelAndView inicioSessionUsuario(HttpServletRequest request, String user) {
 		ModelAndView mv = new ModelAndView();
+		HttpSession session = request.getSession();
 		if(user.toLowerCase().equals("admin")) {
 			mv.setViewName("cliente");
-			mv.addObject("user", user.toLowerCase());
+			session.setAttribute("user", user.toLowerCase());
 		}
 		else if (user.toLowerCase().equals("cliente")) {
 			mv.setViewName("resumen");
-			mv.addObject("user", user.toLowerCase());
+			session.setAttribute("user", user.toLowerCase());
 		}
 		else{
 			mv.setViewName("login");
