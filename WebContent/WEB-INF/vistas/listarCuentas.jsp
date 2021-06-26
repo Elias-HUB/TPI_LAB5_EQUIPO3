@@ -86,7 +86,7 @@
                 var AgenteID = btn.id;
                 Swal.fire({
                     icon: 'warning',
-                    title: "ï¿½Desea dar de baja esta Cuenta?",
+                    title: "¿Desea dar de baja esta Cuenta?",
                     showCancelButton: true,
                     confirmButtonColor: "#c82333",
                     cancelButtonText: "Cancelar",
