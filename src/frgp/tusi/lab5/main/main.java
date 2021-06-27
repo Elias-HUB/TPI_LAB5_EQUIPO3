@@ -10,12 +10,12 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
-import frgp.tusi.lab5.model.Cliente;
-import frgp.tusi.lab5.model.Cuenta;
-import frgp.tusi.lab5.model.Empleado;
-import frgp.tusi.lab5.model.Movimiento;
-import frgp.tusi.lab5.model.Transferencia;
-import frgp.tusi.lab5.model.Usuario;
+import frgp.tusi.lab5.modelImpl.Cliente;
+import frgp.tusi.lab5.modelImpl.Cuenta;
+import frgp.tusi.lab5.modelImpl.Empleado;
+import frgp.tusi.lab5.modelImpl.Movimiento;
+import frgp.tusi.lab5.modelImpl.Transferencia;
+import frgp.tusi.lab5.modelImpl.Usuario;
 
 public class main {
 
@@ -615,7 +615,7 @@ public class main {
     	Usuario usuario = new Usuario();
     	usuario.setEstado(true);
     	usuario.setFechaAlta(new Date());
-    	usuario.setIdTipoUsuario(1);
+    	usuario.setTipoUsuario("cliente");
     	usuario.setPass("1234");
     	usuario.setUserName("juancho");
     	session.save(usuario);
@@ -623,7 +623,7 @@ public class main {
     	usuario = new Usuario();
     	usuario.setEstado(true);
     	usuario.setFechaAlta(new Date());
-    	usuario.setIdTipoUsuario(1);
+    	usuario.setTipoUsuario("cliente");
     	usuario.setPass("cliente");
     	usuario.setUserName("cliente");
     	session.save(usuario);
@@ -631,7 +631,7 @@ public class main {
     	usuario = new Usuario();
     	usuario.setEstado(true);
     	usuario.setFechaAlta(new Date());
-    	usuario.setIdTipoUsuario(1);
+    	usuario.setTipoUsuario("cliente");
     	usuario.setPass("54321");
     	usuario.setUserName("roque");
     	session.save(usuario);
@@ -639,7 +639,7 @@ public class main {
     	usuario = new Usuario();
     	usuario.setEstado(true);
     	usuario.setFechaAlta(new Date());
-    	usuario.setIdTipoUsuario(1);
+    	usuario.setTipoUsuario("cliente");
     	usuario.setPass("54321");
     	usuario.setUserName("robertogomezbolanios");
     	session.save(usuario);
@@ -647,7 +647,7 @@ public class main {
     	usuario = new Usuario();
     	usuario.setEstado(true);
     	usuario.setFechaAlta(new Date());
-    	usuario.setIdTipoUsuario(1);
+    	usuario.setTipoUsuario("cliente");
     	usuario.setPass("987654321");
     	usuario.setUserName("elchavo");
     	session.save(usuario);
@@ -655,7 +655,7 @@ public class main {
     	usuario = new Usuario();
     	usuario.setEstado(true);
     	usuario.setFechaAlta(new Date());
-    	usuario.setIdTipoUsuario(2);
+    	usuario.setTipoUsuario("cliente");
     	usuario.setPass("admin");
     	usuario.setUserName("admin");
     	session.save(usuario);
@@ -663,7 +663,7 @@ public class main {
     	usuario = new Usuario();
     	usuario.setEstado(true);
     	usuario.setFechaAlta(new Date());
-    	usuario.setIdTipoUsuario(2);
+    	usuario.setTipoUsuario("cliente");
     	usuario.setPass("nocontaban");
     	usuario.setUserName("elchapulin");
     	session.save(usuario);
@@ -671,7 +671,7 @@ public class main {
     	usuario = new Usuario();
     	usuario.setEstado(true);
     	usuario.setFechaAlta(new Date());
-    	usuario.setIdTipoUsuario(2);
+    	usuario.setTipoUsuario("cliente");
     	usuario.setPass("654321");
     	usuario.setUserName("doctorchapatin");
     	session.save(usuario);
@@ -679,7 +679,7 @@ public class main {
     	usuario = new Usuario();
     	usuario.setEstado(true);
     	usuario.setFechaAlta(new Date());
-    	usuario.setIdTipoUsuario(2);
+    	usuario.setTipoUsuario("cliente");
     	usuario.setPass("123456");
     	usuario.setUserName("chespirito");
     	session.save(usuario);
@@ -687,7 +687,7 @@ public class main {
     	usuario = new Usuario();
     	usuario.setEstado(true);
     	usuario.setFechaAlta(new Date());
-    	usuario.setIdTipoUsuario(2);
+    	usuario.setTipoUsuario("cliente");
     	usuario.setPass("123456");
     	usuario.setUserName("chompiras");
     	session.save(usuario);

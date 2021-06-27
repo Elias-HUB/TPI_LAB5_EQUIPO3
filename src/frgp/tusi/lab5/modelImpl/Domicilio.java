@@ -1,4 +1,4 @@
-package frgp.tusi.lab5.model;
+package frgp.tusi.lab5.modelImpl;
 
 public class Domicilio {
 

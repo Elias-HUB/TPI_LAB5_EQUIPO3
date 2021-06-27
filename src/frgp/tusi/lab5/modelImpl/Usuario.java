@@ -1,4 +1,4 @@
-package frgp.tusi.lab5.model;
+package frgp.tusi.lab5.modelImpl;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -24,7 +24,7 @@ public class Usuario implements Serializable {
 	@Column()
 	private String pass;
 	@Column()
-	private Integer idTipoUsuario;
+	private String tipoUsuario;
 	@Column()
 	private Boolean estado;
 	@Column()
@@ -59,12 +59,12 @@ public class Usuario implements Serializable {
 		this.pass = pass;
 	}
 
-	public Integer getIdTipoUsuario() {
-		return idTipoUsuario;
+	public String getTipoUsuario() {
+		return tipoUsuario;
 	}
 
-	public void setIdTipoUsuario(Integer idTipoUsuario) {
-		this.idTipoUsuario = idTipoUsuario;
+	public void setTipoUsuario(String tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
 	}
 
 	public Boolean getEstado() {

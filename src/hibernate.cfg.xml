@@ -6,15 +6,16 @@
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="hibernate.connection.password">root</property>
+        <!-- <property name="hibernate.connection.password">rutrut</property> -->
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/DBHibernate?createDatabaseIfNotExist=true</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hbm2ddl.auto">create</property>
-        <mapping class="frgp.tusi.lab5.model.Cliente"/>
-        <mapping class="frgp.tusi.lab5.model.Cuenta"/>
-        <mapping class="frgp.tusi.lab5.model.Empleado"/>
-        <mapping class="frgp.tusi.lab5.model.Movimiento"/>
-        <mapping class="frgp.tusi.lab5.model.Transferencia"/>
-        <mapping class="frgp.tusi.lab5.model.Usuario"/>
+        <mapping class="frgp.tusi.lab5.modelImpl.Cliente"/>
+        <mapping class="frgp.tusi.lab5.modelImpl.Cuenta"/>
+        <mapping class="frgp.tusi.lab5.modelImpl.Empleado"/>
+        <mapping class="frgp.tusi.lab5.modelImpl.Movimiento"/>
+        <mapping class="frgp.tusi.lab5.modelImpl.Transferencia"/>
+        <mapping class="frgp.tusi.lab5.modelImpl.Usuario"/>
     </session-factory>
 </hibernate-configuration>

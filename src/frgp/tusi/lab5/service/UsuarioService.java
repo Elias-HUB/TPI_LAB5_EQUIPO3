@@ -1,13 +1,13 @@
 package frgp.tusi.lab5.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.util.List;
 
-import frgp.tusi.lab5.dao.UsuarioDao;
+import frgp.tusi.lab5.modelImpl.Usuario;
 
-@Service
-public class UsuarioService {
-
-//	@Autowired(required = true)
-	private UsuarioDao usuarioDao;
+public interface UsuarioService {
+	
+	public Usuario buscarUsuario(String username, String password);
+	public Usuario crearUsuario(String username, String tipoUsuario, Integer idCliente);
+	public Usuario eliminarUsuario(String username);
+	public List<Usuario> listarUsuarios();
 }
