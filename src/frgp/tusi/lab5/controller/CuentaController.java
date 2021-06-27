@@ -4,8 +4,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import frgp.tusi.lab5.serviceImpl.ClienteServiceImpl;
+import frgp.tusi.lab5.serviceImpl.CuentaServiceImpl;
+import frgp.tusi.lab5.serviceImpl.UsuarioServiceImpl;
+
 @Controller
 public class CuentaController {
+	
+	private UsuarioServiceImpl usuarioService;
+	private ClienteServiceImpl clienteService;
+	private CuentaServiceImpl cuentaService;
+	
+	public CuentaController() {
+		usuarioService = new UsuarioServiceImpl();
+		clienteService = new ClienteServiceImpl();
+		cuentaService = new CuentaServiceImpl();
+	}
 	
 	@RequestMapping("altaCuenta")
 	private ModelAndView altaCuenta() {
