@@ -11,7 +11,7 @@
     </head>
 
     <body>
-        <form action="inicioSessionUsuario.html" method="get">
+        <form action="inicioSessionUsuario.html" method="post">
             <div class="wrapper mt-5">
                 <div id="formContent">
                     <%-- <input type="image" src="${pageContext.request.contextPath}/resources/images/dni1.jpeg" alt="">

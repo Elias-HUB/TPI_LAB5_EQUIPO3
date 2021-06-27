@@ -655,7 +655,7 @@ public class main {
     	usuario = new Usuario();
     	usuario.setEstado(true);
     	usuario.setFechaAlta(new Date());
-    	usuario.setTipoUsuario("cliente");
+    	usuario.setTipoUsuario("admin");
     	usuario.setPass("admin");
     	usuario.setUserName("admin");
     	session.save(usuario);

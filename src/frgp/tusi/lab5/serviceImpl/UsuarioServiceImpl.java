@@ -16,7 +16,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 	private UsuarioDaoImpl usuarioDaoImpl;
 
 	@Override
-	public Usuario buscarUsuario(String username, String password) {
+	public Usuario buscarUsuario(String username, String password) throws Exception {
 		usuarioDaoImpl = new UsuarioDaoImpl();
 		return usuarioDaoImpl.buscar(username, password);
 	}
