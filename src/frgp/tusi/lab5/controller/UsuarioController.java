@@ -56,22 +56,10 @@ public class UsuarioController {
 	@RequestMapping(value ="/inicioSessionUsuario.html" , method= { RequestMethod.POST})
 	public ModelAndView inicioSessionUsuario(HttpServletRequest request, String user, String pass) throws Exception {
 		ModelAndView mv = new ModelAndView();
-//		Cliente cli = new Cliente();
-//    	cli.setApellido("Suárez");
-//    	cli.setNombre("Jacinta");
-//    	cli.setDni(1325464);
-//    	cli.setSexo("F");
-//    	cli.setNacionalidad("Argentina");
-//    	cli.setFechaNacimiento("02/11/1944");
-//    	Domicilio domicilio = new Domicilio();
-//    	cli.setDomicilio("Av Cordobs");
-//    	cli.setCuentas(cuentasCliente3);
-		
-//		clienteService.eliminar(cli);
 		try {
 			HttpSession session = request.getSession();
 			Usuario usuario = usuarioService.buscarUsuario(user, pass);
-				if (usuario.getTipoUsuario() == "cliente") {
+				if (usuario.getTipoUsuario().equals("empleado")) {
 					mv.setViewName("cliente");
 					session.setAttribute("user", usuario.getTipoUsuario());
 				}
