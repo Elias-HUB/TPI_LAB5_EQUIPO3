@@ -15,7 +15,6 @@ import org.hibernate.service.ServiceRegistryBuilder;
 import frgp.tusi.lab5.model.Cliente;
 import frgp.tusi.lab5.model.Cuenta;
 import frgp.tusi.lab5.model.Domicilio;
-import frgp.tusi.lab5.model.Empleado;
 import frgp.tusi.lab5.model.Movimiento;
 import frgp.tusi.lab5.model.TipoMovimiento;
 import frgp.tusi.lab5.model.Transferencia;
@@ -219,6 +218,234 @@ public class main {
     	session.save(cli);
     	
     	//FIN ELIAS
+    	
+		List<Cuenta> cuentasClienteDos = new ArrayList<Cuenta>();
+    	List<Movimiento> movimientosCuentaOrigenDos = new ArrayList<Movimiento>();
+    	List<Movimiento> movimientosCuentaDestinoDos = new ArrayList<Movimiento>();
+		
+		Movimiento movOrigenDos = new Movimiento();
+    	movOrigenDos.setDetalle("Transferencia débito");
+    	movOrigenDos.setEstado(true);
+    	movOrigenDos.setFecha(new Date());
+    	movOrigenDos.setFechaUltimaModificacion(new Date());
+    	movOrigenDos.setTipoMovimiento(tipoTransferenciaDeb);
+    	movOrigenDos.setImporte(-3000);
+    	movimientosCuentaOrigenDos.add(movOrigenDos);
+
+    	Movimiento movDestinoDos = new Movimiento();
+    	movDestinoDos.setDetalle("Transferencia crédito");
+    	movDestinoDos.setEstado(true);
+    	movDestinoDos.setFecha(new Date());
+    	movDestinoDos.setFechaUltimaModificacion(new Date());
+    	movDestinoDos.setTipoMovimiento(tipoTransferenciaCred);
+    	movDestinoDos.setImporte(3000);
+    	movimientosCuentaDestinoDos.add(movDestinoDos);
+    	
+    	Cuenta cuentaOrigenDos = new Cuenta();
+    	cuentaOrigenDos.setCbu(72812462);
+    	cuentaOrigenDos.setNroCuenta(6781);
+    	cuentaOrigenDos.setNombre("Caja de ahorro en pesos");
+    	cuentaOrigenDos.setSaldo(10000);
+    	cuentaOrigenDos.setEstado(true);
+    	cuentaOrigenDos.setFechaAlta(formattedDate);
+    	cuentaOrigenDos.setFechaUltimaModificacion(formattedDate);    	
+    	cuentaOrigenDos.setMovimientos(movimientosCuentaOrigenDos);
+    	cuentasClienteDos.add(cuentaOrigenDos);    	
+    	
+    	Cuenta cuentaDestinoDos = new Cuenta();
+    	cuentaDestinoDos.setCbu(12737271);
+    	cuentaDestinoDos.setNroCuenta(3627);
+    	cuentaDestinoDos.setNombre("Caja de ahorro en pesos");
+    	cuentaDestinoDos.setSaldo(10000);
+    	cuentaDestinoDos.setEstado(true);
+    	cuentaDestinoDos.setFechaAlta(formattedDate);
+    	cuentaDestinoDos.setFechaUltimaModificacion(formattedDate);
+    	cuentaDestinoDos.setMovimientos(movimientosCuentaDestinoDos);
+    	cuentasClienteDos.add(cuentaDestinoDos);    	
+    	
+    	Transferencia transDos = new Transferencia();
+    	transDos.setMovimientoOrigen(movOrigenDos);
+    	transDos.setMovimientoDestino(movDestinoDos);
+    	transDos.setCuentaOrigen(cuentaOrigenDos);
+    	transDos.setCuentaDestino(cuentaDestinoDos);
+    	session.save(transDos);
+    	
+    	Usuario usuarioDos = new Usuario();
+    	usuarioDos.setEstado(true);
+    	usuarioDos.setFechaAlta(new Date());
+    	usuarioDos.setTipoUsuario("cliente");
+    	usuarioDos.setPass("1234");
+    	usuarioDos.setUserName("ratape");
+    	
+    	Domicilio domicilioDos = new Domicilio();
+    	domicilioDos.setDireccion("Buenos Aires");
+    	domicilioDos.setLocalidad("Tigre");
+    	domicilioDos.setProvincia("Buenos Aires");
+    	
+    	Cliente cliDos = new Cliente();
+    	cliDos.setApellido("Rata");
+    	cliDos.setNombre("Pedro");
+    	cliDos.setDni(23546373);
+    	cliDos.setSexo("M");
+    	cliDos.setNacionalidad("Argentina");
+    	cliDos.setFechaNacimiento("14/02/1980");
+		cliDos.setEstado(true);
+    	cliDos.setDomicilio(domicilioDos);  
+    	cliDos.setUsuario(usuarioDos);
+    	cliDos.setCuentas(cuentasClienteDos);
+    	session.save(cliDos);
+////////////////////////////////////////////////////////////////////////
+		List<Cuenta> cuentasClienteTres = new ArrayList<Cuenta>();
+    	List<Movimiento> movimientosCuentaOrigenTres = new ArrayList<Movimiento>();
+    	List<Movimiento> movimientosCuentaDestinoTres = new ArrayList<Movimiento>();
+	
+    	Movimiento movOrigenTres = new Movimiento();
+    	movOrigenTres.setDetalle("Transferencia débito");
+    	movOrigenTres.setEstado(true);
+    	movOrigenTres.setFecha(new Date());
+    	movOrigenTres.setFechaUltimaModificacion(new Date());
+    	movOrigenTres.setTipoMovimiento(tipoTransferenciaDeb);
+    	movOrigenTres.setImporte(-2000);
+    	movimientosCuentaOrigenTres.add(movOrigenTres);
+
+    	Movimiento movDestinoTres = new Movimiento();
+    	movDestinoTres.setDetalle("Transferencia crédito");
+    	movDestinoTres.setEstado(true);
+    	movDestinoTres.setFecha(new Date());
+    	movDestinoTres.setFechaUltimaModificacion(new Date());
+    	movDestinoTres.setTipoMovimiento(tipoTransferenciaCred);
+    	movDestinoTres.setImporte(2000);
+    	movimientosCuentaDestinoTres.add(movDestinoTres);
+    	
+    	Cuenta cuentaOrigenTres = new Cuenta();
+    	cuentaOrigenTres.setCbu(23546735);
+    	cuentaOrigenTres.setNroCuenta(4427);
+    	cuentaOrigenTres.setNombre("Caja de ahorro en pesos");
+    	cuentaOrigenTres.setSaldo(10000);
+    	cuentaOrigenTres.setEstado(true);
+    	cuentaOrigenTres.setFechaAlta(formattedDate);
+    	cuentaOrigenTres.setFechaUltimaModificacion(formattedDate);    	
+    	cuentaOrigenTres.setMovimientos(movimientosCuentaOrigenTres);
+    	cuentasClienteTres.add(cuentaOrigenTres);    	
+    	
+    	Cuenta cuentaDestinoTres = new Cuenta();
+    	cuentaDestinoTres.setCbu(32785467);
+    	cuentaDestinoTres.setNroCuenta(4792);
+    	cuentaDestinoTres.setNombre("Caja de ahorro en pesos");
+    	cuentaDestinoTres.setSaldo(10000);
+    	cuentaDestinoTres.setEstado(true);
+    	cuentaDestinoTres.setFechaAlta(formattedDate);
+    	cuentaDestinoTres.setFechaUltimaModificacion(formattedDate);
+    	cuentaDestinoTres.setMovimientos(movimientosCuentaDestinoTres);
+    	cuentasClienteTres.add(cuentaDestinoTres);    	
+    	
+    	Transferencia transTres = new Transferencia();
+    	transTres.setMovimientoOrigen(movOrigenTres);
+    	transTres.setMovimientoDestino(movDestinoTres);
+    	transTres.setCuentaOrigen(cuentaOrigenTres);
+    	transTres.setCuentaDestino(cuentaDestinoTres);
+    	session.save(transTres);
+    	
+    	Usuario usuarioTres = new Usuario();
+    	usuarioTres.setEstado(true);
+    	usuarioTres.setFechaAlta(new Date());
+    	usuarioTres.setTipoUsuario("cliente");
+    	usuarioTres.setPass("1234");
+    	usuarioTres.setUserName("JuanaLo");
+    	
+    	Domicilio domicilioTres = new Domicilio();
+    	domicilioTres.setDireccion("Francia");
+    	domicilioTres.setLocalidad("Tigre");
+    	domicilioTres.setProvincia("Buenos aires");
+    	
+    	Cliente cliTres = new Cliente();
+    	cliTres.setApellido("Lopez");
+    	cliTres.setNombre("Juana");
+    	cliTres.setDni(25863173);
+    	cliTres.setSexo("F");
+    	cliTres.setNacionalidad("Argentina");
+    	cliTres.setFechaNacimiento("14/02/1985");
+		cliTres.setEstado(false);
+    	cliTres.setDomicilio(domicilioTres);  
+    	cliTres.setUsuario(usuarioTres);
+    	cliTres.setCuentas(cuentasClienteTres);
+    	session.save(cliTres);
+////////////////////////////////////////////////////////////////////////////
+		List<Cuenta> cuentasClienteCuatro = new ArrayList<Cuenta>();
+    	List<Movimiento> movimientosCuentaOrigenCuatro = new ArrayList<Movimiento>();
+    	List<Movimiento> movimientosCuentaDestinoCuatro = new ArrayList<Movimiento>();
+		
+    	Movimiento movOrigenCuatro = new Movimiento();
+    	movOrigenCuatro.setDetalle("Transferencia débito");
+    	movOrigenCuatro.setEstado(true);
+    	movOrigenCuatro.setFecha(new Date());
+    	movOrigenCuatro.setFechaUltimaModificacion(new Date());
+    	movOrigenCuatro.setTipoMovimiento(tipoTransferenciaDeb);
+    	movOrigenCuatro.setImporte(-1000);
+    	movimientosCuentaOrigenCuatro.add(movOrigenCuatro);
+
+    	Movimiento movDestinoCuatro = new Movimiento();
+    	movDestinoCuatro.setDetalle("Transferencia crédito");
+    	movDestinoCuatro.setEstado(true);
+    	movDestinoCuatro.setFecha(new Date());
+    	movDestinoCuatro.setFechaUltimaModificacion(new Date());
+    	movDestinoCuatro.setTipoMovimiento(tipoTransferenciaCred);
+    	movDestinoCuatro.setImporte(1000);
+    	movimientosCuentaDestinoCuatro.add(movDestinoCuatro);
+    	
+    	Cuenta cuentaOrigenCuatro = new Cuenta();
+    	cuentaOrigenCuatro.setCbu(94828428);
+    	cuentaOrigenCuatro.setNroCuenta(1233);
+    	cuentaOrigenCuatro.setNombre("Caja de ahorro en pesos");
+    	cuentaOrigenCuatro.setSaldo(10000);
+    	cuentaOrigenCuatro.setEstado(true);
+    	cuentaOrigenCuatro.setFechaAlta(formattedDate);
+    	cuentaOrigenCuatro.setFechaUltimaModificacion(formattedDate);    	
+    	cuentaOrigenCuatro.setMovimientos(movimientosCuentaOrigenCuatro);
+    	cuentasClienteCuatro.add(cuentaOrigenCuatro);    	
+    	
+    	Cuenta cuentaDestinoCuatro = new Cuenta();
+    	cuentaDestinoCuatro.setCbu(23547623);
+    	cuentaDestinoCuatro.setNroCuenta(202);
+    	cuentaDestinoCuatro.setNombre("Caja de ahorro en pesos");
+    	cuentaDestinoCuatro.setSaldo(10000);
+    	cuentaDestinoCuatro.setEstado(true);
+    	cuentaDestinoCuatro.setFechaAlta(formattedDate);
+    	cuentaDestinoCuatro.setFechaUltimaModificacion(formattedDate);
+    	cuentaDestinoCuatro.setMovimientos(movimientosCuentaDestinoCuatro);
+    	cuentasClienteCuatro.add(cuentaDestinoCuatro);    	
+    	
+    	Transferencia transCuatro = new Transferencia();
+    	transCuatro.setMovimientoOrigen(movOrigenCuatro);
+    	transCuatro.setMovimientoDestino(movDestinoCuatro);
+    	transCuatro.setCuentaOrigen(cuentaOrigenCuatro);
+    	transCuatro.setCuentaDestino(cuentaDestinoCuatro);
+    	session.save(transCuatro);
+    	
+    	Usuario usuarioCuatro = new Usuario();
+    	usuarioCuatro.setEstado(true);
+    	usuarioCuatro.setFechaAlta(new Date());
+    	usuarioCuatro.setTipoUsuario("empleado");
+    	usuarioCuatro.setPass("1234");
+    	usuarioCuatro.setUserName("Corzo");
+    	
+    	Domicilio domicilioCuatro = new Domicilio();
+    	domicilioCuatro.setDireccion("9 Julio");
+    	domicilioCuatro.setLocalidad("Escobar");
+    	domicilioCuatro.setProvincia("Buenos aires");
+    	
+    	Cliente cliCuatro = new Cliente();
+    	cliCuatro.setApellido("Corzo");
+    	cliCuatro.setNombre("Gonzalo");
+    	cliCuatro.setDni(30452120);
+    	cliCuatro.setSexo("M");
+    	cliCuatro.setNacionalidad("Argentina");
+    	cliCuatro.setFechaNacimiento("14/02/1990");
+		cliCuatro.setEstado(true);
+    	cliCuatro.setDomicilio(domicilioCuatro);
+    	cliCuatro.setUsuario(usuarioCuatro);
+    	cliCuatro.setCuentas(cuentasClienteCuatro);
+    	session.save(cliCuatro);
     	
 //    	cli = new Cliente();
 //    	cli.setApellido("López");

@@ -3,17 +3,12 @@ package frgp.tusi.lab5.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.servlet.ModelAndView;
 
-import frgp.tusi.lab5.model.Cliente;
-import frgp.tusi.lab5.model.Domicilio;
 import frgp.tusi.lab5.model.Usuario;
-import frgp.tusi.lab5.serviceImpl.ClienteServiceImpl;
 import frgp.tusi.lab5.serviceImpl.UsuarioServiceImpl;
 
 @Controller
