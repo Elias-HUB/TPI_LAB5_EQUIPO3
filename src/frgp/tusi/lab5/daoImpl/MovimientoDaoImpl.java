@@ -6,8 +6,8 @@ import org.hibernate.Session;
 
 import frgp.tusi.lab5.config.HibernateConfiguration;
 import frgp.tusi.lab5.dao.MovimientoDao;
-import frgp.tusi.lab5.modelImpl.Cuenta;
-import frgp.tusi.lab5.modelImpl.Movimiento;
+import frgp.tusi.lab5.model.Cuenta;
+import frgp.tusi.lab5.model.Movimiento;
 
 public class MovimientoDaoImpl implements MovimientoDao{
 

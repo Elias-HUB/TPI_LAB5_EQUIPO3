@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.servlet.ModelAndView;
 
-import frgp.tusi.lab5.modelImpl.Cliente;
-import frgp.tusi.lab5.modelImpl.Domicilio;
-import frgp.tusi.lab5.modelImpl.Usuario;
+import frgp.tusi.lab5.model.Cliente;
+import frgp.tusi.lab5.model.Domicilio;
+import frgp.tusi.lab5.model.Usuario;
 import frgp.tusi.lab5.serviceImpl.ClienteServiceImpl;
 import frgp.tusi.lab5.serviceImpl.UsuarioServiceImpl;
 

@@ -2,7 +2,7 @@ package frgp.tusi.lab5.dao;
 
 import java.util.List;
 
-import frgp.tusi.lab5.modelImpl.Movimiento;
+import frgp.tusi.lab5.model.Movimiento;
 
 public interface MovimientoDao {
 	public List<Movimiento> listar() throws Exception;

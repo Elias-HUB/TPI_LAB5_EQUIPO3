@@ -12,13 +12,14 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
-import frgp.tusi.lab5.modelImpl.Cliente;
-import frgp.tusi.lab5.modelImpl.Cuenta;
-import frgp.tusi.lab5.modelImpl.Domicilio;
-import frgp.tusi.lab5.modelImpl.Empleado;
-import frgp.tusi.lab5.modelImpl.Movimiento;
-import frgp.tusi.lab5.modelImpl.Transferencia;
-import frgp.tusi.lab5.modelImpl.Usuario;
+import frgp.tusi.lab5.model.Cliente;
+import frgp.tusi.lab5.model.Cuenta;
+import frgp.tusi.lab5.model.Domicilio;
+import frgp.tusi.lab5.model.Empleado;
+import frgp.tusi.lab5.model.Movimiento;
+import frgp.tusi.lab5.model.TipoMovimiento;
+import frgp.tusi.lab5.model.Transferencia;
+import frgp.tusi.lab5.model.Usuario;
 
 public class main {
 
@@ -124,38 +125,74 @@ public class main {
     	
     	//INICIO ELIAS
     	List<Cuenta> cuentasCliente = new ArrayList<Cuenta>();
+    	List<Movimiento> movimientos = new ArrayList<Movimiento>();
+    	List<Movimiento> movimientosCuentaOrigen = new ArrayList<Movimiento>();
+    	List<Movimiento> movimientosCuentaDestino = new ArrayList<Movimiento>();
     	
-    	cu = new Cuenta();
-    	cu.setCbu(54754562);
-    	cu.setNroCuenta(1432);
-    	cu.setNombre("Caja de ahorro en pesos");
-    	cu.setSaldo(10000);
-    	cu.setEstado(true);
-    	cu.setFechaAlta(formattedDate);
-    	cu.setFechaUltimaModificacion(formattedDate);    	
-    	session.save(cu);
-    	cuentasCliente.add(cu);
+
+//		Movimiento mov = new Movimiento();
+//    	mov.setDetalle("Pago tarjeta");
+//    	mov.setEstado(true);
+//    	mov.setFecha(new Date());
+//    	mov.setFechaUltimaModificacion(new Date());
+//    	mov.setIdTipoMovimiento(4);
+//    	mov.setImporte(12000);
+//    	movimientos.add(mov);
     	
-		Movimiento mov = new Movimiento();
-    	mov.setDetalle("Pago tarjeta");
-    	mov.setEstado(true);
-    	mov.setFecha(new Date());
-    	mov.setFechaUltimaModificacion(new Date());
-    	mov.setIdCuenta(1);
-    	mov.setIdTipoMovimiento(4);
-    	mov.setImporte(12000);
-    	session.save(mov);
+    	TipoMovimiento tipoTransferenciaDeb = new TipoMovimiento();
+    	TipoMovimiento tipoTransferenciaCred = new TipoMovimiento();
+    	TipoMovimiento tipoAltaCuenta = new TipoMovimiento();
+    	tipoTransferenciaDeb.setDescripcion("Transferencia Débito");
+    	tipoTransferenciaCred.setDescripcion("Transferencia Crédito");
+    	tipoAltaCuenta.setDescripcion("Alta de Cuenta");
+    	session.save(tipoAltaCuenta);
     	
-    	cu = new Cuenta();
-    	cu.setCbu(23452346);
-    	cu.setNroCuenta(5346);
-    	cu.setNombre("Caja de ahorro en pesos");
-    	cu.setSaldo(10000);
-    	cu.setEstado(true);
-    	cu.setFechaAlta(formattedDate);
-    	cu.setFechaUltimaModificacion(formattedDate);
-    	session.save(cu);
-    	cuentasCliente.add(cu);    	
+    	Movimiento movOrigen = new Movimiento();
+    	movOrigen.setDetalle("Transferencia débito");
+    	movOrigen.setEstado(true);
+    	movOrigen.setFecha(new Date());
+    	movOrigen.setFechaUltimaModificacion(new Date());
+    	movOrigen.setTipoMovimiento(tipoTransferenciaDeb);
+    	movOrigen.setImporte(-5000);
+    	movimientosCuentaOrigen.add(movOrigen);
+
+    	Movimiento movDestino = new Movimiento();
+    	movDestino.setDetalle("Transferencia crédito");
+    	movDestino.setEstado(true);
+    	movDestino.setFecha(new Date());
+    	movDestino.setFechaUltimaModificacion(new Date());
+    	movDestino.setTipoMovimiento(tipoTransferenciaCred);
+    	movDestino.setImporte(5000);
+    	movimientosCuentaDestino.add(movDestino);
+    	
+    	Cuenta cuentaOrigen = new Cuenta();
+    	cuentaOrigen.setCbu(54754562);
+    	cuentaOrigen.setNroCuenta(1432);
+    	cuentaOrigen.setNombre("Caja de ahorro en pesos");
+    	cuentaOrigen.setSaldo(10000);
+    	cuentaOrigen.setEstado(true);
+    	cuentaOrigen.setFechaAlta(formattedDate);
+    	cuentaOrigen.setFechaUltimaModificacion(formattedDate);    	
+    	cuentaOrigen.setMovimientos(movimientosCuentaOrigen);
+    	cuentasCliente.add(cuentaOrigen);    	
+    	
+    	Cuenta cuentaDestino = new Cuenta();
+    	cuentaDestino.setCbu(23452346);
+    	cuentaDestino.setNroCuenta(5346);
+    	cuentaDestino.setNombre("Caja de ahorro en pesos");
+    	cuentaDestino.setSaldo(10000);
+    	cuentaDestino.setEstado(true);
+    	cuentaDestino.setFechaAlta(formattedDate);
+    	cuentaDestino.setFechaUltimaModificacion(formattedDate);
+    	cuentaDestino.setMovimientos(movimientosCuentaDestino);
+    	cuentasCliente.add(cuentaDestino);    	
+    	
+    	Transferencia trans = new Transferencia();
+    	trans.setMovimientoOrigen(movOrigen);
+    	trans.setMovimientoDestino(movDestino);
+    	trans.setCuentaOrigen(cuentaOrigen);
+    	trans.setCuentaDestino(cuentaDestino);
+    	session.save(trans);
     	
     	Usuario usuario = new Usuario();
     	usuario.setEstado(true);
@@ -163,7 +200,6 @@ public class main {
     	usuario.setTipoUsuario("empleado");
     	usuario.setPass("1234");
     	usuario.setUserName("Arias");
-    	session.save(usuario);
     	
     	Domicilio domicilio = new Domicilio();
     	domicilio.setDireccion("AV Cordoba");
@@ -177,12 +213,11 @@ public class main {
     	cli.setSexo("M");
     	cli.setNacionalidad("Argentina");
     	cli.setFechaNacimiento("14/02/1980");
-    	cli.setDomicilio("AV Cordoba");  
-    	//cli.setUsuario(usuario);
+    	cli.setDomicilio(domicilio);  
+    	cli.setUsuario(usuario);
     	cli.setCuentas(cuentasCliente);
     	session.save(cli);
     	
-    	cuentasCliente.clear();
     	//FIN ELIAS
     	
 //    	cli = new Cliente();

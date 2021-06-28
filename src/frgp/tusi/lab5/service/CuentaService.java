@@ -2,7 +2,7 @@ package frgp.tusi.lab5.service;
 
 import java.util.List;
 
-import frgp.tusi.lab5.modelImpl.Cuenta;
+import frgp.tusi.lab5.model.Cuenta;
 
 public interface CuentaService {
 	public List<Cuenta> listar() throws Exception;

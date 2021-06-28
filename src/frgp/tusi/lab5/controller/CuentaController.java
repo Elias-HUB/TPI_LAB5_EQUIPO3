@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import frgp.tusi.lab5.modelImpl.Cuenta;
+import frgp.tusi.lab5.model.Cuenta;
 import frgp.tusi.lab5.serviceImpl.ClienteServiceImpl;
 import frgp.tusi.lab5.serviceImpl.CuentaServiceImpl;
 import frgp.tusi.lab5.serviceImpl.UsuarioServiceImpl;
@@ -39,7 +39,7 @@ public class CuentaController {
 	}
 	
 	@RequestMapping("eliminarCuenta")
-	private ModelAndView eliminacionCuenta() {
+	private ModelAndView eliminacionCuenta(Cuenta cuenta) {
 		ModelAndView mv = new ModelAndView();
 		return mv;
 	}
@@ -52,7 +52,6 @@ public class CuentaController {
 			mv.addObject(cuentas);
 		} catch (Exception e) {
 			mv.addObject(e.getMessage());
-			mv.setViewName("listarCuentas");
 		}
 		
 		mv.setViewName("listarCuentas");

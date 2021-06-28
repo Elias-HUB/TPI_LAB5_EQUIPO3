@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import frgp.tusi.lab5.daoImpl.CuentaDaoImpl;
-import frgp.tusi.lab5.modelImpl.Cuenta;
+import frgp.tusi.lab5.model.Cuenta;
 import frgp.tusi.lab5.service.CuentaService;
 
 @Service

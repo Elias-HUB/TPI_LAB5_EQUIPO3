@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import frgp.tusi.lab5.daoImpl.MovimientoDaoImpl;
-import frgp.tusi.lab5.modelImpl.Movimiento;
+import frgp.tusi.lab5.model.Movimiento;
 import frgp.tusi.lab5.service.MovimientoService;
 
 @Service
