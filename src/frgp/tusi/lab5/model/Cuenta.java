@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -30,8 +31,11 @@ public class Cuenta implements Serializable{
 	private Integer nroCuenta;
 	@Column()
 	private String nombre;
-	@Column()
-	private Integer idTipoCuenta;
+	
+	@OneToOne(cascade= {CascadeType.ALL})
+	@JoinColumn(name="tipoCuenta")
+	private TipoCuenta tipoCuenta;
+	
 	@Column()
 	private Integer saldo;//inicial 10000
 	@Column()
@@ -76,14 +80,14 @@ public class Cuenta implements Serializable{
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}	
+
+	public TipoCuenta getTipoCuenta() {
+		return tipoCuenta;
 	}
 
-	public Integer getIdTipoCuenta() {
-		return idTipoCuenta;
-	}
-
-	public void setIdTipoCuenta(Integer idTipoCuenta) {
-		this.idTipoCuenta = idTipoCuenta;
+	public void setTipoCuenta(TipoCuenta tipoCuenta) {
+		this.tipoCuenta = tipoCuenta;
 	}
 
 	public Integer getSaldo() {
