@@ -1,21 +1,26 @@
 package frgp.tusi.lab5.modelImpl;
 
-public class Domicilio {
+import java.io.Serializable;
 
-	private Integer id;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Domicilio")
+public class Domicilio implements Serializable{
+
+	@Column
 	private String direccion;
+	
+	@Column
 	private String localidad;
+	
+	@Column
 	private String provincia;
 	
 	public Domicilio() {}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public String getDireccion() {
 		return direccion;

@@ -19,11 +19,11 @@
             	<div class="row">
             		<div class="form-group mt-4">
                     	<label class="control-label" for="txtNombre">Nombre </label>
-                        <input readonly class="form-control" id="txtNombre" type="text" placeholder="" value="Nicolás Iván Ramírez">
+                        <input readonly class="form-control" id="txtNombre" type="text" placeholder="" value="${ Cliente.getNombre() }">
                     </div>
                     <div class="form-group mt-4">
                         <label class="control-label" for="txtDni">DNI</label>
-                        <input readonly class="form-control" id="txtDni" type="text" value="123456789">
+                        <input readonly class="form-control" id="txtDni" type="text" value="${ Cliente.getdni() }">
                     </div>
                     <div class="form-group mt-4">
                         <label class="control-label" for="cliente.sexo">Sexo </label>
@@ -37,15 +37,15 @@
                      </div>
                      <div class="form-group mt-4">
                          <label class="control-label" for="txtNacionalidad">Nacionalidad</label>
-                         <input readonly class="form-control" id="txtNacionalidad" type="text" value="Argentino">
+                         <input readonly class="form-control" id="txtNacionalidad" type="text" value="${ Cliente.getNacionalidad() }">
                      </div>
                      <div class="form-group mt-4">
                          <label class="control-label" for="txtCalle">Calle</label>
-                         <input readonly class="form-control" id="txtCalle" type="text" value="Calle Falsa">
+                         <input readonly class="form-control" id="txtCalle" type="text" value="${ Cliente.getDomicilio() }">
                      </div>
                      <div class="form-group mt-4">
                          <label class="control-label" for="txtNumeroPuerta">Número de Puerta</label>
-                         <input readonly class="form-control" id="txtNumeroPuerta" type="text" value="123">
+                         <input readonly class="form-control" id="txtNumeroPuerta" type="text" value="${ Cliente.getDomicilio() }">
                      </div>
                      <div class="form-group mt-4">
                          <label class="control-label" for="txtCodigoPostal">Código Postal</label>

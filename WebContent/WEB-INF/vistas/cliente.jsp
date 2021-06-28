@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
     <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
     <html>
 
@@ -37,14 +39,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Eze@gmail.com.ar</td>
-                        <td>Ezequiel Cordoba</td>
-                        <td>12976154</td>
-                        <td>Avenida Falsa 1234</td>
-                        <td>Activo</td>
+				<c:forEach var="Cliente" items="${ Clientes }">				
+                    <tr id="Cliente-${ Cliente.getId() }">
+                        <td>${ Cliente.getUsuario().getUserName() }</td>
+                        <td>${ Cliente.getNombre() }, ${ Cliente.getApellido() }</td>
+                        <td>${ Cliente.getDni() }</td>
+                        <td>${ Cliente.getDomicilio() }</td>
+                        <td>${ Cliente.getEstado() }</td>
                         <td class="text-center" style="width: 190px">
-                            <button type="submit" id="" name="BtnVer" class="btn btn-info" onclick="location.href='detalleCliente.html'">
+                            <button type="submit" id="" name="BtnVer" class="btn btn-info" onclick="location.href='detalleCliente.html?dni=${Cliente.getDni()}'">
                                 <i class="bi bi-file-person" data-toggle="tooltip" data-placement="bottom"
                                     title="Ver Cliente"></i>
                             </button>
@@ -52,13 +55,14 @@
                                 <i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="bottom"
                                     title="Modificar Cliente"></i>
                             </button>
-                            <button type="button" id="" onClick="modalEliminar(this)" name="BtnEliminar"
+                            <button type="button" onClick="modalEliminar(${ Cliente })" name="BtnEliminar"
                                 class="btn btn-danger">
                                 <i class="bi bi-x-circle" data-toggle="tooltip" data-placement="bottom"
                                     title="Eliminar Cliente"></i>
                             </button>
                         </td>
-                    </tr>
+                    </tr>                   
+                    </c:forEach>
                 </tbody>
             </table>
         </div>
