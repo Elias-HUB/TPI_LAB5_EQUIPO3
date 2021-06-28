@@ -6,7 +6,6 @@ import org.hibernate.Session;
 
 import frgp.tusi.lab5.config.HibernateConfiguration;
 import frgp.tusi.lab5.dao.CuentaDao;
-import frgp.tusi.lab5.modelImpl.Cliente;
 import frgp.tusi.lab5.modelImpl.Cuenta;
 
 public class CuentaDaoImpl implements CuentaDao {
