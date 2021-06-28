@@ -1,4 +1,4 @@
-package frgp.tusi.lab5.modelImpl;
+package frgp.tusi.lab5.model;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -10,8 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="TipoCuenta")
-public class TipoCuenta implements Serializable {
+@Table(name="TipoMovimiento")
+public class TipoMovimiento implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -21,7 +21,7 @@ public class TipoCuenta implements Serializable {
 	@Column()
 	private String descripcion;
 	
-	public TipoCuenta() {}
+	public TipoMovimiento() {}
 
 	public Integer getId() {
 		return id;

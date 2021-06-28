@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.servlet.ModelAndView;
 
-import frgp.tusi.lab5.modelImpl.Cliente;
-import frgp.tusi.lab5.modelImpl.Usuario;
+import frgp.tusi.lab5.model.Cliente;
+import frgp.tusi.lab5.model.Domicilio;
+import frgp.tusi.lab5.model.Usuario;
 import frgp.tusi.lab5.serviceImpl.ClienteServiceImpl;
 import frgp.tusi.lab5.serviceImpl.UsuarioServiceImpl;
 
@@ -19,11 +20,11 @@ import frgp.tusi.lab5.serviceImpl.UsuarioServiceImpl;
 public class UsuarioController {
 	
 	private UsuarioServiceImpl usuarioService;
-	private ClienteServiceImpl clienteService;
+//	private ClienteServiceImpl clienteService;
 	
 	public UsuarioController() {
 		usuarioService = new UsuarioServiceImpl();
-		clienteService = new ClienteServiceImpl();
+//		clienteService = new ClienteServiceImpl();
 	}
 	
 	
@@ -55,21 +56,10 @@ public class UsuarioController {
 	@RequestMapping(value ="/inicioSessionUsuario.html" , method= { RequestMethod.POST})
 	public ModelAndView inicioSessionUsuario(HttpServletRequest request, String user, String pass) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		Cliente cli = new Cliente();
-    	cli.setApellido("Suárez");
-    	cli.setNombre("Jacinta");
-    	cli.setDni(1325464);
-    	cli.setSexo("F");
-    	cli.setNacionalidad("Argentina");
-    	cli.setFechaNacimiento("02/11/1944");
-    	cli.setDomicilio("Javascript 99");
-//    	cli.setCuentas(cuentasCliente3);
-		
-		clienteService.eliminar(cli);
 		try {
 			HttpSession session = request.getSession();
 			Usuario usuario = usuarioService.buscarUsuario(user, pass);
-				if (usuario.getTipoUsuario() == "cliente") {
+				if (usuario.getTipoUsuario().equals("empleado")) {
 					mv.setViewName("cliente");
 					session.setAttribute("user", usuario.getTipoUsuario());
 				}

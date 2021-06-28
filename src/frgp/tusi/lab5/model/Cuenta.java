@@ -1,13 +1,18 @@
-package frgp.tusi.lab5.modelImpl;
+package frgp.tusi.lab5.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -35,6 +40,9 @@ public class Cuenta implements Serializable{
 	private String fechaAlta;
 	@Column()
 	private String fechaUltimaModificacion;
+	@OneToMany(cascade= {CascadeType.ALL})
+	@JoinColumn(name="id_cuenta")
+	private List<Movimiento> movimientos = new ArrayList<Movimiento>();
 	
 	public Cuenta() {}
 
@@ -108,6 +116,14 @@ public class Cuenta implements Serializable{
 
 	public void setFechaUltimaModificacion(String fechaUltimaModificacion) {
 		this.fechaUltimaModificacion = fechaUltimaModificacion;
+	}
+
+	public List<Movimiento> getMovimientos() {
+		return movimientos;
+	}
+
+	public void setMovimientos(List<Movimiento> movimientos) {
+		this.movimientos = movimientos;
 	}
 
 }

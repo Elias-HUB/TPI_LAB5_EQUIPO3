@@ -1,7 +1,10 @@
-package frgp.tusi.lab5.modelImpl;
+package frgp.tusi.lab5.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.JoinColumn;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToOne;
 
 @MappedSuperclass
 public class Persona {
@@ -18,12 +21,15 @@ public class Persona {
 	protected String nacionalidad;
 	@Column
 	protected String fechaNacimiento;
-	@Column
-	protected String domicilio;
+	@OneToOne(cascade= {CascadeType.ALL})
+	@JoinColumn(name="usuario")
+	private Usuario usuario;	
+	@OneToOne(cascade= {CascadeType.ALL})
+	@JoinColumn(name="domicilio")
+	protected Domicilio domicilio;
 	@Column
 	protected Boolean estado;
-	@Column
-	protected Usuario usuario;
+
 	
 	public Persona() {}
 
@@ -75,11 +81,11 @@ public class Persona {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	public String getDomicilio() {
+	public Domicilio getDomicilio() {
 		return domicilio;
 	}
 
-	public void setDomicilio(String domicilio) {
+	public void setDomicilio(Domicilio domicilio) {
 		this.domicilio = domicilio;
 	}
 
@@ -90,6 +96,7 @@ public class Persona {
 	public void setEstado(Boolean estado) {
 		this.estado = estado;
 	}
+	
 
 	public Usuario getUsuario() {
 		return usuario;

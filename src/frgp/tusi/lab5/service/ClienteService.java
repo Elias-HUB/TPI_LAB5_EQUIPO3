@@ -2,7 +2,7 @@ package frgp.tusi.lab5.service;
 
 import java.util.List;
 
-import frgp.tusi.lab5.modelImpl.Cliente;
+import frgp.tusi.lab5.model.Cliente;
 
 public interface ClienteService {
 	public List<Cliente> listar() throws Exception;

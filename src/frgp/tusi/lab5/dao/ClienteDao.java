@@ -2,8 +2,8 @@ package frgp.tusi.lab5.dao;
 
 import java.util.List;
 
-import frgp.tusi.lab5.modelImpl.Cliente;
-import frgp.tusi.lab5.modelImpl.Usuario;
+import frgp.tusi.lab5.model.Cliente;
+import frgp.tusi.lab5.model.Usuario;
 
 public interface ClienteDao {
 	public List<Cliente> listar() throws Exception;

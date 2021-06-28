@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import frgp.tusi.lab5.daoImpl.UsuarioDaoImpl;
-import frgp.tusi.lab5.modelImpl.Usuario;
+import frgp.tusi.lab5.model.Usuario;
 import frgp.tusi.lab5.service.UsuarioService;
 
 

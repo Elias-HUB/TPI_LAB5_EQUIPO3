@@ -6,9 +6,9 @@ import org.hibernate.Session;
 
 import frgp.tusi.lab5.config.HibernateConfiguration;
 import frgp.tusi.lab5.dao.ClienteDao;
-import frgp.tusi.lab5.modelImpl.Cliente;
-import frgp.tusi.lab5.modelImpl.Cuenta;
-import frgp.tusi.lab5.modelImpl.Usuario;
+import frgp.tusi.lab5.model.Cliente;
+import frgp.tusi.lab5.model.Cuenta;
+import frgp.tusi.lab5.model.Usuario;
 
 public class ClienteDaoImpl implements ClienteDao {
 

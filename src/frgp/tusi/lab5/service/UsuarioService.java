@@ -2,7 +2,7 @@ package frgp.tusi.lab5.service;
 
 import java.util.List;
 
-import frgp.tusi.lab5.modelImpl.Usuario;
+import frgp.tusi.lab5.model.Usuario;
 
 public interface UsuarioService {	
 	public Usuario buscarUsuario(String username, String password) throws Exception;

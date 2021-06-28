@@ -4,7 +4,7 @@ import org.hibernate.Session;
 
 import frgp.tusi.lab5.config.HibernateConfiguration;
 import frgp.tusi.lab5.dao.UsuarioDao;
-import frgp.tusi.lab5.modelImpl.Usuario;
+import frgp.tusi.lab5.model.Usuario;
 
 public class UsuarioDaoImpl implements UsuarioDao {
 	

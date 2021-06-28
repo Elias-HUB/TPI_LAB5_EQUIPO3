@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import frgp.tusi.lab5.dao.ClienteDao;
 import frgp.tusi.lab5.daoImpl.ClienteDaoImpl;
-import frgp.tusi.lab5.modelImpl.Cliente;
+import frgp.tusi.lab5.model.Cliente;
 import frgp.tusi.lab5.service.ClienteService;
 
 @Service

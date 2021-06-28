@@ -1,6 +1,7 @@
-package frgp.tusi.lab5.modelImpl;
+package frgp.tusi.lab5.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -8,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -20,6 +22,11 @@ public class Cliente extends Persona implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
+	
+	@OneToMany(cascade= {CascadeType.ALL})
+	@JoinColumn(name="id_cliente")
+	private List<Cuenta> cuentas = new ArrayList<Cuenta>();
+	
 	
 	public Integer getId() {
 		return id;
@@ -40,15 +47,5 @@ public class Cliente extends Persona implements Serializable{
 	public Cliente() {
 		super();
 	}
-	
-	@OneToMany(cascade= {CascadeType.ALL})
-	private List<Cuenta> cuentas;
-
-//	@Id
-//	@Column(name="")
-// @GeneratedValue(strategy=GenerationType.AUTO)
-	
-	
-	
 
 }
