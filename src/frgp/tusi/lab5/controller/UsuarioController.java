@@ -55,15 +55,17 @@ public class UsuarioController {
 			HttpSession session = request.getSession();
 			Usuario usuario = usuarioService.buscarUsuario(user, pass);
 				if (usuario.getTipoUsuario().equals("empleado")) {
-					mv.setViewName("cliente");
 					session.setAttribute("user", usuario.getTipoUsuario());
+					return new ModelAndView("redirect:listarClientes.html");
+//					mv.setViewName("cliente");					
 				}
 				else {
-					mv.setViewName("resumen");
 					session.setAttribute("user", usuario.getTipoUsuario());
+					return new ModelAndView("redirect:resumen.html");
+//					mv.setViewName("resumen");
 				}
 		} catch (Exception e) {
-			mv.addObject("Usuario o contraseña invalida.");
+			mv.addObject("ErrorLogin","Usuario o contraseña invalida.");			
 			mv.setViewName("login");
 		}
 		return mv;

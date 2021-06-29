@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <nav class="navbar navbar-expand-lg bg-primary navbar-dark ">
     <h2 class="navbar-brand me-5 ms-5"><i class="bi bi-bank"></i> Banco</h2>
 

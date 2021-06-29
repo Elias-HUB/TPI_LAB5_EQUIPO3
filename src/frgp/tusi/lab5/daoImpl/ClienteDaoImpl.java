@@ -12,6 +12,7 @@ import frgp.tusi.lab5.model.Usuario;
 
 public class ClienteDaoImpl implements ClienteDao {
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Cliente> listar() throws Exception {
 		HibernateConfiguration ch = new HibernateConfiguration();

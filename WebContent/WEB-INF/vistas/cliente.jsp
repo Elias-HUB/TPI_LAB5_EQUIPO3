@@ -16,7 +16,7 @@
         <jsp:include page="myNavbar.jsp"></jsp:include>
 
 
-        <div class="m-5 p-5 rounded bg-white" id="">
+        <div class="m-5 px-5 rounded bg-white" id="">
             <h1>Clientes</h1>
             <!-- <div class="container pb-3"> -->
             <form action="altaCliente.html" method="get">
@@ -39,19 +39,19 @@
                     </tr>
                 </thead>
                 <tbody>
-				<c:forEach var="Cliente" items="${ Clientes }">				
+				<c:forEach var="Cliente" items="${ Clientes }">
                     <tr id="Cliente-${ Cliente.getId() }">
                         <td>${ Cliente.getUsuario().getUserName() }</td>
-                        <td>${ Cliente.getNombre() }, ${ Cliente.getApellido() }</td>
+                        <td>${ Cliente.getNombre() } ${ Cliente.getApellido() }</td>
                         <td>${ Cliente.getDni() }</td>
-                        <td>${ Cliente.getDomicilio() }</td>
-                        <td>${ Cliente.getEstado() }</td>
+                        <td>${ Cliente.getDomicilio().getDireccion() }</td>
+                        <td>${Cliente.getEstado() == true ? "Activo" : "Inactivo"}</td>                        
                         <td class="text-center" style="width: 190px">
                             <button type="submit" id="" name="BtnVer" class="btn btn-info" onclick="location.href='detalleCliente.html?dni=${Cliente.getDni()}'">
                                 <i class="bi bi-file-person" data-toggle="tooltip" data-placement="bottom"
                                     title="Ver Cliente"></i>
                             </button>
-                            <button type="submit" id="" name="BtnModificar" class="btn btn-warning" onclick="location.href='modificarCliente.html'">
+                            <button type="submit" id="" name="BtnModificar" class="btn btn-warning" onclick="location.href='modificarCliente.html?dni=${Cliente.getDni()}'">
                                 <i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="bottom"
                                     title="Modificar Cliente"></i>
                             </button>
@@ -67,10 +67,25 @@
             </table>
         </div>
 
-
         <jsp:include page="myFooter.jsp"></jsp:include>
+        <script	src="${pageContext.request.contextPath}/resources/Js/Funciones.js"></script>
         <script src="${pageContext.request.contextPath}/resources/Js/dataTableClientes.js"></script>
-        <script>
+        <script type="text/javascript">        
+    	<%
+    	 session = request.getSession();
+   		 if(session.getAttribute("success") != null) { 	 	
+ 		String success = session.getAttribute("success").toString();
+ 		session.setAttribute("success",null);
+ 		%>mostrarToast("<%=success%>", 'success');<%    		
+ 	  }
+ 	 
+ 	 if(session.getAttribute("error") != null) {  	 	
+  		String error = session.getAttribute("error").toString();
+  		session.setAttribute("error",null);
+  		%>mostrarToast("<%=error%>", 'error');<%    		
+  	  }
+    	%>
+
             function modalEliminar(btn) {
                 const Toast = Swal.mixin({
                     toast: true,
