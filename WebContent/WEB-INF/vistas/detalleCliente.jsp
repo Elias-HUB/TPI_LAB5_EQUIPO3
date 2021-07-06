@@ -25,11 +25,20 @@
 						placeholder="" value="${ Cliente.getNombre() }">
 				</div>
 				<div class="form-group mt-4">
+					<label class="control-label" for="txtApellido">Apellido </label> 
+					<input class="form-control" name="txtApellido" id="txtApellido" type="text" value="${ Cliente.getApellido() }" readonly>
+				</div>
+				<div class="form-group mt-4">
 					<label class="control-label" for="txtDni">DNI</label>
-					<input readonly class="form-control" id="txtDni" type="text" value="${ Cliente.getDni() }">
+					<input readonly class="form-control" id="txtDni" type="text" value="${ Cliente.getDni() }" readonly>
+				</div>
+				<div class="form-group mt-4">
+					<label class="control-label" for="txtDni">Fecha de Nacimiento</label>
+					<input type="date" ID="TboxFecha" name="TboxFecha" max="3000-12-31" min="1900-01-01" value="${ Cliente.getFechaNacimiento() }" class="form-control" readonly>
 				</div>
 				<div class="form-group mt-4">
 					<label class="control-label" for="cliente.sexo">Sexo </label>					
+					<div class="form-control border-0 btn-group" role="group" aria-label="seleccionar sexo">
 					<c:choose>
     					<c:when test="${Cliente.getSexo().equals('M')}">
     						<input readonly class="form-control" id="txtNombre" type="text"	value="Masculino">
@@ -37,15 +46,24 @@
 						<c:otherwise>
 							<input readonly class="form-control" id="txtNombre" type="text"	value="Femenino">
 						</c:otherwise> 
-					</c:choose>				
+					</c:choose>
+					</div>
+				</div>
+				<div class="form-group mt-4">
+					<label class="control-label" for="txtCalle">Calle</label> 
+					<input class="form-control" name="txtCalle"  id="txtCalle" type="text" value="${ Cliente.getDomicilio().getDireccion() }" readonly>
+				</div>
+				<div class="form-group mt-4">
+					<label class="control-label" for="txtLocalidad">Localidad</label> 
+					<input class="form-control" name="txtLocalidad"  id="txtLocalidad" type="text" value="${ Cliente.getDomicilio().getLocalidad() }" readonly>
+				</div>
+				<div class="form-group mt-4">
+					<label class="control-label" for="txtProvincia">Provincia</label> 
+					<input class="form-control" name="txtProvincia"  id="txtProvincia" type="text" value="${ Cliente.getDomicilio().getProvincia() }" readonly>
 				</div>
 				<div class="form-group mt-4">
 					<label class="control-label" for="txtNacionalidad">Nacionalidad</label>
-					<input readonly class="form-control" id="txtNacionalidad" type="text" value="${ Cliente.getNacionalidad() }">
-				</div>
-				<div class="form-group mt-4">
-					<label class="control-label" for="txtCalle">Calle</label>
-					<input readonly class="form-control" id="txtCalle" type="text" value="${ Cliente.getDomicilio().getDireccion() }">
+					<input readonly class="form-control" id="txtNacionalidad" type="text" value="${ Cliente.getNacionalidad() }" readonly>
 				</div>
 				<div class="form-group mt-4 d-flex justify-content-center">
 					<button class="btn btn-primary mx-2" value="Volver" onclick="location.href='listarClientes.html'">Volver</button>
@@ -53,9 +71,8 @@
 			</div>
 		</div>
 	</div>
+	
 	<jsp:include page="myFooter.jsp"></jsp:include>
-	<script
-		src="${pageContext.request.contextPath}/resources/Js/DataTableMovimientos.js"></script>
 </body>
 
 </html>

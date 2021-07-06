@@ -50,7 +50,7 @@ public class ClienteDaoImpl implements ClienteDao {
 	public Cliente crear(Cliente cliente) throws Exception {
 		HibernateConfiguration ch = new HibernateConfiguration();
 		Session session= ch.abrirConexion();
-    	session.saveOrUpdate(cliente);
+    	session.save(cliente);
     	session.getTransaction().commit();
 		ch.cerrarSession();
 		return cliente;

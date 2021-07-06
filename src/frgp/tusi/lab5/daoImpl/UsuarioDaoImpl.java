@@ -19,4 +19,15 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		return usuario;
 	}
 
+	@Override
+	public Usuario eliminar(Usuario usuario) throws Exception {
+		HibernateConfiguration ch = new HibernateConfiguration();
+		Session session= ch.abrirConexion();
+        usuario.setEstado(false);
+    	session.saveOrUpdate(usuario);
+    	session.getTransaction().commit();
+		ch.cerrarSession();
+		return usuario;
+	}
+
 }

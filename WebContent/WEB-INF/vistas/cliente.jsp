@@ -55,7 +55,7 @@
                                 <i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="bottom"
                                     title="Modificar Cliente"></i>
                             </button>
-                            <button type="button" onClick="modalEliminar(${ Cliente })" name="BtnEliminar"
+                            <button type="button" onClick="modalEliminar(${Cliente.getDni()})" name="BtnEliminar"
                                 class="btn btn-danger">
                                 <i class="bi bi-x-circle" data-toggle="tooltip" data-placement="bottom"
                                     title="Eliminar Cliente"></i>
@@ -86,7 +86,7 @@
   	  }
     	%>
 
-            function modalEliminar(btn) {
+            function modalEliminar(DNI) {
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top',
@@ -98,7 +98,6 @@
                         toast.addEventListener('mouseleave', Swal.resumeTimer)
                     }
                 });
-                var AgenteID = btn.id;
                 Swal.fire({
                     icon: 'warning',
                     title: "¿Desea dar de baja este Cliente?",
@@ -109,36 +108,7 @@
                     reverseButtons: true
                 }).then((result) => {
                     if (result.value) {
-                        $.ajax({
-                            url: '../Services/ServicesAgente.php',
-                            type: 'POST',
-                            dataType: "json",
-                            data: {
-                                AgenteID: AgenteID
-                            },
-                            success: function (AgenteID) {
-                                if (AgenteID == "Exitoso") {
-                                    Toast.fire({
-                                        icon: 'success',
-                                        title: 'El Cliente se esta dando de baja...'
-                                    }).then((result) => {
-                                        location.replace('../Views/ListadoAgentes.php');
-                                    })
-                                } else if (AgenteID == "ExitosoUsuario") {
-                                    Toast.fire({
-                                        icon: 'success',
-                                        title: 'El Agente y el Usuario se estan dando de baja...'
-                                    }).then((result) => {
-                                        location.replace('../Views/ListadoAgentes.php');
-                                    })
-                                } else {
-                                    Toast.fire({
-                                        icon: 'error',
-                                        title: 'Hubo un problema. Comunicarse con el Area tecnica.'
-                                    })
-                                };
-                            }
-                        });
+                    	location.replace('eliminarCliente.html?dni='+DNI);
                     }
                 })
             }

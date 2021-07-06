@@ -38,10 +38,20 @@
 	<script
 		src="${pageContext.request.contextPath}/resources/Js/Funciones.js"></script>
 	<script type="text/javascript">
-		let Error = '${ ErrorLogin }';
-		if (Error != '') {
-			mostrarToast(Error, 'error');
-		}
+	<%
+	 session = request.getSession();
+		 if(session.getAttribute("success") != null) { 	 	
+	String success = session.getAttribute("success").toString();
+	session.setAttribute("success",null);
+	%>mostrarToast("<%=success%>", 'success');<%    		
+  }
+ 
+ if(session.getAttribute("error") != null) {  	 	
+		String error = session.getAttribute("error").toString();
+		session.setAttribute("error",null);
+		%>mostrarToast("<%=error%>", 'error');<%    		
+	  }
+	%>
 	</script>
 </body>
 

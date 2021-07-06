@@ -30,6 +30,21 @@
 					<input class="form-control" name="txtApellido" id="txtApellido" type="text" value="${ Cliente.getApellido() }" required>
 				</div>
 				<div class="form-group mt-4">
+					<label class="control-label" for="tboxEstado">Estado</label>
+					<select id="tboxEstado" name="tboxEstado" class="form-control">
+					<c:choose>
+    					<c:when test="${Cliente.getEstado() == true}">							
+						<option value="false">Inactivo</option>
+						<option value="true" selected="">Activo</option>					
+						</c:when>
+						<c:otherwise>
+							<option value="false"selected="">Inactivo</option>
+							<option value="true" >Activo</option>
+						</c:otherwise> 
+					</c:choose>
+					</select>					
+				</div>
+				<div class="form-group mt-4">
 					<label class="control-label" for="txtDni">DNI</label>
 					<input class="form-control" name="txtDni" id="txtDni" type="number" value="${ Cliente.getDni() }" required>
 				</div>
@@ -309,7 +324,7 @@
 					</select>
 				</div>
 				<div class="form-group mt-4 d-flex justify-content-center">
-					<button class="btn btn-primary mx-2" value="Volver" onclick="location.href='listarClientes.html'">Volver</button>
+					<button type="button" class="btn btn-primary mx-2" value="Volver" onclick="location.href='listarClientes.html'">Volver</button>
 					<button type="submit" id="BtnAgregar" name="BtnAgregar" class="btn btn-success mx-2" value="Guardar">Guardar</button>
 				</div>
 			</div>

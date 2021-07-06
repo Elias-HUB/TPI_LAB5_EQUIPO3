@@ -14,6 +14,10 @@ public class UsuarioServiceImpl implements UsuarioService{
 
 //	@Autowired(required = true)
 	private UsuarioDaoImpl usuarioDaoImpl;
+	
+	public UsuarioServiceImpl() {
+		usuarioDaoImpl = new UsuarioDaoImpl();
+	}
 
 	@Override
 	public Usuario buscarUsuario(String username, String password) throws Exception {
@@ -28,14 +32,14 @@ public class UsuarioServiceImpl implements UsuarioService{
 	}
 
 	@Override
-	public Usuario eliminarUsuario(String username) {
+	public List<Usuario> listarUsuarios() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Usuario> listarUsuarios() {
-		// TODO Auto-generated method stub
+	public Usuario eliminarUsuario(Usuario usuario) throws Exception {
+		usuarioDaoImpl.eliminar(usuario);
 		return null;
 	}
 

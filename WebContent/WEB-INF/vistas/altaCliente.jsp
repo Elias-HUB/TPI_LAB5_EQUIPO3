@@ -15,31 +15,47 @@
 <body>
 	<jsp:include page="myNavbar.jsp"></jsp:include>
 
+<form action="altaCliente.html" method="post">
 	<div class="d-flex justify-content-center" id="">
 		<div class="card m-5 p-5 col-6 rounded shadow p-3">
-			<h1 class="d-flex justify-content-center">Nuevo Cliente</h1>
+			<h1 class="d-flex justify-content-center">Modificar Cliente</h1>
 			<div class="row">
 				<div class="form-group mt-4">
-					<label class="control-label" for="txtNombre">Nombre </label> <input
-						class="form-control" id="txtNombre" type="text" placeholder=""
-						value="">
+					<label class="control-label" for="txtNombre">Nombre </label> 
+					<input class="form-control" name="txtNombre" id="txtNombre" type="text" value="" required>
 				</div>
 				<div class="form-group mt-4">
-					<label class="control-label" for="txtDni">DNI</label> <input
-						class="form-control" id="txtDni" type="email" value="">
+					<label class="control-label" for="txtApellido">Apellido </label> 
+					<input class="form-control" name="txtApellido" id="txtApellido" type="text" value="" required>
 				</div>
 				<div class="form-group mt-4">
-					<label class="control-label" for="cliente.sexo">Sexo </label>
-					<div class="form-control border-0 btn-group" role="group"
-						aria-label="seleccionar sexo">
-						<input type="radio" class="btn-check" name="btnradio"
-							id="btnFemenino" autocomplete="off"> <label
-							class="btn btn-outline-primary" for="btnFemenino">Femenino</label>
-
-						<input type="radio" class="btn-check" name="btnradio"
-							id="btnMasculino" autocomplete="off"> <label
-							class="btn btn-outline-primary" for="btnMasculino">Masculino</label>
+					<label class="control-label" for="txtDni">DNI</label>
+					<input class="form-control" name="txtDni" id="txtDni" type="number" value="" required>
+				</div>
+				<div class="form-group mt-4">
+					<label class="control-label" for="txtDni">Fecha de Nacimiento</label>
+					<input type="date" ID="TboxFecha" name="TboxFecha" max="3000-12-31" min="1900-01-01" value="" class="form-control" required>
+				</div>
+				<div class="form-group mt-4">
+					<label class="control-label" for="cliente.sexo">Sexo </label>					
+					<div class="form-control border-0 btn-group" role="group" aria-label="seleccionar sexo">
+							<input type="radio" class="btn-check" name="btnradio" id="btnFemenino" autocomplete="off">
+							<label class="btn btn-outline-primary" for="btnFemenino">Femenino</label>
+							<input readonly type="radio" class="btn-check" checked name="btnradio" id="btnMasculino" autocomplete="off">
+							<label class="btn btn-outline-primary" for="btnMasculino">Masculino</label>
 					</div>
+				</div>
+				<div class="form-group mt-4">
+					<label class="control-label" for="txtCalle">Calle</label> 
+					<input class="form-control" name="txtCalle"  id="txtCalle" type="text" value="" required>
+				</div>
+				<div class="form-group mt-4">
+					<label class="control-label" for="txtLocalidad">Localidad</label> 
+					<input class="form-control" name="txtLocalidad"  id="txtLocalidad" type="text" value="" required>
+				</div>
+				<div class="form-group mt-4">
+					<label class="control-label" for="txtProvincia">Provincia</label> 
+					<input class="form-control" name="txtProvincia"  id="txtProvincia" type="text" value="" required>
 				</div>
 				<div class="form-group mt-4">
 					<label class="control-label" for="txtNacionalidad">Nacionalidad</label>
@@ -281,28 +297,15 @@
 						<option value="ZW">Zimbabue</option>
 					</select>
 				</div>
-				<div class="form-group mt-4">
-					<label class="control-label" for="txtCalle">Calle</label> <input
-						class="form-control" id="txtCalle" type="text" value="">
-				</div>
-				<!--                      <div class="form-group mt-4"> -->
-				<!--                          <label class="control-label" for="txtNumeroPuerta">Número de Puerta</label> -->
-				<!--                          <input class="form-control" id="txtNumeroPuerta" type="text" value=""> -->
-				<!--                      </div> -->
-				<!--                      <div class="form-group mt-4"> -->
-				<!--                          <label class="control-label" for="txtCodigoPostal">Código Postal</label> -->
-				<!--                          <input class="form-control" id="txtCodigoPostal" type="text" value="">                                 -->
-				<!--                      </div> -->
 				<div class="form-group mt-4 d-flex justify-content-center">
-					<button class="btn btn-primary mx-2" value="Volver">Volver</button>
-					<button class="btn btn-success mx-2" value="Guardar">Guardar</button>
+					<button type="button" class="btn btn-primary mx-2" value="Volver" onclick="location.href='listarClientes.html'">Volver</button>
+					<button type="submit" id="BtnAgregar" name="BtnAgregar" class="btn btn-success mx-2" value="Guardar">Guardar</button>
 				</div>
 			</div>
 		</div>
 	</div>
+</form>
 	<jsp:include page="myFooter.jsp"></jsp:include>
-	<script
-		src="${pageContext.request.contextPath}/resources/Js/DataTableMovimientos.js"></script>
 </body>
 
 </html>

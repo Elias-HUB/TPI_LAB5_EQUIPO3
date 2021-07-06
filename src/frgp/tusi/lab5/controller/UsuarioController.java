@@ -51,21 +51,24 @@ public class UsuarioController {
 	@RequestMapping(value ="/inicioSessionUsuario.html" , method= { RequestMethod.POST})
 	public ModelAndView inicioSessionUsuario(HttpServletRequest request, String user, String pass) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		try {
-			HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
+		try {			
 			Usuario usuario = usuarioService.buscarUsuario(user, pass);
+			if(usuario.getEstado() == true) {
 				if (usuario.getTipoUsuario().equals("empleado")) {
 					session.setAttribute("user", usuario.getTipoUsuario());
 					return new ModelAndView("redirect:listarClientes.html");
-//					mv.setViewName("cliente");					
 				}
 				else {
 					session.setAttribute("user", usuario.getTipoUsuario());
 					return new ModelAndView("redirect:resumen.html");
-//					mv.setViewName("resumen");
 				}
+			} else {	
+				session.setAttribute("error", "Usuario desactivado.");
+				mv.setViewName("login");	
+			}
 		} catch (Exception e) {
-			mv.addObject("ErrorLogin","Usuario o contraseña invalida.");			
+			session.setAttribute("error", "Usuario o contraseña invalida.");			
 			mv.setViewName("login");
 		}
 		return mv;
