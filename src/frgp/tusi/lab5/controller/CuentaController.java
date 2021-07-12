@@ -2,6 +2,9 @@ package frgp.tusi.lab5.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,42 +27,71 @@ public class CuentaController {
 		cuentaService = new CuentaServiceImpl();
 	}
 	
-	@RequestMapping("altaCuenta")
-	private ModelAndView altaCuenta() {
+	@RequestMapping("listarCuentas")
+	public ModelAndView listarCuenta() {
+		return listarCuentas();
+	}
+	
+	@RequestMapping("altaCuentaView")
+	public ModelAndView altaCuenta(HttpServletRequest request, String user, String pass) throws Exception  {		
+		
 		ModelAndView mv = new ModelAndView();
+		mv.setViewName("altaCuenta");
+		return mv;
+//		Cuenta cuenta = new Cuenta();
+//		cuentaService.crear(cuenta);
+//		return listarCuentas();
+	}
+	
+	private ModelAndView listarCuentas() {
+		ModelAndView mv = new ModelAndView();
+		try {
+//			List<Cuenta> cuentas = cuentaService.listar();
+//			mv.addObject(cuentas);			
+			mv.addObject("Cuenta", cuentaService.listar());
+		} catch (Exception e) {
+			mv.addObject(e.getMessage());
+		}
+		mv.setViewName("listarCuentas");
+		return mv;
+	}
+	
+	@RequestMapping("altaCuenta")
+	public ModelAndView altaCuentaVie(HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView();
+		HttpSession session = request.getSession();
 		mv.setViewName("altaCuenta");
 		return mv;
 	}
 	
 	@RequestMapping("modificarCuenta")
-	private ModelAndView modificacionCuenta() {
+	public ModelAndView modificacionCuenta(HttpServletRequest request, Integer cbu) {
 		ModelAndView mv = new ModelAndView();
+		HttpSession session = request.getSession();
 		mv.setViewName("modificarCuenta");
 		return mv;
 	}
 	
 	@RequestMapping("eliminarCuenta")
-	private ModelAndView eliminacionCuenta(Cuenta cuenta) {
+	public ModelAndView eliminacionCuenta(HttpServletRequest request, Integer cbu) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		return mv;
-	}
-	
-	@RequestMapping("listarCuentas")
-	private ModelAndView listarCuenta() {
-		ModelAndView mv = new ModelAndView();
+		HttpSession session = request.getSession();
 		try {
-			List<Cuenta> cuentas = cuentaService.listar();
-			mv.addObject(cuentas);
+			Cuenta cuen = cuentaService.buscar(cbu.toString());
+			cuentaService.eliminar(cuen);
+			session.setAttribute("success",
+					"Se desactivó la cuenta " + cuen.getNroCuenta() + " de manera correcta.");
+			mv = new ModelAndView("redirect:listarCuentas.html");		
+			
 		} catch (Exception e) {
-			mv.addObject(e.getMessage());
+			session.setAttribute("error", "Problemas para eliminar cuenta.");
+			mv = new ModelAndView("redirect:listarCuentas.html");
 		}
-		
-		mv.setViewName("listarCuentas");
 		return mv;
 	}
 	
 	@RequestMapping("resumen")
-	private ModelAndView resumen() {
+	public ModelAndView resumen() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("resumen");
 		return mv;
