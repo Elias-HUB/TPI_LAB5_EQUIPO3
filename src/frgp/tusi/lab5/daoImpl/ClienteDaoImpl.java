@@ -17,7 +17,7 @@ public class ClienteDaoImpl implements ClienteDao {
 	public List<Cliente> listar() throws Exception {
 		HibernateConfiguration ch = new HibernateConfiguration();
 		Session session= ch.abrirConexion();
-		String query = "FROM Cliente";
+		String query = "FROM Cliente where estado = 1 order by id asc";
 		List<Cliente> clientes = (List<Cliente>) session.createQuery(query).list();
 		ch.cerrarSession();
 		if(clientes == null)

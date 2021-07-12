@@ -36,7 +36,7 @@ public class EmpleadoController {
 //	    	em.setDomicilio("Fagnano 2784");
 	    	em.setEstado(true);
 	    	em.setFechaNacimiento(formattedDate);
-	    	em.setNacionalidad("Argentina");
+//	    	em.setNacionalidad("Argentina");
 	    	em.setSexo("M");
 			empleadoServiceImpl.crear(em);
 			

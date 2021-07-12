@@ -2,6 +2,7 @@ package frgp.tusi.lab5.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,21 +11,20 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Domicilio")
-public class Domicilio implements Serializable{
-
+@Table(name="Provincia")
+public class Provincia implements Serializable{
+	
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
-	@Column
-	private String direccion;
 	
 	@Column
-	private String localidad;
+	private String nombre;
 	
-	public Domicilio() {}
-	
+	public Provincia() {		
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -33,20 +33,11 @@ public class Domicilio implements Serializable{
 		this.id = id;
 	}
 
-	public String getDireccion() {
-		return direccion;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
+	public void setNombre(String Descripcion) {
+		nombre = Descripcion;
 	}
-
-	public String getLocalidad() {
-		return localidad;
-	}
-
-	public void setLocalidad(String localidad) {
-		this.localidad = localidad;
-	}
-	
 }

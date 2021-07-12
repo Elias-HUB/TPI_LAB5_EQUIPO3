@@ -1,4 +1,4 @@
-package frgp.tusi.lab5.controller;
+ package frgp.tusi.lab5.controller;
 
 import java.util.Date;
 
@@ -11,6 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import frgp.tusi.lab5.model.Cliente;
 import frgp.tusi.lab5.model.Domicilio;
+import frgp.tusi.lab5.model.Nacionalidad;
+import frgp.tusi.lab5.model.Provincia;
 import frgp.tusi.lab5.model.Usuario;
 import frgp.tusi.lab5.serviceImpl.ClienteServiceImpl;
 import frgp.tusi.lab5.serviceImpl.UsuarioServiceImpl;
@@ -33,8 +35,10 @@ public class ClienteController {
 		try {
 			if (request.getParameter("txtNombre") != null) {
 				Cliente cli = new Cliente();
-				cli.setApellido(request.getParameter("txtApellido"));
-				cli.setNombre(request.getParameter("txtNombre"));
+				try {
+				clienteService.buscarPorDni(Integer.parseInt(request.getParameter("txtDni").toString()));				
+				cli.setApellido(request.getParameter("txtApellido").substring(0,1).toUpperCase() + request.getParameter("txtApellido").substring(1));				
+				cli.setNombre(request.getParameter("txtNombre").substring(0,1).toUpperCase() + request.getParameter("txtNombre").substring(1));
 				cli.setDni(Integer.parseInt(request.getParameter("txtDni").toString()));
 				if (request.getParameter("btnradio").equals("on")) {
 					cli.setSexo("M");
@@ -42,21 +46,24 @@ public class ClienteController {
 					cli.setSexo("F");
 				}
 				cli.setEstado(true);
-				cli.setNacionalidad(request.getParameter("TboxNacionalidad"));
+				Nacionalidad nacionalidad = new Nacionalidad();
+				nacionalidad.setNombre(request.getParameter("TboxNacionalidad"));
+				Provincia provincia = new Provincia();
+				provincia.setNombre(request.getParameter("txtProvincia"));				
+				cli.setNacionalidad(nacionalidad);
 				cli.setFechaNacimiento(request.getParameter("TboxFecha"));
 				
 				Domicilio domicilio = new Domicilio();
 				domicilio.setDireccion(request.getParameter("txtCalle"));
 				domicilio.setLocalidad(request.getParameter("txtLocalidad"));
-				domicilio.setProvincia(request.getParameter("txtProvincia"));
 				
 				Usuario usuario = new Usuario();
 		    	usuario.setEstado(true);
 		    	usuario.setFechaAlta(new Date());
 		    	usuario.setFechaUltimaModificacion(new Date());
 		    	usuario.setTipoUsuario("cliente");
-		    	usuario.setPass("1234");
-		    	usuario.setUserName((request.getParameter("txtNombre")).charAt(0)+request.getParameter("txtApellido"));
+		    	usuario.setPass("1234");		    	
+		    	usuario.setUserName((cli.getNombre()).charAt(0)+cli.getApellido());
 		    	
 		    	cli.setUsuario(usuario);
 				cli.setDomicilio(domicilio);
@@ -64,6 +71,10 @@ public class ClienteController {
 				session.setAttribute("success",
 						"Se creó al cliente " + cli.getNombre() + " " + cli.getApellido() + " con su usuario de manera correcta.");
 				mv = new ModelAndView("redirect:listarClientes.html");
+				} catch (Exception e) {
+				session.setAttribute("error", "Ya existe un cliente con el mismo documento.");
+				mv = new ModelAndView("redirect:listarClientes.html");
+				}
 			} else {
 				mv = new ModelAndView("redirect:altaCliente.html");
 				mv.setViewName("altaCliente");
@@ -95,15 +106,19 @@ public class ClienteController {
 		try {
 			if (request.getParameter("txtDni") != null) {
 				Cliente cli = clienteService.buscarPorDni(dni);
-				cli.setApellido(request.getParameter("txtApellido"));
-				cli.setNombre(request.getParameter("txtNombre"));
+				cli.setApellido(request.getParameter("txtApellido").substring(0,1).toUpperCase() + request.getParameter("txtApellido").substring(1));				
+				cli.setNombre(request.getParameter("txtNombre").substring(0,1).toUpperCase() + request.getParameter("txtNombre").substring(1));
 				cli.setDni(Integer.parseInt(request.getParameter("txtDni").toString()));
 				if (request.getParameter("btnradio").equals("on")) {
 					cli.setSexo("M");
 				} else {
 					cli.setSexo("F");
-				}				
-				cli.setNacionalidad(request.getParameter("TboxNacionalidad"));
+				}
+				Nacionalidad nacionalidad = new Nacionalidad();
+				nacionalidad.setNombre(request.getParameter("TboxNacionalidad"));
+				Provincia provincia = new Provincia();
+				provincia.setNombre(request.getParameter("txtProvincia"));				
+				cli.setNacionalidad(nacionalidad);
 				cli.setFechaNacimiento(request.getParameter("TboxFecha"));
 				cli.setEstado(Boolean.parseBoolean(request.getParameter("tboxEstado")));
 				Usuario usuario = cli.getUsuario();
@@ -112,7 +127,6 @@ public class ClienteController {
 				Domicilio domicilio = cli.getDomicilio();
 				domicilio.setDireccion(request.getParameter("txtCalle"));
 				domicilio.setLocalidad(request.getParameter("txtLocalidad"));
-				domicilio.setProvincia(request.getParameter("txtProvincia"));
 				cli.setDomicilio(domicilio);
 				clienteService.actualizar(cli);
 				session.setAttribute("success",

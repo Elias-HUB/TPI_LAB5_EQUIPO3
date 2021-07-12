@@ -17,19 +17,28 @@ public class Persona {
 	protected Integer dni;
 	@Column	
 	protected String sexo;
-	@Column
-	protected String nacionalidad;
+	
+	@OneToOne(cascade= {CascadeType.ALL})
+	@JoinColumn(name="nacionalidad")
+	protected Nacionalidad nacionalidad;
+	
+	@OneToOne(cascade= {CascadeType.ALL})
+	@JoinColumn(name="provincia")
+	protected Provincia provincia;
+	
 	@Column
 	protected String fechaNacimiento;
+	
 	@OneToOne(cascade= {CascadeType.ALL})
 	@JoinColumn(name="usuario")
-	private Usuario usuario;	
+	private Usuario usuario;
+	
 	@OneToOne(cascade= {CascadeType.ALL})
 	@JoinColumn(name="domicilio")
 	protected Domicilio domicilio;
+	
 	@Column
 	protected Boolean estado;
-
 	
 	public Persona() {}
 
@@ -65,11 +74,11 @@ public class Persona {
 		this.sexo = sexo;
 	}
 
-	public String getNacionalidad() {
+	public Nacionalidad getNacionalidad() {
 		return nacionalidad;
 	}
 
-	public void setNacionalidad(String nacionalidad) {
+	public void setNacionalidad(Nacionalidad nacionalidad) {
 		this.nacionalidad = nacionalidad;
 	}
 
@@ -95,8 +104,7 @@ public class Persona {
 
 	public void setEstado(Boolean estado) {
 		this.estado = estado;
-	}
-	
+	}	
 
 	public Usuario getUsuario() {
 		return usuario;
@@ -105,5 +113,14 @@ public class Persona {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+
+	public Provincia getProvincia() {
+		return provincia;
+	}
+
+	public void setProvincia(Provincia provincia) {
+		this.provincia = provincia;
+	}
+	
 	
 }

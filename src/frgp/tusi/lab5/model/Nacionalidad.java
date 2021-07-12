@@ -10,21 +10,20 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Domicilio")
-public class Domicilio implements Serializable{
+@Table(name="Nacionalidad")
+public class Nacionalidad implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
-	@Column
-	private String direccion;
 	
 	@Column
-	private String localidad;
+	private String nombre;
 	
-	public Domicilio() {}
-	
+	public Nacionalidad() {
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -33,20 +32,11 @@ public class Domicilio implements Serializable{
 		this.id = id;
 	}
 
-	public String getDireccion() {
-		return direccion;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
+	public void setNombre(String Nombre) {
+		nombre = Nombre;
 	}
-
-	public String getLocalidad() {
-		return localidad;
-	}
-
-	public void setLocalidad(String localidad) {
-		this.localidad = localidad;
-	}
-	
 }

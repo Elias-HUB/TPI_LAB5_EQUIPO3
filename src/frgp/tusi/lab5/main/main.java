@@ -17,6 +17,8 @@ import frgp.tusi.lab5.model.Cuenta;
 import frgp.tusi.lab5.model.Domicilio;
 import frgp.tusi.lab5.model.Empleado;
 import frgp.tusi.lab5.model.Movimiento;
+import frgp.tusi.lab5.model.Nacionalidad;
+import frgp.tusi.lab5.model.Provincia;
 import frgp.tusi.lab5.model.TipoCuenta;
 import frgp.tusi.lab5.model.TipoMovimiento;
 import frgp.tusi.lab5.model.Transferencia;
@@ -55,8 +57,209 @@ public class main {
     	session.save(tipoCuentaCA);
     	TipoCuenta tipoCuentaCD = new TipoCuenta();
     	tipoCuentaCD.setDescripcion("Caja de ahorro en dólares ");
-    	session.save(tipoCuentaCD);
+    	session.save(tipoCuentaCD);   	
     	
+    	
+    	Nacionalidad nacionalidad = new Nacionalidad();
+    	nacionalidad.setNombre("Bolivia");
+    	session.save(nacionalidad);
+    	
+    	nacionalidad = new Nacionalidad();
+    	nacionalidad.setNombre("Brasil");
+    	session.save(nacionalidad);
+    	
+    	nacionalidad = new Nacionalidad();
+    	nacionalidad.setNombre("Chile");    	
+    	session.save(nacionalidad);
+    	
+    	nacionalidad = new Nacionalidad();
+    	nacionalidad.setNombre("Colombia");    	
+    	session.save(nacionalidad);
+    	
+    	nacionalidad = new Nacionalidad();
+    	nacionalidad.setNombre("Costa Rica");    	
+    	session.save(nacionalidad);
+    	
+    	nacionalidad = new Nacionalidad();
+    	nacionalidad.setNombre("Cuba");    	
+    	session.save(nacionalidad);
+    	
+    	nacionalidad = new Nacionalidad();
+    	nacionalidad.setNombre("Ecuador");    	
+    	session.save(nacionalidad);
+    	
+    	nacionalidad = new Nacionalidad();
+    	nacionalidad.setNombre("El Salvador");    	
+    	session.save(nacionalidad);
+    	
+    	nacionalidad = new Nacionalidad();
+    	nacionalidad.setNombre("Guayana Francesa");    	
+    	session.save(nacionalidad);
+    	
+    	nacionalidad = new Nacionalidad();
+    	nacionalidad.setNombre("Granada");    	
+    	session.save(nacionalidad);
+    	
+    	nacionalidad = new Nacionalidad();
+    	nacionalidad.setNombre("Guatemala");    	
+    	session.save(nacionalidad);
+    	
+    	nacionalidad = new Nacionalidad();
+    	nacionalidad.setNombre("Guayana");    	
+    	session.save(nacionalidad);
+    	
+    	nacionalidad = new Nacionalidad();
+    	nacionalidad.setNombre("Haití");
+    	session.save(nacionalidad);
+    	
+    	nacionalidad = new Nacionalidad();
+    	nacionalidad.setNombre("Honduras");    	
+    	session.save(nacionalidad);
+    	
+    	nacionalidad = new Nacionalidad();
+    	nacionalidad.setNombre("Jamaica");    	
+    	session.save(nacionalidad);
+    	
+    	nacionalidad = new Nacionalidad();
+    	nacionalidad.setNombre("México");    	
+    	session.save(nacionalidad);
+    	
+    	nacionalidad = new Nacionalidad();
+    	nacionalidad.setNombre("Nicaragua");    	
+    	session.save(nacionalidad);
+    	
+    	nacionalidad = new Nacionalidad();
+    	nacionalidad.setNombre("Paraguay");    	
+    	session.save(nacionalidad);
+    	
+    	nacionalidad = new Nacionalidad();
+    	nacionalidad.setNombre("Panamá");    	
+    	session.save(nacionalidad);
+    	
+    	nacionalidad = new Nacionalidad();
+    	nacionalidad.setNombre("Perú");    	
+    	session.save(nacionalidad);
+    	
+    	nacionalidad = new Nacionalidad();
+    	nacionalidad.setNombre("Puerto Rico");    	
+    	session.save(nacionalidad);
+    	
+    	nacionalidad = new Nacionalidad();
+    	nacionalidad.setNombre("República Dominicana");    	
+    	session.save(nacionalidad);
+    	
+    	nacionalidad = new Nacionalidad();
+    	nacionalidad.setNombre("Surinam");    	
+    	session.save(nacionalidad);
+    	
+    	nacionalidad = new Nacionalidad();
+    	nacionalidad.setNombre("Uruguay");    	
+    	session.save(nacionalidad);
+    	
+    	nacionalidad = new Nacionalidad();
+    	nacionalidad.setNombre("Venezuela");
+    	session.save(nacionalidad);
+    	
+    	nacionalidad = new Nacionalidad();
+    	nacionalidad.setNombre("Argentina");
+    	session.save(nacionalidad);
+    	
+    	Provincia provincia = new Provincia();
+    	provincia.setNombre("Capital Federal");
+    	session.save(provincia);
+    	
+    	provincia = new Provincia();
+    	provincia.setNombre("Catamarca");
+    	session.save(provincia);
+    	
+    	provincia = new Provincia();
+    	provincia.setNombre("Chaco");
+    	session.save(provincia);
+    	
+    	provincia = new Provincia();
+    	provincia.setNombre("Chubut");
+    	session.save(provincia);
+    	
+    	provincia = new Provincia();
+    	provincia.setNombre("Córdoba");
+    	session.save(provincia);
+    	
+    	provincia = new Provincia();
+    	provincia.setNombre("Corrientes");
+    	session.save(provincia);
+    	
+    	provincia = new Provincia();
+    	provincia.setNombre("Entre Ríos");
+    	session.save(provincia);
+    	
+    	provincia = new Provincia();
+    	provincia.setNombre("Formosa");
+    	session.save(provincia);
+    	
+    	provincia = new Provincia();
+    	provincia.setNombre("Jujuy");
+    	session.save(provincia);
+    	
+    	provincia = new Provincia();
+    	provincia.setNombre("La Pampa");
+    	session.save(provincia);
+    	
+    	provincia = new Provincia();
+    	provincia.setNombre("La Rioja");
+    	session.save(provincia);
+    	
+    	provincia = new Provincia();
+    	provincia.setNombre("Mendoza");
+    	session.save(provincia);
+    	
+    	provincia = new Provincia();
+    	provincia.setNombre("Misiones");
+    	session.save(provincia);
+    	
+    	provincia = new Provincia();
+    	provincia.setNombre("Neuquén");
+    	session.save(provincia);
+    	
+    	provincia = new Provincia();
+    	provincia.setNombre("Río Negro");
+    	session.save(provincia);
+    	
+    	provincia = new Provincia();
+    	provincia.setNombre("Salta");
+    	session.save(provincia);
+    	
+    	provincia = new Provincia();
+    	provincia.setNombre("San Juan");
+    	session.save(provincia);
+    	
+    	provincia = new Provincia();
+    	provincia.setNombre("San Luis");
+    	session.save(provincia);
+    	
+    	provincia = new Provincia();
+    	provincia.setNombre("Santa Cruz");
+    	session.save(provincia);
+    	
+    	provincia = new Provincia();
+    	provincia.setNombre("Santa Fe");
+    	session.save(provincia);
+    	
+    	provincia = new Provincia();
+    	provincia.setNombre("Santiago del Estero");
+    	session.save(provincia);
+    	
+    	provincia = new Provincia();
+    	provincia.setNombre("Tierra del Fuego");
+    	session.save(provincia);
+    	
+    	provincia = new Provincia();
+    	provincia.setNombre("Tucumán");
+    	session.save(provincia);
+    	
+    	provincia = new Provincia();
+    	provincia.setNombre("Buenos Aires");
+    	session.save(provincia);
+
 ////////////////////////////////////////////////////////////////////////	1
     	
     	List<Cuenta> cuentasCliente = new ArrayList<Cuenta>();
@@ -132,7 +335,6 @@ public class main {
     	Domicilio domicilio = new Domicilio();
     	domicilio.setDireccion("AV Cordoba");
     	domicilio.setLocalidad("Talar");
-    	domicilio.setProvincia("Buenos aires");
     	
     	Cliente cli = new Cliente();
     	cli.setApellido("Arias");
@@ -140,7 +342,8 @@ public class main {
     	cli.setDni(21412359);
     	cli.setSexo("M");
     	cli.setEstado(true);
-    	cli.setNacionalidad("AR");
+    	cli.setNacionalidad(nacionalidad);
+    	cli.setProvincia(provincia);
     	cli.setFechaNacimiento("1980-02-14");
     	cli.setDomicilio(domicilio);  
     	cli.setUsuario(usuario);
@@ -222,14 +425,14 @@ public class main {
     	Domicilio domicilioDos = new Domicilio();
     	domicilioDos.setDireccion("Buenos Aires");
     	domicilioDos.setLocalidad("Tigre");
-    	domicilioDos.setProvincia("Buenos Aires");
     	
     	Cliente cliDos = new Cliente();
     	cliDos.setApellido("Rata");
     	cliDos.setNombre("Pedro");
     	cliDos.setDni(23546373);
     	cliDos.setSexo("M");
-    	cliDos.setNacionalidad("AR");
+    	cliDos.setNacionalidad(nacionalidad);
+    	cliDos.setProvincia(provincia);
     	cliDos.setFechaNacimiento("1980-02-14");
 		cliDos.setEstado(true);
     	cliDos.setDomicilio(domicilioDos);  
@@ -312,14 +515,14 @@ public class main {
     	Domicilio domicilioTres = new Domicilio();
     	domicilioTres.setDireccion("Francia");
     	domicilioTres.setLocalidad("Tigre");
-    	domicilioTres.setProvincia("Buenos aires");
     	
     	Cliente cliTres = new Cliente();
     	cliTres.setApellido("Lopez");
     	cliTres.setNombre("Juana");
     	cliTres.setDni(25863173);
     	cliTres.setSexo("F");
-    	cliTres.setNacionalidad("AR");
+    	cliTres.setNacionalidad(nacionalidad);
+    	cliTres.setProvincia(provincia);
     	cliTres.setFechaNacimiento("1985-02-15");
 		cliTres.setEstado(false);
     	cliTres.setDomicilio(domicilioTres);  
@@ -402,14 +605,14 @@ public class main {
     	Domicilio domicilioCuatro = new Domicilio();
     	domicilioCuatro.setDireccion("9 Julio");
     	domicilioCuatro.setLocalidad("Escobar");
-    	domicilioCuatro.setProvincia("Buenos aires");
     	
     	Cliente cliCuatro = new Cliente();
     	cliCuatro.setApellido("Corzo");
     	cliCuatro.setNombre("Gonzalo");
     	cliCuatro.setDni(30452120);
     	cliCuatro.setSexo("M");
-    	cliCuatro.setNacionalidad("AR");
+    	cliCuatro.setNacionalidad(nacionalidad);
+    	cliCuatro.setProvincia(provincia);
     	cliCuatro.setFechaNacimiento("1990-02-14");
 		cliCuatro.setEstado(true);
     	cliCuatro.setDomicilio(domicilioCuatro);
@@ -492,7 +695,6 @@ public class main {
     	domicilio = new Domicilio();
     	domicilio.setDireccion("Fagnano");
     	domicilio.setLocalidad("Pacheco");
-    	domicilio.setProvincia("Buenos aires");
     	
     	cli = new Cliente();
     	cli.setApellido("Contento");
@@ -500,7 +702,8 @@ public class main {
     	cli.setDni(40365129);
     	cli.setSexo("M");
     	cli.setEstado(true);
-    	cli.setNacionalidad("AR");
+    	cli.setNacionalidad(nacionalidad);
+    	cli.setProvincia(provincia);
     	cli.setFechaNacimiento("1999-05-22");
     	cli.setDomicilio(domicilio);  
     	cli.setUsuario(usuario);
@@ -582,7 +785,6 @@ public class main {
     	domicilio = new Domicilio();
     	domicilio.setDireccion("Elizalde");
     	domicilio.setLocalidad("Tigre");
-    	domicilio.setProvincia("Buenos aires");
     	
     	cli = new Cliente();
     	cli.setApellido("Valverde");
@@ -590,7 +792,8 @@ public class main {
     	cli.setDni(46541129);
     	cli.setSexo("M");
     	cli.setEstado(true);
-    	cli.setNacionalidad("AR");
+    	cli.setNacionalidad(nacionalidad);
+    	cli.setProvincia(provincia);
     	cli.setFechaNacimiento("1965-02-24");
     	cli.setDomicilio(domicilio);  
     	cli.setUsuario(usuario);
@@ -672,7 +875,6 @@ public class main {
     	domicilio = new Domicilio();
     	domicilio.setDireccion("Av libertador");
     	domicilio.setLocalidad("Nuñez");
-    	domicilio.setProvincia("Buenos aires");
     	
     	cli = new Cliente();
     	cli.setApellido("Suarez");
@@ -680,7 +882,8 @@ public class main {
     	cli.setDni(40635698);
     	cli.setSexo("M");
     	cli.setEstado(true);
-    	cli.setNacionalidad("AR");
+    	cli.setNacionalidad(nacionalidad);
+    	cli.setProvincia(provincia);
     	cli.setFechaNacimiento("1997-09-15");
     	cli.setDomicilio(domicilio);  
     	cli.setUsuario(usuario);
@@ -762,7 +965,6 @@ public class main {
     	domicilio = new Domicilio();
     	domicilio.setDireccion("Rawson");
     	domicilio.setLocalidad("Ricardo Rojas");
-    	domicilio.setProvincia("Buenos aires");
     	
     	cli = new Cliente();
     	cli.setApellido("Suarez");
@@ -770,7 +972,8 @@ public class main {
     	cli.setDni(40123698);
     	cli.setSexo("M");
     	cli.setEstado(true);
-    	cli.setNacionalidad("AR");
+    	cli.setNacionalidad(nacionalidad);
+    	cli.setProvincia(provincia);
     	cli.setFechaNacimiento("1997-04-22");
     	cli.setDomicilio(domicilio);  
     	cli.setUsuario(usuario);
@@ -852,7 +1055,6 @@ public class main {
     	domicilio = new Domicilio();
     	domicilio.setDireccion("Cardenal Fagnano");
     	domicilio.setLocalidad("Ricardo Rojas");
-    	domicilio.setProvincia("Buenos aires");
     	
     	cli = new Cliente();
     	cli.setApellido("Palacios");
@@ -860,7 +1062,8 @@ public class main {
     	cli.setDni(12564987);
     	cli.setSexo("F");
     	cli.setEstado(true);
-    	cli.setNacionalidad("AR");
+    	cli.setNacionalidad(nacionalidad);
+    	cli.setProvincia(provincia);
     	cli.setFechaNacimiento("1975-01-25");
     	cli.setDomicilio(domicilio);  
     	cli.setUsuario(usuario);
@@ -942,7 +1145,6 @@ public class main {
     	domicilio = new Domicilio();
     	domicilio.setDireccion("Uriburu");
     	domicilio.setLocalidad("Ricardo Rojas");
-    	domicilio.setProvincia("Buenos aires");
     	
     	cli = new Cliente();
     	cli.setApellido("Brandan");
@@ -950,7 +1152,8 @@ public class main {
     	cli.setDni(12564327);
     	cli.setSexo("F");
     	cli.setEstado(true);
-    	cli.setNacionalidad("AR");
+    	cli.setNacionalidad(nacionalidad);
+    	cli.setProvincia(provincia);
     	cli.setFechaNacimiento("1972-01-21");
     	cli.setDomicilio(domicilio);  
     	cli.setUsuario(usuario);
@@ -973,7 +1176,8 @@ public class main {
     	em.setDni(40379338);
     	em.setSexo("M");
     	em.setEstado(true);
-    	em.setNacionalidad("AR");
+    	em.setNacionalidad(nacionalidad);
+    	em.setProvincia(provincia);
     	em.setFechaNacimiento("1997-04-22");
     	em.setDomicilio(domicilio);  
     	em.setUsuario(usuario);
@@ -993,7 +1197,8 @@ public class main {
     	em.setDni(40651874);
     	em.setSexo("M");
     	em.setEstado(true);
-    	em.setNacionalidad("AR");
+    	em.setNacionalidad(nacionalidad);
+    	em.setProvincia(provincia);
     	em.setFechaNacimiento("1993-01-22");
     	em.setDomicilio(domicilio);  
     	em.setUsuario(usuario);
@@ -1013,7 +1218,8 @@ public class main {
     	em.setDni(12546987);
     	em.setSexo("M");
     	em.setEstado(true);
-    	em.setNacionalidad("AR");
+    	em.setNacionalidad(nacionalidad);
+    	em.setProvincia(provincia);
     	em.setFechaNacimiento("1972-02-12");
     	em.setDomicilio(domicilio);  
     	em.setUsuario(usuario);
@@ -1033,7 +1239,8 @@ public class main {
     	em.setDni(40326518);
     	em.setSexo("F");
     	em.setEstado(true);
-    	em.setNacionalidad("AR");
+    	em.setNacionalidad(nacionalidad);
+    	em.setProvincia(provincia);
     	em.setFechaNacimiento("1990-01-23");
     	em.setDomicilio(domicilio);  
     	em.setUsuario(usuario);
