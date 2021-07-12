@@ -18,7 +18,7 @@
 <form action="altaCliente.html" method="post">
 	<div class="d-flex justify-content-center" id="">
 		<div class="card m-5 p-5 col-6 rounded shadow p-3">
-			<h1 class="d-flex justify-content-center">Modificar Cliente</h1>
+			<h1 class="d-flex justify-content-center">Nuevo Cliente</h1>
 			<div class="row">
 				<div class="form-group mt-4">
 					<label class="control-label" for="txtNombre">Nombre </label> 
