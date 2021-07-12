@@ -14,7 +14,7 @@ public class CuentaDaoImpl implements CuentaDao {
 	public List<Cuenta> listar() throws Exception {
 		HibernateConfiguration ch = new HibernateConfiguration();
 		Session session= ch.abrirConexion();
-		String query = "FROM Cuenta";
+		String query = "FROM Cuenta where estado = 1 order by id asc";
 		List<Cuenta> cuentas = (List<Cuenta>) session.createQuery(query).list();
 		ch.cerrarSession();
 		if(cuentas == null)
