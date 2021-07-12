@@ -1,7 +1,9 @@
 package frgp.tusi.lab5.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Currency;
 import java.util.Date;
 import java.util.List;
 
@@ -37,13 +39,14 @@ public class Cuenta implements Serializable{
 	private TipoCuenta tipoCuenta;
 	
 	@Column()
-	private Integer saldo;//inicial 10000
+	private double saldo;//inicial 10000
 	@Column()
 	private Boolean estado;
 	@Column()
 	private String fechaAlta;
 	@Column()
 	private String fechaUltimaModificacion;
+	
 	@OneToMany(cascade= {CascadeType.ALL})
 	@JoinColumn(name="id_cuenta")
 	private List<Movimiento> movimientos = new ArrayList<Movimiento>();
@@ -90,11 +93,11 @@ public class Cuenta implements Serializable{
 		this.tipoCuenta = tipoCuenta;
 	}
 
-	public Integer getSaldo() {
+	public double getSaldo() {
 		return saldo;
 	}
 
-	public void setSaldo(Integer saldo) {
+	public void setSaldo(double saldo) {
 		this.saldo = saldo;
 	}
 

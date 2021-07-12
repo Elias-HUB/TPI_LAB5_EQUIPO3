@@ -9,5 +9,5 @@ public interface CuentaDao {
 	public Cuenta eliminar(Cuenta cuenta) throws Exception;
 	public Cuenta actualizar(Cuenta cuenta) throws Exception;
 	public Cuenta crear(Cuenta cuenta) throws Exception;
-	public Cuenta buscar(int id) throws Exception;
+	public Cuenta buscar(String cbu) throws Exception;
 }
