@@ -17,6 +17,8 @@
         <mapping class="frgp.tusi.lab5.model.Cliente"/>
         <mapping class="frgp.tusi.lab5.model.Cuenta"/>
         <mapping class="frgp.tusi.lab5.model.Domicilio"/>
+        <mapping class="frgp.tusi.lab5.model.Provincia"/>
+        <mapping class="frgp.tusi.lab5.model.Nacionalidad"/>
         <mapping class="frgp.tusi.lab5.model.TipoMovimiento"/>
         <mapping class="frgp.tusi.lab5.model.TipoCuenta"/>
         <mapping class="frgp.tusi.lab5.model.Empleado"/>
