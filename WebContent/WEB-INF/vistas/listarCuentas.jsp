@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
     <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
     <html>
 
@@ -17,10 +19,9 @@
         <div class="m-5 p-5 rounded bg-white" id="">
             <h1>Cuentas</h1>
             <!-- <div class="container pb-3"> -->
-            <form action="altaCuenta.html" method="get">
+            <form action="altaCuentaView.html" method="get">
             <div class="justify-content-between mt-3">
-                <button type="submit" class="btn btn-primary"><i class="bi bi-layout-text-window-reverse"></i></i> Nueva
-                    Cuenta</button>
+                <button type="submit"  class="btn btn-primary"><i class="bi bi-layout-text-window-reverse"></i></i> Nueva Cuenta</button>
             </div>
             </form>
             <!-- </div> -->
@@ -29,9 +30,10 @@
                 cellspacing="0" width="100%">
                 <thead>
                     <tr>
+                        <th style="text-align: center">id</th>                    	
                         <th style="text-align: center">CBU</th>
                         <th style="text-align: center">Nro Cuenta</th>
-                        <th style="text-align: center">Nombre y Apellido</th>
+                        <th style="text-align: center">Nombre</th>
                         <th style="text-align: center">Tipo de Cuenta</th>
                         <th style="text-align: center">Saldo</th>
                         <th style="text-align: center">Estado</th>
@@ -39,39 +41,59 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>0170231820000000010500</td>
-                        <td>20164</td>
-                        <td>Valenzuela Elias</td>
-                        <td>Caja de ahorro en pesos</td>
-                        <td>$10299.5</td>
-                        <td>Activo</td>
+                <c:forEach var="Cuenta" items="${ Cuenta }">
+                	<tr id="Cuenta-${ Cuenta.getId() }">
+                		<td>${ Cuenta.getId() }</td>
+                		<td>${ Cuenta.getCbu() }</td>
+                		<td>${ Cuenta.getNroCuenta() }</td>
+                		<td>${ Cuenta.getNombre() }</td>
+                		<td>${ Cuenta.getTipoCuenta().getDescripcion() }</td>                		
+                		<td>${ Cuenta.getSaldo() }</td>
+                		<td>${ Cuenta.getEstado() == true ? "Activo" : "Inactivo"}</td>
+
                         <td class="text-center" style="width: 190px">
-<!--                             <button type="submit" id="" name="BtnVer" class="btn btn-info" onclick="location.href='detalleCuenta.html'"> -->
+<%--                             <button type="submit" id="" name="BtnVer" class="btn btn-info" onclick="location.href='detalleCuenta.html?dni=${Cliente.getDni()}'"> --%>
 <!--                                 <i class="bi bi-file-person" data-toggle="tooltip" data-placement="bottom" -->
 <!--                                     title="Ver Cuenta"></i> -->
 <!--                             </button> -->
-                            <button type="submit" id="" name="BtnModificar" class="btn btn-warning" onclick="location.href='modificarCuenta.html'">
+                            <button type="submit" id="" name="BtnModificar" class="btn btn-warning" onclick="location.href='modificarCuenta.html?dni=${Cuenta.getCbu()}'">
                                 <i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="bottom"
                                     title="Modificar Cuenta"></i>
                             </button>
-                            <button type="button" id="" onClick="modalEliminar(this)" name="BtnEliminar"
+                            <button type="button" id="" onClick="modalEliminar(${Cuenta.getCbu()})" name="BtnEliminar"
                                 class="btn btn-danger">
                                 <i class="bi bi-x-circle" data-toggle="tooltip" data-placement="bottom"
                                     title="Eliminar Cuenta"></i>
                             </button>
-
                         </td>
-                    </tr>
+                	</tr>
+                </c:forEach>
                 </tbody>
             </table>
         </div>
 
 
         <jsp:include page="myFooter.jsp"></jsp:include>
+        <script	src="${pageContext.request.contextPath}/resources/Js/Funciones.js"></script>
         <script src="${pageContext.request.contextPath}/resources/Js/dataTableClientes.js"></script>
-        <script>
-            function modalEliminar(btn) {
+        <script type="text/javascript">
+    	<%
+   	 session = request.getSession();
+  		 if(session.getAttribute("success") != null) { 	 	
+		String success = session.getAttribute("success").toString();
+		session.setAttribute("success",null);
+		%>mostrarToast("<%=success%>", 'success');<%    		
+	  }
+	 
+	 if(session.getAttribute("error") != null) {  	 	
+ 		String error = session.getAttribute("error").toString();
+ 		session.setAttribute("error",null);
+ 		%>mostrarToast("<%=error%>", 'error');<%    		
+ 	  }
+   	%>
+        
+            function modalEliminar(CBU) {
+            	debugger;
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top',
@@ -83,7 +105,6 @@
                         toast.addEventListener('mouseleave', Swal.resumeTimer)
                     }
                 });
-                var AgenteID = btn.id;
                 Swal.fire({
                     icon: 'warning',
                     title: "¿Desea dar de baja esta Cuenta?",
@@ -94,36 +115,7 @@
                     reverseButtons: true
                 }).then((result) => {
                     if (result.value) {
-                        $.ajax({
-                            url: '../Services/ServicesAgente.php',
-                            type: 'POST',
-                            dataType: "json",
-                            data: {
-                                AgenteID: AgenteID
-                            },
-                            success: function (AgenteID) {
-                                if (AgenteID == "Exitoso") {
-                                    Toast.fire({
-                                        icon: 'success',
-                                        title: 'El Cuenta se esta dando de baja...'
-                                    }).then((result) => {
-                                        location.replace('../Views/ListadoAgentes.php');
-                                    })
-                                } else if (AgenteID == "ExitosoUsuario") {
-                                    Toast.fire({
-                                        icon: 'success',
-                                        title: 'El Cuenta y el Usuario se estan dando de baja...'
-                                    }).then((result) => {
-                                        location.replace('../Views/ListadoAgentes.php');
-                                    })
-                                } else {
-                                    Toast.fire({
-                                        icon: 'error',
-                                        title: 'Hubo un problema. Comunicarse con el Area tecnica.'
-                                    })
-                                };
-                            }
-                        });
+                    	location.replace('eliminarCuenta.html?cbu='+CBU);
                     }
                 })
             }
