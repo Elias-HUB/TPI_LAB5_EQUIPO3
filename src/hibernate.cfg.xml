@@ -4,15 +4,18 @@
 		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-<!--         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property> -->
-        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+<!--         <property name="hibernate.connection.password">rutrut</property> -->
+<!--         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property> -->
         <property name="hibernate.connection.password">root</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/DBHibernate?createDatabaseIfNotExist=true</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="hbm2ddl.auto">create</property>
+        <property name="hbm2ddl.auto">update</property>
         <mapping class="frgp.tusi.lab5.model.Cliente"/>
-        <mapping class="frgp.tusi.lab5.model.Cuenta"/>
+        <mapping class="frgp.tusi.lab5.model.Cuenta"/>        
+        <mapping class="frgp.tusi.lab5.model.Nacionalidad"/>
+        <mapping class="frgp.tusi.lab5.model.Provincia"/>
         <mapping class="frgp.tusi.lab5.model.Domicilio"/>
         <mapping class="frgp.tusi.lab5.model.TipoMovimiento"/>
         <mapping class="frgp.tusi.lab5.model.TipoCuenta"/>
