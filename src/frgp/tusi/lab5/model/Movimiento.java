@@ -15,7 +15,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -44,7 +43,7 @@ public class Movimiento implements Serializable {
 	private Date fechaUltimaModificacion;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="movimientos")
+	@JoinColumn(name="id_cuenta")
 	private Cuenta cuenta;
 
 	public Movimiento() {}
@@ -108,6 +107,14 @@ public class Movimiento implements Serializable {
 
 	public void setTipoMovimiento(TipoMovimiento tipoMovimiento) {
 		this.tipoMovimiento = tipoMovimiento;
+	}
+
+	public Cuenta getCuenta() {
+		return cuenta;
+	}
+
+	public void setCuenta(Cuenta cuenta) {
+		this.cuenta = cuenta;
 	}
 	
 }

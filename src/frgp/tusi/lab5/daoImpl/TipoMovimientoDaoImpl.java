@@ -18,5 +18,17 @@ public class TipoMovimientoDaoImpl implements TipoMovimientoDao{
 			throw new Exception("TipoMovimiento inexistente");
 		return movimiento;
 	}
+	
+	@Override
+	public TipoMovimiento buscar(String descripcion) throws Exception {
+		HibernateConfiguration ch = new HibernateConfiguration();
+		Session session= ch.abrirConexion();
+		String query = "FROM TipoMovimiento as c WHERE c.descripcion = " + descripcion;
+		TipoMovimiento movimiento = (TipoMovimiento) session.createQuery(query).uniqueResult();
+		ch.cerrarSession();
+		if(movimiento == null)
+			throw new Exception("TipoMovimiento inexistente");
+		return movimiento;
+	}
 
 }

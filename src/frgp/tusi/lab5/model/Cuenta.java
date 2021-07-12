@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -44,8 +45,7 @@ public class Cuenta implements Serializable{
 	@Column()
 	private String fechaUltimaModificacion;
 	
-	@OneToMany(cascade= {CascadeType.ALL})
-	@JoinColumn(name="id_cuenta")
+	@OneToMany(mappedBy= "id_cuenta", fetch = FetchType.LAZY)
 	private List<Movimiento> movimientos = new ArrayList<Movimiento>();
 	
 	public Cuenta() {}

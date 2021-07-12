@@ -39,8 +39,8 @@ public class MovimientoServiceImpl implements MovimientoService{
 	public Movimiento crear(Movimiento movimiento) throws Exception {
 		Cuenta cuenta = new Cuenta();
 		cuenta.getMovimientos();
-//		Moviento mov = new Movimiento 	
-		return null;
+		Movimiento mov = new Movimiento();	
+		return mov;
 		
 	}
 
