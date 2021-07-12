@@ -54,10 +54,10 @@ public class CuentaDaoImpl implements CuentaDao {
 	}
 
 	@Override
-	public Cuenta buscar(int id) throws Exception {
+	public Cuenta buscar(String cbu) throws Exception {
 		HibernateConfiguration ch = new HibernateConfiguration();
 		Session session= ch.abrirConexion();
-		String query = "FROM Cuenta as c WHERE c.id = " + id;
+		String query = "FROM Cuenta as c WHERE c.cbu = " + cbu;
 		Cuenta cuenta = (Cuenta) session.createQuery(query).uniqueResult();
 		ch.cerrarSession();
 		if(cuenta == null)

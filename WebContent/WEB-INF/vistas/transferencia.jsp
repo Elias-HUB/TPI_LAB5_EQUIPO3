@@ -21,7 +21,7 @@
 	            	<div class="form-group mt-4">
 	            		<h4 class="d-flex justify-content-start">Datos de su cuenta:</h4>
 	        	        <label class="control-label" for="tipoCuenta">Seleccione cuenta</label>
-		           		<select class="form-control" name="pais">
+		           		<select class="form-control" name="tipoCuenta">
 							<option value="1">Pesos</option>
 							<option value="2">Dolares</option>
 						</select>
@@ -29,12 +29,12 @@
 
             		<div class="form-group mt-4">
             			<h4 class="d-flex justify-content-start">Datos de la cuenta a transferir:</h4>
-                    	<label class="control-label" for="txtNombre">Ingrese CBU o número de cuenta</label>
-                        <input class="form-control" id="txtNombre" type="text" placeholder="" value="222222222">
+                    	<label class="control-label" for="txtDestino">Ingrese CBU o número de cuenta</label>
+                        <input class="form-control" id="txtDestino" type="text" placeholder="" value="222222222">
                     </div>
                     <div class="form-group mt-4">
-                        <label class="control-label" for="txtDni">Monto</label>
-                        <input class="form-control" id="txtDni" type="text" value="10000">
+                        <label class="control-label" for="txtImporte">Importe</label>
+                        <input class="form-control" id="txtImporte" type="text" value="10000">
                     </div>
                      <div class="form-group mt-4 d-flex justify-content-center">
                          <button class="btn btn-primary mx-2" value="Volver">Volver</button>

@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import frgp.tusi.lab5.daoImpl.MovimientoDaoImpl;
 import frgp.tusi.lab5.model.Movimiento;
+import frgp.tusi.lab5.model.Cuenta;
+import frgp.tusi.lab5.model.Transferencia;
 import frgp.tusi.lab5.service.MovimientoService;
 
 @Service
@@ -35,7 +37,10 @@ public class MovimientoServiceImpl implements MovimientoService{
 
 	@Override
 	public Movimiento crear(Movimiento movimiento) throws Exception {
-		return movimientoDaoImpl.crear(movimiento);
+		Cuenta cuenta = new Cuenta();
+		cuenta.getMovimientos();
+		Moviento mov = new Movimiento 	
+		
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package frgp.tusi.lab5.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,13 +35,17 @@ public class Movimiento implements Serializable {
 	@Column()
 	private String detalle;
 	@Column()
-	private Integer importe;
+	private double importe;
 	@Column()
 	private Boolean estado;
 	@Column()
 	private Date fecha;
 	@Column()
 	private Date fechaUltimaModificacion;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="movimientos")
+	private Cuenta cuenta;
 
 	public Movimiento() {}
 
@@ -60,11 +66,11 @@ public class Movimiento implements Serializable {
 		this.detalle = detalle;
 	}
 
-	public Integer getImporte() {
+	public double getImporte() {
 		return importe;
 	}
 
-	public void setImporte(Integer importe) {
+	public void setImporte(double importe) {
 		this.importe = importe;
 	}
 
