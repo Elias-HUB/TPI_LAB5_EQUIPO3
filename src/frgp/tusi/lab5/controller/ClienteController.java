@@ -101,7 +101,7 @@ public class ClienteController {
 		        Date dateObj = calendar.getTime();
 		        String formattedDate = dtf.format(dateObj);
 				
-				TipoCuenta tipoCuentaCA = tipoCuentaService.buscar("Caja de ahorro en pesos ");
+				TipoCuenta tipoCuentaCA = tipoCuentaService.buscar("Caja de ahorro en pesos");
 		    	TipoMovimiento tipoAltaCuenta = tipoMovimientoService.buscar("Alta de Cuenta");
 		    	
 		    	Movimiento movAltaCuenta = new Movimiento();
