@@ -18,7 +18,7 @@
 	            <h1 class="d-flex justify-content-center">Tranferir</h1>
 	    		<div class="col-6 container d-flex justify-content-center">
 	            	<div class="row d-flex justify-content-center">
-	            		
+	            		<input class="form-control" name="txtDni" id="txtDni" type="hidden" placeholder="" value="${ Cliente.getDni() }">
 	            		<div class="form-group mt-4">
 		            		<h4 class="d-flex justify-content-start">Cuenta de Origen:</h4>
 		        	        <label class="control-label" for="tipoCuenta">Seleccione cuenta</label>
@@ -47,7 +47,6 @@
        		</form>
 		</div>
         <jsp:include page="myFooter.jsp"></jsp:include>
-        <script src="${pageContext.request.contextPath}/resources/Js/DataTableMovimientos.js"></script>
         <script	src="${pageContext.request.contextPath}/resources/Js/Funciones.js"></script>
         <script type="text/javascript">        
     	<%
@@ -63,9 +62,8 @@
   		session.setAttribute("error",null);
   		%>mostrarToast("<%=error%>", 'error');<%    		
   	  }
-    	%>
-
-        </script>
+    	%>        
+    	</script>
     </body>
 
     </html>

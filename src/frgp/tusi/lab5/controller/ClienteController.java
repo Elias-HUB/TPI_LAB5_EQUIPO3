@@ -146,14 +146,23 @@ public class ClienteController {
 	}
 
 	@RequestMapping("detalleCliente")
-	public ModelAndView detalleCliente(Integer dni) {
+	public ModelAndView detalleCliente(HttpServletRequest request, Integer dni) {
+		HttpSession session = request.getSession();
+		Cliente cliente;
 		ModelAndView mv = new ModelAndView();
 		try {
-			mv.addObject("Cliente", clienteService.buscarPorDni(dni));
+			if (dni == null) {
+				cliente = (Cliente)session.getAttribute("persona");
+			}
+			else {
+				cliente = clienteService.buscarPorDni(dni);
+			}
+	        
+			mv.addObject("Cliente", cliente);
 			mv.setViewName("detalleCliente");
-			// mv = new ModelAndView("redirect:detalleCliente.html");
 		} catch (Exception e) {
-			// TODO: handle exception
+			session.setAttribute("error", e.getMessage());
+			mv.setViewName("detalleCliente");
 		}
 		return mv;
 	}

@@ -41,7 +41,7 @@ public class TrasferenciaController {
 		ModelAndView mv = new ModelAndView();
 		try {
 			Cliente cliente = clienteService.buscarPorDni(dni);
-			
+			mv.addObject("Cliente", cliente);
 			mv.addObject("Cuentas", cuentaService.buscarCantidadCuentas(cliente.getId()));
 			mv.setViewName("transferencia");
 			return mv;
@@ -70,6 +70,8 @@ public class TrasferenciaController {
 			if(ValidarRequestTransferencia(request)){
 				cuentaOrigen = cuentaService.buscar(request.getParameter("cuentas"));
 				cuentaDestino = cuentaService.buscar(request.getParameter("txtDestino"));
+				double importe = Double.parseDouble(request.getParameter("txtImporte"));
+				ValidarCuentas(cuentaOrigen, cuentaDestino, importe);
 				
 				TipoMovimiento tipoMovOrigen = tipoMovimientoService.buscar("Transferencia Débito");
 				TipoMovimiento tipoMovDestino = tipoMovimientoService.buscar("Transferencia Crédito");
@@ -81,7 +83,7 @@ public class TrasferenciaController {
 				movimientoOrigen.setFecha(new Date());
 				movimientoOrigen.setEstado(true);
 				
-				movimientoDestino.setImporte(Double.parseDouble(request.getParameter("txtImporte")));
+				movimientoDestino.setImporte(importe);
 				movimientoDestino.setCuenta(cuentaDestino);
 				movimientoDestino.setTipoMovimiento(tipoMovDestino);
 				movimientoDestino.setDetalle("Transferencia");
@@ -99,16 +101,40 @@ public class TrasferenciaController {
 				mv = new ModelAndView("redirect:resumen.html");
 			}
 			else {
-				mv = new ModelAndView("redirect:transferencia.html");
-				mv.setViewName("transferencia");
+				String dni = request.getParameter("txtDni");
+				mv = new ModelAndView("redirect:transferencia.html?dni=" + dni);
 			}
 		}
 		catch(Exception ex) {
-			session.setAttribute("error", "No se pudo realizar la transferencia.");
-			mv = new ModelAndView("redirect:transferencia.html");
-			mv.setViewName("transferencia");			
+			if(session.getAttribute("error") == null || session.getAttribute("error") ==  "")
+				session.setAttribute("error", ex.getMessage());
+			String dni = request.getParameter("txtDni");
+			mv = new ModelAndView("redirect:transferencia.html?dni=" + dni);	
 		}		
 		return mv;
+	}
+
+	private void ValidarCuentas(Cuenta cuentaOrigen, Cuenta cuentaDestino, double importe) throws Exception {
+		if (cuentaOrigen == null) {
+			session.setAttribute("error", "Cuenta origen inexistente.");
+			throw new Exception();
+		}
+		if (cuentaDestino == null) {
+			session.setAttribute("error", "Cuenta destino inexistente.");
+			throw new Exception();
+		}		
+		if (!cuentaOrigen.getEstado()) {
+			session.setAttribute("error", "Cuenta origen inactiva.");
+			throw new Exception();
+		} 
+		if (!cuentaDestino.getEstado()) {
+			session.setAttribute("error", "Cuenta destino inactiva.");
+			throw new Exception();
+		}
+		if (cuentaOrigen.getSaldo() < importe ) {
+			session.setAttribute("error", "Saldo insuficiente.");
+			throw new Exception();
+		}	        
 	}
 
 	private boolean ValidarRequestTransferencia(HttpServletRequest request) {
@@ -131,7 +157,7 @@ public class TrasferenciaController {
 	        return false;
 	    }
 	    try {
-	        double d = Double.parseDouble(cbuDestino);
+	        double d = Double.parseDouble(importe);
 	        if (d <= 0) {
 	        	session.setAttribute("error", "El importe a transferir debe ser mayor que cero.");
 		        return false;

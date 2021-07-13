@@ -89,7 +89,25 @@
 
 
         <jsp:include page="myFooter.jsp"></jsp:include>
-        <script src="${pageContext.request.contextPath}/resources/Js/dataTableMovimientos.js"></script>
+                <script src="${pageContext.request.contextPath}/resources/Js/DataTableMovimientos.js"></script>
+        <script	src="${pageContext.request.contextPath}/resources/Js/Funciones.js"></script>
+        <script type="text/javascript">        
+    	<%
+    	 session = request.getSession();
+   		 if(session.getAttribute("success") != null) { 	 	
+ 		String success = session.getAttribute("success").toString();
+ 		session.setAttribute("success",null);
+ 		%>mostrarToast("<%=success%>", 'success');<%    		
+ 	  }
+ 	 
+ 	 if(session.getAttribute("error") != null) {  	 	
+  		String error = session.getAttribute("error").toString();
+  		session.setAttribute("error",null);
+  		%>mostrarToast("<%=error%>", 'error');<%    		
+  	  }
+    	%>
+
+        </script>
     </body>
 
     </html>
