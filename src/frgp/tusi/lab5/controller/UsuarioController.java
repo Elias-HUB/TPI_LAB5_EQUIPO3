@@ -52,7 +52,7 @@ public class UsuarioController {
 	public ModelAndView inicioSessionUsuario(HttpServletRequest request, String user, String pass) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
-		try {			
+		try {
 			Usuario usuario = usuarioService.buscarUsuario(user, pass);
 			if(usuario.getEstado() == true) {
 				if (usuario.getTipoUsuario().equals("empleado")) {
@@ -63,7 +63,7 @@ public class UsuarioController {
 					session.setAttribute("user", usuario.getTipoUsuario());
 					return new ModelAndView("redirect:resumen.html");
 				}
-			} else {	
+			} else {
 				session.setAttribute("error", "Usuario desactivado.");
 				mv.setViewName("login");	
 			}

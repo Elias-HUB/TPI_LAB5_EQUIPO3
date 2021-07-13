@@ -25,7 +25,7 @@
 				<!-- Login -->
 				<div class="mb-3 px-3">
 					<input type="text" name="user" id="user" class="form-control mt-3"
-						placeholder="Usuario" required> <input type="password"
+						placeholder="Documento" required> <input type="password"
 						name="pass" id="pass" class="form-control mt-3" autocomplete="off"
 						placeholder="Contraseña" required>
 				</div>

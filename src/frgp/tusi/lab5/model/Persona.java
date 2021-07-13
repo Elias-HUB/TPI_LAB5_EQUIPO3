@@ -18,11 +18,11 @@ public class Persona {
 	@Column	
 	protected String sexo;
 	
-	@OneToOne(cascade= {CascadeType.ALL})
+	@OneToOne(cascade= {CascadeType.MERGE})
 	@JoinColumn(name="nacionalidad")
 	protected Nacionalidad nacionalidad;
 	
-	@OneToOne(cascade= {CascadeType.ALL})
+	@OneToOne(cascade= {CascadeType.MERGE})
 	@JoinColumn(name="provincia")
 	protected Provincia provincia;
 	

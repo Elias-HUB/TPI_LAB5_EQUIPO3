@@ -59,11 +59,11 @@
 				</div>
 				<div class="form-group mt-4">
 					<label class="control-label" for="txtProvincia">Provincia</label> 
-					<input class="form-control" name="txtProvincia"  id="txtProvincia" type="text" value="${ Cliente.getDomicilio().getProvincia() }" readonly>
+					<input class="form-control" name="txtProvincia"  id="txtProvincia" type="text" value="${ Cliente.getProvincia().getNombre() }" readonly>
 				</div>
 				<div class="form-group mt-4">
 					<label class="control-label" for="txtNacionalidad">Nacionalidad</label>
-					<input readonly class="form-control" id="txtNacionalidad" type="text" value="${ Cliente.getNacionalidad() }" readonly>
+					<input readonly class="form-control" id="txtNacionalidad" type="text" value="${ Cliente.getNacionalidad().getNombre() }" readonly>
 				</div>
 				<div class="form-group mt-4 d-flex justify-content-center">
 					<button class="btn btn-primary mx-2" value="Volver" onclick="location.href='listarClientes.html'">Volver</button>
