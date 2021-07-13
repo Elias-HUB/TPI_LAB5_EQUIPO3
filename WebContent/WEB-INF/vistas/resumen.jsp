@@ -66,7 +66,7 @@
 
                 <div class="form-group col-md-1">
                     <label Class="control-label">Estado</label>
-                    <input id="TboxEstadoCuenta" name="TboxEstadoCuenta" Class="form-control" value="${ Cuenta.getEstado() }" readonly>
+                    <input id="TboxEstadoCuenta" name="TboxEstadoCuenta" Class="form-control" value="${ Cuenta.getEstado() ? 'Activo': 'Inactivo' }" readonly>
                 </div>
             </div>
             </div>

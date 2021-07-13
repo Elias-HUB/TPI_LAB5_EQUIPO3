@@ -30,7 +30,6 @@
                 cellspacing="0" width="100%">
                 <thead>
                     <tr>
-                        <th style="text-align: center">Usuario</th>
                         <th style="text-align: center">Nombre y Apellido</th>
                         <th style="text-align: center">Dni</th>
                         <th style="text-align: center">Domicilio</th>
@@ -41,7 +40,6 @@
                 <tbody>
 				<c:forEach var="Cliente" items="${ Clientes }">
                     <tr id="Cliente-${ Cliente.getId() }">
-                        <td>${ Cliente.getUsuario().getUserName() }</td>
                         <td>${ Cliente.getNombre() } ${ Cliente.getApellido() }</td>
                         <td>${ Cliente.getDni() }</td>
                         <td>${ Cliente.getDomicilio().getDireccion() }</td>

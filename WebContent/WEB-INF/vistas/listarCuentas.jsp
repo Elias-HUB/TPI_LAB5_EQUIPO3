@@ -22,8 +22,7 @@
             <table id="example" class="table table-striped table-bordered dt-responsive nowrap pt-1 mt-5"
                 cellspacing="0" width="100%">
                 <thead>
-                    <tr>
-                        <th style="text-align: center">id</th>                    	
+                    <tr>            	
                         <th style="text-align: center">CBU</th>
                         <th style="text-align: center">Nro Cuenta</th>
                         <th style="text-align: center">Nombre</th>
@@ -36,7 +35,6 @@
                 <tbody>
                 <c:forEach var="Cuenta" items="${ Cuenta }">
                 	<tr id="Cuenta-${ Cuenta.getId() }">
-                		<td>${ Cuenta.getId() }</td>
                 		<td>${ Cuenta.getCbu() }</td>
                 		<td>${ Cuenta.getNroCuenta() }</td>
                 		<td>${ Cuenta.getNombre() }</td>
@@ -49,10 +47,8 @@
 <!--                                 <i class="bi bi-pencil-square" data-toggle="tooltip" data-placement="bottom" -->
 <!--                                     title="Modificar Cuenta"></i> -->
 <!--                             </button> -->
-                            <button type="button" id="" onClick="modalEliminar(${Cuenta.getCbu()})" name="BtnEliminar"
-                                class="btn btn-danger">
-                                <i class="bi bi-x-circle" data-toggle="tooltip" data-placement="bottom"
-                                    title="Eliminar Cuenta"></i>
+                            <button type="button" id="" onClick="modalEliminar(${Cuenta.getCbu()})" name="BtnEliminar" class="btn btn-danger">
+                                <i class="bi bi-x-circle" data-toggle="tooltip" data-placement="bottom" title="Eliminar Cuenta"></i>
                             </button>
                         </td>
                 	</tr>

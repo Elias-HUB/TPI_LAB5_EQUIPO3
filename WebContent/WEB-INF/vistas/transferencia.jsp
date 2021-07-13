@@ -24,7 +24,7 @@
 		        	        <label class="control-label" for="tipoCuenta">Seleccione cuenta</label>
 			           		<select class="form-control" name="cuentas">
 								<c:forEach var="Cuenta" items="${ Cuentas }">
-									<option value="${ Cuenta.getCbu() }">${ Cuenta.getCbu() }</option>
+									<option value="${ Cuenta.getCbu() }">${ Cuenta.getNroCuenta() }</option>
 								</c:forEach>
 							</select>
 		            	</div>	
