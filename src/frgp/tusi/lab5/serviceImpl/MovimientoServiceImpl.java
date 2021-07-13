@@ -24,6 +24,12 @@ public class MovimientoServiceImpl implements MovimientoService{
 	public List<Movimiento> listar() throws Exception {
 		return movimientoDaoImpl.listar();
 	}
+	
+	@Override
+	public List<Movimiento> listarPorIdCuenta(int idCuenta) throws Exception {
+		return movimientoDaoImpl.listarPorIdCuenta(idCuenta);
+	}
+
 
 	@Override
 	public Movimiento eliminar(Movimiento movimiento) throws Exception {
@@ -37,8 +43,6 @@ public class MovimientoServiceImpl implements MovimientoService{
 
 	@Override
 	public Movimiento crear(Movimiento movimiento) throws Exception {
-		Cuenta cuenta = new Cuenta();
-		cuenta.getMovimientos();
 		Movimiento mov = new Movimiento();	
 		return mov;
 		

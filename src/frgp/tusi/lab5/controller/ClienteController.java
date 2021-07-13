@@ -24,6 +24,7 @@ import frgp.tusi.lab5.model.TipoCuenta;
 import frgp.tusi.lab5.model.TipoMovimiento;
 import frgp.tusi.lab5.model.Usuario;
 import frgp.tusi.lab5.serviceImpl.ClienteServiceImpl;
+import frgp.tusi.lab5.serviceImpl.CuentaServiceImpl;
 import frgp.tusi.lab5.serviceImpl.UsuarioServiceImpl;
 import frgp.tusi.lab5.serviceImpl.NacionalidadServicesImpl;
 import frgp.tusi.lab5.serviceImpl.ProvinciaServicesImpl;
@@ -34,6 +35,7 @@ import frgp.tusi.lab5.serviceImpl.TipoMovimientoServiceImpl;;
 public class ClienteController {
 
 	private ClienteServiceImpl clienteService;
+	private CuentaServiceImpl cuentaService;
 	private UsuarioServiceImpl usuarioService;	
 	private NacionalidadServicesImpl nacionalidadService;
 	private ProvinciaServicesImpl provinciaService;
@@ -42,6 +44,7 @@ public class ClienteController {
 
 	public ClienteController() {
 		clienteService = new ClienteServiceImpl();
+		cuentaService = new CuentaServiceImpl();
 		usuarioService = new UsuarioServiceImpl(); 
 		nacionalidadService = new NacionalidadServicesImpl();
 		provinciaService = new ProvinciaServicesImpl();
@@ -234,6 +237,9 @@ public class ClienteController {
 		Usuario usu = cli.getUsuario();
 		usuarioService.eliminarUsuario(usu);
 		clienteService.eliminar(cli);
+		for (Cuenta cuenta : cli.getCuentas()) {
+			cuentaService.eliminar(cuenta);	
+		}
 		session.setAttribute("success",
 				"Se desactivó al cliente " + cli.getNombre() + " " + cli.getApellido() + " de manera correcta.");
 		mv = new ModelAndView("redirect:listarClientes.html");		

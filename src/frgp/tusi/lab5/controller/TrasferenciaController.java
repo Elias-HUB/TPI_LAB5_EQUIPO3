@@ -1,6 +1,8 @@
 package frgp.tusi.lab5.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,12 +19,13 @@ import frgp.tusi.lab5.model.Transferencia;
 import frgp.tusi.lab5.model.Usuario;
 import frgp.tusi.lab5.serviceImpl.ClienteServiceImpl;
 import frgp.tusi.lab5.serviceImpl.CuentaServiceImpl;
+import frgp.tusi.lab5.serviceImpl.MovimientoServiceImpl;
 import frgp.tusi.lab5.serviceImpl.TipoMovimientoServiceImpl;
 import frgp.tusi.lab5.serviceImpl.TransferenciaServiceImpl;
 
 @Controller
 public class TrasferenciaController {
-	
+	private MovimientoServiceImpl movimientoService;
 	private TransferenciaServiceImpl transferenciaService;
 	private CuentaServiceImpl cuentaService; 
 	private TipoMovimientoServiceImpl tipoMovimientoService;
@@ -30,6 +33,7 @@ public class TrasferenciaController {
 	private HttpSession session;
 	
 	public TrasferenciaController() {
+		movimientoService = new MovimientoServiceImpl();
 		transferenciaService = new TransferenciaServiceImpl();
 		cuentaService = new CuentaServiceImpl();
 		tipoMovimientoService = new TipoMovimientoServiceImpl();
@@ -66,6 +70,8 @@ public class TrasferenciaController {
 		Cuenta cuentaOrigen = new Cuenta();
 		Movimiento movimientoOrigen = new Movimiento();
 		Movimiento movimientoDestino = new Movimiento();
+		List<Movimiento> movimientosCuentaOrigen = new ArrayList<Movimiento>();
+		List<Movimiento> movimientosCuentaDestino = new ArrayList<Movimiento>();
 		try {
 			if(ValidarRequestTransferencia(request)){
 				cuentaOrigen = cuentaService.buscar(request.getParameter("cuentas"));
@@ -83,12 +89,23 @@ public class TrasferenciaController {
 				movimientoOrigen.setFecha(new Date());
 				movimientoOrigen.setEstado(true);
 				
+				
 				movimientoDestino.setImporte(importe);
 				movimientoDestino.setCuenta(cuentaDestino);
 				movimientoDestino.setTipoMovimiento(tipoMovDestino);
 				movimientoDestino.setDetalle("Transferencia");
 				movimientoDestino.setFecha(new Date());
 				movimientoDestino.setEstado(true);
+				
+				cuentaOrigen.setSaldo(cuentaOrigen.getSaldo() - importe);
+				movimientosCuentaOrigen = movimientoService.listarPorIdCuenta(cuentaOrigen.getId());
+				movimientosCuentaOrigen.add(movimientoOrigen);
+				cuentaOrigen.setMovimientos(movimientosCuentaOrigen);
+				
+				cuentaDestino.setSaldo(cuentaOrigen.getSaldo() + importe);
+				movimientosCuentaDestino = movimientoService.listarPorIdCuenta(cuentaDestino.getId());
+				movimientosCuentaDestino.add(movimientoDestino);
+				cuentaDestino.setMovimientos(movimientosCuentaDestino);
 				
 				transferencia.setCuentaOrigen(cuentaOrigen);
 				transferencia.setCuentaDestino(cuentaDestino);
@@ -98,7 +115,7 @@ public class TrasferenciaController {
 				transferenciaService.crear(transferencia);
 				
 				session.setAttribute("success", "Se realizó la transferencia a la cuenta CBU " + cuentaDestino.getCbu() + " por un total de $ " + movimientoDestino.getImporte());
-				mv = new ModelAndView("redirect:resumen.html");
+				mv = new ModelAndView("redirect:resumen.html?Val=1");
 			}
 			else {
 				String dni = request.getParameter("txtDni");

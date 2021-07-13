@@ -33,7 +33,7 @@ public class Cuenta implements Serializable{
 	@Column()
 	private String nombre;
 	
-	@OneToOne(cascade= {CascadeType.ALL})
+	@OneToOne()
 	@JoinColumn(name="tipoCuenta")
 	private TipoCuenta tipoCuenta;
 	

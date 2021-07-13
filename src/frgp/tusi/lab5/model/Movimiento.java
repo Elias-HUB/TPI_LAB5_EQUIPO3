@@ -28,7 +28,7 @@ public class Movimiento implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
-	@OneToOne(cascade= {CascadeType.ALL})
+	@OneToOne()
 	@JoinColumn(name="tipoMovimiento")
 	private TipoMovimiento tipoMovimiento;
 	@Column()

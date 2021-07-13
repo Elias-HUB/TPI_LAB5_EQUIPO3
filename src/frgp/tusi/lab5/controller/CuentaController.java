@@ -168,12 +168,16 @@ public class CuentaController {
 		mv.addObject("Cliente", cliente);
 		mv.addObject("Cuentas", cuentas);
 		if(Val == 1) {
-		Cuenta cuenta = cuentas.get(0);
-		mv.addObject("Cuenta", cuenta);
-		List<Movimiento> mov = cuenta.getMovimientos();
-		mv.addObject("Movimientos", cuenta.getMovimientos());
+			Cuenta cuenta = cuentas.get(0);
+			mv.addObject("Cuenta", cuenta);
+			List<Movimiento> mov = movimientoService.listarPorIdCuenta(cuenta.getId());
+			mv.addObject("Movimientos", mov);
 		}else {
-			
+			String cbu = request.getParameter("selectCuenta").toString();
+			Cuenta cuenta = cuentaService.buscar(cbu);
+			mv.addObject("Cuenta", cuenta);
+			List<Movimiento> mov = movimientoService.listarPorIdCuenta(cuenta.getId());
+			mv.addObject("Movimientos", mov);
 		}
 		mv.setViewName("resumen");
 		return mv;

@@ -22,6 +22,18 @@ public class MovimientoDaoImpl implements MovimientoDao{
 			throw new Exception("No se encontraron cuentas");
 		return movimientos;
 	}
+	
+	@Override
+	public List<Movimiento> listarPorIdCuenta(int idCuenta) throws Exception {
+		HibernateConfiguration ch = new HibernateConfiguration();
+		Session session= ch.abrirConexion();
+		String query = "FROM Movimiento WHERE id_cuenta = " + idCuenta;
+		List<Movimiento> movimientos = (List<Movimiento>) session.createQuery(query).list();
+		ch.cerrarSession();
+		if(movimientos == null)
+			throw new Exception("No se encontraron cuentas");
+		return movimientos;
+	}
 
 	@Override
 	public Movimiento eliminar(Movimiento movimiento) throws Exception {

@@ -18,15 +18,27 @@
         <div class="m-5 p-5 rounded bg-white" id="">
             <!-- <div class="container pb-3"> -->
             <div class="card rounded shadow p-4">
+            
             <h2 class="my-3">Cuenta</h2>
             <div class="row d-flex justify-content-center">
                 <div class="form-group col-md-1">
                     <label class="control-label">Cuenta</label>
-                    <select class="form-select">
-						<c:forEach var="LCuenta" items="${ Cuentas }">
-							<option value="${ LCuenta.getNroCuenta() }">${ LCuenta.getNroCuenta() }</option>
-						</c:forEach>
-                    </select>
+                    <form action="resumen.html?Val=2" method="post">
+	                    <select id="selectCuenta" name="selectCuenta" class="form-select">
+							<c:forEach var="LCuenta" items="${ Cuentas }">
+								<c:choose>
+	    							<c:when test="${LCuenta.getCbu().equals(Cuenta.getCbu())}">
+	    								<option value="${ LCuenta.getCbu() }" selected>${ LCuenta.getNroCuenta() }</option>
+	    							</c:when>
+									<c:otherwise>
+										<option value="${ LCuenta.getCbu() }">${ LCuenta.getNroCuenta() }</option>
+									</c:otherwise>
+								</c:choose>
+								
+							</c:forEach>
+	                    </select>
+                    	<button type="submit" id="BtnConsultar" name="BtnConsultar" class="btn btn-success m-2" value="Consultar">Consultar</button>
+                    </form>
                 </div>
 
                 <div class="form-group col-md-3">
@@ -78,8 +90,8 @@
                     <tr>
                 		<td>${ Movimiento.getTipoMovimiento().getDescripcion() }</td>
                 		<td>${ Movimiento.getDetalle() }</td>
-                		<td>$ ${ Cuenta.getImporte() }</td>
-                		<td>${ Cuenta.getEstado() == true ? "Activo" : "Inactivo"}</td>
+                		<td>$ ${ Movimiento.getImporte() }</td>
+                		<td>${ Movimiento.getEstado() == true ? "Activo" : "Inactivo"}</td>
                 	</tr>
                 </c:forEach>                    
                 </tbody>
