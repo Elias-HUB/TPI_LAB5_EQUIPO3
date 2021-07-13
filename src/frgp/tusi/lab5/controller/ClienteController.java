@@ -42,8 +42,8 @@ public class ClienteController {
 			if (request.getParameter("txtNombre") != null) {
 				Cliente cli = new Cliente();
 				try {
-				clienteService.buscarPorDni(Integer.parseInt(request.getParameter("txtDni").toString()));			
-				session.setAttribute("error", "Ya existe un cliente con el mismo documento.");
+				usuarioService.buscarPorUsuario(request.getParameter("txtDni").toString());			
+				session.setAttribute("error", "Ya existe un usuario con el mismo documento.");
 				mv = new ModelAndView("redirect:listarClientes.html");
 				} catch (Exception e) {
 				cli.setApellido(request.getParameter("txtApellido").substring(0,1).toUpperCase() + request.getParameter("txtApellido").substring(1));				
@@ -112,12 +112,16 @@ public class ClienteController {
 		HttpSession session = request.getSession();
 		try {
 			if (request.getParameter("txtDni") != null) {
-				Cliente cli = clienteService.buscarPorDni(dni);
+				Cliente cli = clienteService.buscarPorDni(dni);				
 				try {
-					clienteService.buscarPorDni(Integer.parseInt(request.getParameter("txtDni").toString()));
-					session.setAttribute("error", "Ya existe un cliente con el mismo documento. No se pudo modificar al cliente "
+					if(Integer.parseInt(request.getParameter("txtDni").toString()) == dni) {
+						throw new Exception("");
+					} else {
+					usuarioService.buscarPorUsuario(request.getParameter("txtDni").toString());
+					session.setAttribute("error", "Ya existe un usuario con el mismo documento. No se pudo modificar al cliente "
 							+ cli.getNombre() +" "+ cli.getApellido()+".");
 					mv = new ModelAndView("redirect:listarClientes.html");
+					}
 				} catch (Exception e) {
 					cli.setApellido(request.getParameter("txtApellido").substring(0,1).toUpperCase() + request.getParameter("txtApellido").substring(1));				
 					cli.setNombre(request.getParameter("txtNombre").substring(0,1).toUpperCase() + request.getParameter("txtNombre").substring(1));

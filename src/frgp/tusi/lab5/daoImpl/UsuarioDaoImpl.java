@@ -30,4 +30,16 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		return usuario;
 	}
 
+	@Override
+	public Usuario buscarPorUsuario(String username) throws Exception {
+		HibernateConfiguration ch = new HibernateConfiguration();
+		Session session= ch.abrirConexion();
+		String query = "FROM Usuario as u WHERE u.userName = '" + username + "'";
+		Usuario usuario = (Usuario) session.createQuery(query).uniqueResult();
+		ch.cerrarSession();
+		if(usuario == null)
+			throw new Exception("");
+		return usuario;
+	}
+
 }

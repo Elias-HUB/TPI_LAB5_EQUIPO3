@@ -21,7 +21,6 @@ public class UsuarioServiceImpl implements UsuarioService{
 
 	@Override
 	public Usuario buscarUsuario(String username, String password) throws Exception {
-		usuarioDaoImpl = new UsuarioDaoImpl();
 		return usuarioDaoImpl.buscar(username, password);
 	}
 
@@ -41,6 +40,11 @@ public class UsuarioServiceImpl implements UsuarioService{
 	public Usuario eliminarUsuario(Usuario usuario) throws Exception {
 		usuarioDaoImpl.eliminar(usuario);
 		return null;
+	}
+
+	@Override
+	public Usuario buscarPorUsuario(String username) throws Exception {
+		return usuarioDaoImpl.buscarPorUsuario(username);
 	}
 
 }
