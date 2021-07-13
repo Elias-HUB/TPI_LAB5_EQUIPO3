@@ -42,7 +42,7 @@ public class main {
     	SimpleDateFormat dtf = new SimpleDateFormat("yyyy/MM/dd");
         Calendar calendar = Calendar.getInstance();
         Date dateObj = calendar.getTime();
-        String formattedDate = dtf.format(dateObj);    	    	
+        String formattedDate = dtf.format(dateObj);
         
     	TipoMovimiento tipoTransferenciaDeb = new TipoMovimiento();
     	TipoMovimiento tipoTransferenciaCred = new TipoMovimiento();
@@ -330,7 +330,7 @@ public class main {
     	usuario.setFechaUltimaModificacion(new Date());
     	usuario.setTipoUsuario("cliente");
     	usuario.setPass("1234");
-    	usuario.setUserName("Arias");
+    	usuario.setUserName("21412359");
     	
     	Domicilio domicilio = new Domicilio();
     	domicilio.setDireccion("AV Cordoba");
@@ -420,7 +420,7 @@ public class main {
     	usuarioDos.setFechaUltimaModificacion(new Date());
     	usuarioDos.setTipoUsuario("cliente");
     	usuarioDos.setPass("1234");
-    	usuarioDos.setUserName("ratape");
+    	usuarioDos.setUserName("23546373");
     	
     	Domicilio domicilioDos = new Domicilio();
     	domicilioDos.setDireccion("Buenos Aires");
@@ -510,7 +510,7 @@ public class main {
     	usuarioTres.setFechaUltimaModificacion(new Date());
     	usuarioTres.setTipoUsuario("cliente");
     	usuarioTres.setPass("1234");
-    	usuarioTres.setUserName("JuanaLo");
+    	usuarioTres.setUserName("25863173");
     	
     	Domicilio domicilioTres = new Domicilio();
     	domicilioTres.setDireccion("Francia");
@@ -600,7 +600,7 @@ public class main {
     	usuarioCuatro.setFechaUltimaModificacion(new Date());
     	usuarioCuatro.setTipoUsuario("cliente");
     	usuarioCuatro.setPass("1234");
-    	usuarioCuatro.setUserName("Corzo");
+    	usuarioCuatro.setUserName("30452120");
     	
     	Domicilio domicilioCuatro = new Domicilio();
     	domicilioCuatro.setDireccion("9 Julio");
@@ -690,7 +690,7 @@ public class main {
     	usuario.setFechaUltimaModificacion(new Date());
     	usuario.setTipoUsuario("cliente");
     	usuario.setPass("1234");
-    	usuario.setUserName("Jcontento");
+    	usuario.setUserName("40365129");
     	
     	domicilio = new Domicilio();
     	domicilio.setDireccion("Fagnano");
@@ -780,7 +780,7 @@ public class main {
     	usuario.setFechaUltimaModificacion(new Date());
     	usuario.setTipoUsuario("cliente");
     	usuario.setPass("1234");
-    	usuario.setUserName("Roman");
+    	usuario.setUserName("46541129");
     	
     	domicilio = new Domicilio();
     	domicilio.setDireccion("Elizalde");
@@ -870,7 +870,7 @@ public class main {
     	usuario.setFechaUltimaModificacion(new Date());
     	usuario.setTipoUsuario("cliente");
     	usuario.setPass("1234");
-    	usuario.setUserName("Agustin");
+    	usuario.setUserName("40635698");
     	
     	domicilio = new Domicilio();
     	domicilio.setDireccion("Av libertador");
@@ -960,7 +960,7 @@ public class main {
     	usuario.setFechaUltimaModificacion(new Date());
     	usuario.setTipoUsuario("cliente");
     	usuario.setPass("1234");
-    	usuario.setUserName("Edgardo");
+    	usuario.setUserName("40123698");
     	
     	domicilio = new Domicilio();
     	domicilio.setDireccion("Rawson");
@@ -1050,7 +1050,7 @@ public class main {
     	usuario.setFechaUltimaModificacion(new Date());
     	usuario.setTipoUsuario("cliente");
     	usuario.setPass("1234");
-    	usuario.setUserName("PMaria");
+    	usuario.setUserName("12564987");
     	
     	domicilio = new Domicilio();
     	domicilio.setDireccion("Cardenal Fagnano");
@@ -1140,7 +1140,7 @@ public class main {
     	usuario.setFechaUltimaModificacion(new Date());
     	usuario.setTipoUsuario("cliente");
     	usuario.setPass("1234");
-    	usuario.setUserName("Byanina");
+    	usuario.setUserName("12564327");
     	
     	domicilio = new Domicilio();
     	domicilio.setDireccion("Uriburu");
@@ -1168,7 +1168,7 @@ public class main {
     	usuario.setFechaUltimaModificacion(new Date());
     	usuario.setTipoUsuario("empleado");
     	usuario.setPass("1234");
-    	usuario.setUserName("Evalenzuela");    	
+    	usuario.setUserName("40379338");    	
 
     	Empleado em = new Empleado();
     	em.setApellido("Valenzuela");
@@ -1189,7 +1189,7 @@ public class main {
     	usuario.setFechaUltimaModificacion(new Date());
     	usuario.setTipoUsuario("empleado");
     	usuario.setPass("1234");
-    	usuario.setUserName("Nicolas");    	
+    	usuario.setUserName("40651874");    	
 
     	em = new Empleado();
     	em.setApellido("Ramirez");
@@ -1210,7 +1210,7 @@ public class main {
     	usuario.setFechaUltimaModificacion(new Date());
     	usuario.setTipoUsuario("empleado");
     	usuario.setPass("1234");
-    	usuario.setUserName("Ezequiel");    	
+    	usuario.setUserName("12546987");    	
 
     	em = new Empleado();
     	em.setApellido("Cordoba");
@@ -1231,7 +1231,7 @@ public class main {
     	usuario.setFechaUltimaModificacion(new Date());
     	usuario.setTipoUsuario("empleado");
     	usuario.setPass("1234");
-    	usuario.setUserName("Esquivel");    	
+    	usuario.setUserName("40326518");    	
 
     	em = new Empleado();
     	em.setApellido("Esquivel");
