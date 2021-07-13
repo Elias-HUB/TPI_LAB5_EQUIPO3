@@ -67,7 +67,7 @@
                          <input class="form-control" readonly id="txtCodigoPostal" type="text" value="">                                
                      </div>
                      <div class="form-group mt-4 d-flex justify-content-center">
-                         <button class="btn btn-primary mx-2" type="button" name="back" onclick="history.back()" value="Volver">Volver</button>
+                         <button class="btn btn-primary mx-2" value="Volver">Volver</button>
                          <button class="btn btn-success mx-2" value="Guardar">Guardar</button>                                
                      </div>
     			</div>

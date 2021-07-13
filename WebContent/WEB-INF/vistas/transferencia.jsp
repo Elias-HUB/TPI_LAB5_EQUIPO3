@@ -32,14 +32,14 @@
 	            		<div class="form-group mt-4">
 	            			<h4 class="d-flex justify-content-start">Cuenta de Destino:</h4>
 	                    	<label class="control-label" for="txtDestino">Ingrese CBU o número de cuenta</label>
-	                        <input class="form-control" name="txtDestino" id="txtDestino" type="text" placeholder="" value="222222222">
+	                        <input class="form-control" name="txtDestino" id="txtDestino" type="text" placeholder="" value="">
 	                    </div>
 	                    <div class="form-group mt-4">
 	                        <label class="control-label" for="txtImporte">Importe</label>
-	                        <input class="form-control" name="txtImporte" id="txtImporte" type="text" value="10000">
+	                        <input class="form-control" name="txtImporte" id="txtImporte" type="text" value="0">
 	                    </div>
 	                     <div class="form-group mt-4 d-flex justify-content-center">
-	                         <button class="btn btn-primary mx-2" type="button" name="back" onclick="history.back()" value="Volver">Volver</button>
+	                         <button class="btn btn-primary mx-2" type="button" name="back" onclick="location.href='resumen.html" value="Volver">Volver</button>
 	                         <button type="submit" class="btn btn-success mx-2" value="Guardar">Transferir</button>                                
 	                     </div>
 	    			</div>

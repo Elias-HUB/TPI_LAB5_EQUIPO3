@@ -66,7 +66,7 @@
 					<input readonly class="form-control" id="txtNacionalidad" type="text" value="${ Cliente.getNacionalidad().getNombre() }" readonly>
 				</div>
 				<div class="form-group mt-4 d-flex justify-content-center">
-					<button class="btn btn-primary mx-2" type="button" name="back" onclick="history.back()" value="Volver">Volver</button>
+					<button class="btn btn-primary mx-2" value="Volver" onclick="location.href='listarClientes.html'">Volver</button>
 				</div>
 			</div>
 		</div>
