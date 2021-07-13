@@ -46,22 +46,14 @@ public class Cuenta implements Serializable{
 	@Column()
 	private String fechaUltimaModificacion;
 	
-	@OneToMany(mappedBy= "cuenta", fetch = FetchType.LAZY)
+	@OneToMany(cascade= {CascadeType.ALL})
+	@JoinColumn(name="id_cuenta")
 	private List<Movimiento> movimientos = new ArrayList<Movimiento>();
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="id_cliente")
-//	@ManyToOne(fetch = FetchType.LAZY)
 	private Cliente cliente;
 	
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-
 	public Cuenta() {}
 
 	public Integer getId() {
@@ -142,6 +134,14 @@ public class Cuenta implements Serializable{
 
 	public void setMovimientos(List<Movimiento> movimientos) {
 		this.movimientos = movimientos;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 }

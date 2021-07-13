@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,11 +23,9 @@ public class Cliente extends Persona implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
-//	@OneToMany(cascade= {CascadeType.ALL})
-//	@JoinColumn(name="id_cliente")
-	@OneToMany(mappedBy= "cliente", fetch = FetchType.LAZY)
+	@OneToMany(cascade= {CascadeType.ALL})
+	@JoinColumn(name="id_cliente")
 	private List<Cuenta> cuentas = new ArrayList<Cuenta>();
-	
 	
 	public Integer getId() {
 		return id;

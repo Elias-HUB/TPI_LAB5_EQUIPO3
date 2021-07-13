@@ -1244,8 +1244,7 @@ public class main {
     	em.setFechaNacimiento("1990-01-23");
     	em.setDomicilio(domicilio);  
     	em.setUsuario(usuario);
-    	session.save(em);
-
+    	session.save(em);    	
 
     	session.getTransaction().commit();
     	session.close();
