@@ -1,6 +1,11 @@
  package frgp.tusi.lab5.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -10,14 +15,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import frgp.tusi.lab5.model.Cliente;
+import frgp.tusi.lab5.model.Cuenta;
 import frgp.tusi.lab5.model.Domicilio;
+import frgp.tusi.lab5.model.Movimiento;
 import frgp.tusi.lab5.model.Nacionalidad;
 import frgp.tusi.lab5.model.Provincia;
+import frgp.tusi.lab5.model.TipoCuenta;
+import frgp.tusi.lab5.model.TipoMovimiento;
 import frgp.tusi.lab5.model.Usuario;
 import frgp.tusi.lab5.serviceImpl.ClienteServiceImpl;
 import frgp.tusi.lab5.serviceImpl.UsuarioServiceImpl;
 import frgp.tusi.lab5.serviceImpl.NacionalidadServicesImpl;
-import frgp.tusi.lab5.serviceImpl.ProvinciaServicesImpl;;
+import frgp.tusi.lab5.serviceImpl.ProvinciaServicesImpl;
+import frgp.tusi.lab5.serviceImpl.TipoCuentaServiceImpl;
+import frgp.tusi.lab5.serviceImpl.TipoMovimientoServiceImpl;;
 
 @Controller
 public class ClienteController {
@@ -26,12 +37,16 @@ public class ClienteController {
 	private UsuarioServiceImpl usuarioService;	
 	private NacionalidadServicesImpl nacionalidadService;
 	private ProvinciaServicesImpl provinciaService;
+	private TipoCuentaServiceImpl tipoCuentaService;
+	private TipoMovimientoServiceImpl tipoMovimientoService;
 
 	public ClienteController() {
 		clienteService = new ClienteServiceImpl();
 		usuarioService = new UsuarioServiceImpl(); 
 		nacionalidadService = new NacionalidadServicesImpl();
 		provinciaService = new ProvinciaServicesImpl();
+		tipoCuentaService = new TipoCuentaServiceImpl();
+		tipoMovimientoService = new TipoMovimientoServiceImpl();
 	}
 
 	@RequestMapping("altaCliente")
@@ -75,9 +90,46 @@ public class ClienteController {
 		    	
 		    	cli.setUsuario(usuario);
 				cli.setDomicilio(domicilio);
+				
+				//Generar cuenta y movimiento
+				Random rnd = new Random();
+				List<Cuenta> cuentasCliente = new ArrayList<Cuenta>();
+				List<Movimiento> movimientosCuentaOrigen = new ArrayList<Movimiento>();
+				
+				SimpleDateFormat dtf = new SimpleDateFormat("yyyy/MM/dd");
+		        Calendar calendar = Calendar.getInstance();
+		        Date dateObj = calendar.getTime();
+		        String formattedDate = dtf.format(dateObj);
+				
+				TipoCuenta tipoCuentaCA = tipoCuentaService.buscar("Caja de ahorro en pesos ");
+		    	TipoMovimiento tipoAltaCuenta = tipoMovimientoService.buscar("Alta de Cuenta");
+		    	
+		    	Movimiento movAltaCuenta = new Movimiento();
+		    	movAltaCuenta.setDetalle("Alta de Cuenta");
+		    	movAltaCuenta.setEstado(true);
+		    	movAltaCuenta.setFecha(new Date());
+		    	movAltaCuenta.setFechaUltimaModificacion(new Date());
+		    	movAltaCuenta.setTipoMovimiento(tipoAltaCuenta);
+		    	movAltaCuenta.setImporte(10000);
+		    	movimientosCuentaOrigen.add(movAltaCuenta);		    	
+		    	
+		    	Cuenta cuentaAlta = new Cuenta();
+		    	cuentaAlta.setCbu(rnd.nextInt(100000));
+		    	cuentaAlta.setNroCuenta(rnd.nextInt(100000));
+		    	cuentaAlta.setNombre("Cuenta CA");
+		    	cuentaAlta.setSaldo(10000);
+		    	cuentaAlta.setEstado(true);
+		    	cuentaAlta.setTipoCuenta(tipoCuentaCA);
+		    	cuentaAlta.setFechaAlta(formattedDate);
+		    	cuentaAlta.setFechaUltimaModificacion(formattedDate);    	
+		    	cuentaAlta.setMovimientos(movimientosCuentaOrigen);				
+		    	cuentasCliente.add(cuentaAlta);
+		    	
+		    	cli.setCuentas(cuentasCliente);
 				clienteService.crear(cli);
+		    	
 				session.setAttribute("success",
-						"Se creó al cliente " + cli.getNombre() + " " + cli.getApellido() + " con su usuario de manera correcta.");
+						"Se creó al cliente " + cli.getNombre() + " " + cli.getApellido() + " con su usuario y cuenta de manera correcta.");
 				mv = new ModelAndView("redirect:listarClientes.html");
 				}
 			} else {

@@ -72,6 +72,9 @@
     					</c:forEach>
 					</select>
 				</div>
+				<div class="container text-center text-md-left mt-4">
+				<h3>Se va a crear una nueva cuenta del tipo Caja de ahorro en pesos con un saldo inicial de $10.000</h3>
+				</div>
 				<div class="form-group mt-4 d-flex justify-content-center">
 					<button type="button" class="btn btn-primary mx-2" value="Volver" onclick="location.href='listarClientes.html'">Volver</button>
 					<button type="submit" id="BtnAgregar" name="BtnAgregar" class="btn btn-success mx-2" value="Guardar">Guardar</button>

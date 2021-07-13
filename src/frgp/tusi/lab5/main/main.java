@@ -303,7 +303,7 @@ public class main {
     	cuentaOrigen.setFechaAlta(formattedDate);
     	cuentaOrigen.setFechaUltimaModificacion(formattedDate);    	
     	cuentaOrigen.setMovimientos(movimientosCuentaOrigen);
-    	cuentasCliente.add(cuentaOrigen);    	
+    	cuentasCliente.add(cuentaOrigen);
     	
     	Cuenta cuentaDestino = new Cuenta();
     	cuentaDestino.setCbu(23452346);

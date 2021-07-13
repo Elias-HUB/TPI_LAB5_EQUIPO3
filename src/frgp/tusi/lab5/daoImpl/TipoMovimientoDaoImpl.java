@@ -23,12 +23,11 @@ public class TipoMovimientoDaoImpl implements TipoMovimientoDao{
 	public TipoMovimiento buscar(String descripcion) throws Exception {
 		HibernateConfiguration ch = new HibernateConfiguration();
 		Session session= ch.abrirConexion();
-		String query = "FROM TipoMovimiento as c WHERE c.descripcion = " + descripcion;
-		TipoMovimiento movimiento = (TipoMovimiento) session.createQuery(query).uniqueResult();
+		String query = "FROM TipoMovimiento as c WHERE c.descripcion = '" + descripcion+"'";
+		TipoMovimiento tipoMovimiento = (TipoMovimiento) session.createQuery(query).uniqueResult();
 		ch.cerrarSession();
-		if(movimiento == null)
+		if(tipoMovimiento == null)
 			throw new Exception("TipoMovimiento inexistente");
-		return movimiento;
+		return tipoMovimiento;
 	}
-
 }

@@ -10,6 +10,9 @@ import frgp.tusi.lab5.service.TipoMovimientoService;
 public class TipoMovimientoServiceImpl implements TipoMovimientoService{
 
 	private TipoMovimientoDaoImpl tipoMovimientoDaoImpl;
+	public TipoMovimientoServiceImpl() {
+		tipoMovimientoDaoImpl = new TipoMovimientoDaoImpl();
+	}
 	
 	@Override
 	public TipoMovimiento buscar(int id) throws Exception {
