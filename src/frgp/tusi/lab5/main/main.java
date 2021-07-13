@@ -53,10 +53,10 @@ public class main {
     	session.save(tipoAltaCuenta);
     	
     	TipoCuenta tipoCuentaCA = new TipoCuenta();
-    	tipoCuentaCA.setDescripcion("Caja de ahorro en pesos ");
+    	tipoCuentaCA.setDescripcion("Caja de ahorro en pesos");
     	session.save(tipoCuentaCA);
     	TipoCuenta tipoCuentaCD = new TipoCuenta();
-    	tipoCuentaCD.setDescripcion("Caja de ahorro en dólares ");
+    	tipoCuentaCD.setDescripcion("Caja de ahorro en dólares");
     	session.save(tipoCuentaCD);   	
     	
     	
