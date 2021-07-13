@@ -157,6 +157,8 @@ public class CuentaController {
 	@RequestMapping("resumen")
 	public ModelAndView resumen() {
 		ModelAndView mv = new ModelAndView();
+//		Cliente cliente = clienteService.buscarPorDni(dni);
+//		mv.addObject("Cuentas", cuentaService.buscarCantidadCuentas(cliente.getId()));
 		mv.setViewName("resumen");
 		return mv;
 	}

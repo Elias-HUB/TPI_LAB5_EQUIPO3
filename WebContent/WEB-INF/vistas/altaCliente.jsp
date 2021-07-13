@@ -76,7 +76,7 @@
 				<h3>Se va a crear una nueva cuenta del tipo Caja de ahorro en pesos con un saldo inicial de $10.000</h3>
 				</div>
 				<div class="form-group mt-4 d-flex justify-content-center">
-					<button type="button" class="btn btn-primary mx-2" value="Volver" onclick="location.href='listarClientes.html'">Volver</button>
+					<button class="btn btn-primary mx-2" type="button" name="back" onclick="history.back()" value="Volver">Volver</button>
 					<button type="submit" id="BtnAgregar" name="BtnAgregar" class="btn btn-success mx-2" value="Guardar">Guardar</button>
 				</div>
 			</div>

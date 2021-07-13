@@ -14,7 +14,7 @@
         <jsp:include page="myNavbar.jsp"></jsp:include>
 
         <div class="m-5 p-5 rounded bg-white" id="">
-        	<form action="altaCliente.html" method="post">
+        	<form action="crearTransferencia.html" method="post">
 	            <h1 class="d-flex justify-content-center">Tranferir</h1>
 	    		<div class="col-6 container d-flex justify-content-center">
 	            	<div class="row d-flex justify-content-center">
@@ -23,8 +23,8 @@
 		            		<h4 class="d-flex justify-content-start">Cuenta de Origen:</h4>
 		        	        <label class="control-label" for="tipoCuenta">Seleccione cuenta</label>
 			           		<select class="form-control" name="cuentas">
-								<c:forEach var="cuenta" items="${ Cuentas }">
-									<option value="${ cuenta.getId() }">${ cuenta.geCbu() }</option>
+								<c:forEach var="Cuenta" items="${ Cuentas }">
+									<option value="${ Cuenta.getCbu() }">${ Cuenta.getCbu() }</option>
 								</c:forEach>
 							</select>
 		            	</div>	
@@ -32,11 +32,11 @@
 	            		<div class="form-group mt-4">
 	            			<h4 class="d-flex justify-content-start">Cuenta de Destino:</h4>
 	                    	<label class="control-label" for="txtDestino">Ingrese CBU o número de cuenta</label>
-	                        <input class="form-control" id="txtDestino" type="text" placeholder="" value="222222222">
+	                        <input class="form-control" name="txtDestino" id="txtDestino" type="text" placeholder="" value="222222222">
 	                    </div>
 	                    <div class="form-group mt-4">
 	                        <label class="control-label" for="txtImporte">Importe</label>
-	                        <input class="form-control" id="txtImporte" type="text" value="10000">
+	                        <input class="form-control" name="txtImporte" id="txtImporte" type="text" value="10000">
 	                    </div>
 	                     <div class="form-group mt-4 d-flex justify-content-center">
 	                         <button class="btn btn-primary mx-2" type="button" name="back" onclick="history.back()" value="Volver">Volver</button>
@@ -48,6 +48,24 @@
 		</div>
         <jsp:include page="myFooter.jsp"></jsp:include>
         <script src="${pageContext.request.contextPath}/resources/Js/DataTableMovimientos.js"></script>
+        <script	src="${pageContext.request.contextPath}/resources/Js/Funciones.js"></script>
+        <script type="text/javascript">        
+    	<%
+    	 session = request.getSession();
+   		 if(session.getAttribute("success") != null) { 	 	
+ 		String success = session.getAttribute("success").toString();
+ 		session.setAttribute("success",null);
+ 		%>mostrarToast("<%=success%>", 'success');<%    		
+ 	  }
+ 	 
+ 	 if(session.getAttribute("error") != null) {  	 	
+  		String error = session.getAttribute("error").toString();
+  		session.setAttribute("error",null);
+  		%>mostrarToast("<%=error%>", 'error');<%    		
+  	  }
+    	%>
+
+        </script>
     </body>
 
     </html>

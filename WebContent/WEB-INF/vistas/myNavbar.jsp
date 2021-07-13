@@ -14,6 +14,7 @@
         		if(user.getTipoUsuario().equals("cliente")) {
         		Cliente cliente = (Cliente)session.getAttribute("persona");
         		userNombre = cliente.getNombre() + " " + cliente.getApellido();
+        		String dni = cliente.getDni().toString();
         			%>
             <ul id="menuCliente" class="navbar-nav ">
                 <li class="nav-item mr-2">
@@ -23,7 +24,7 @@
                     <a class="nav-link" href="detalleCliente.html">MIS DATOS</a>
                 </li>
                 <li class="nav-item mr-2">
-                    <a class="nav-link" href="transferencia.html">TRANSFERENCIAS</a>
+                    <a class="nav-link" href="transferencia.html?dni=<%= dni%>">TRANSFERENCIAS</a>
                 </li>
             </ul>
             <% } else {	

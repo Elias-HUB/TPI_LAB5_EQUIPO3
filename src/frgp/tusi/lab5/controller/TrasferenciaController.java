@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import frgp.tusi.lab5.model.Cliente;
 import frgp.tusi.lab5.model.Cuenta;
 import frgp.tusi.lab5.model.Movimiento;
 import frgp.tusi.lab5.model.TipoMovimiento;
@@ -28,11 +29,20 @@ public class TrasferenciaController {
 	private ClienteServiceImpl clienteService;
 	private HttpSession session;
 	
+	public TrasferenciaController() {
+		transferenciaService = new TransferenciaServiceImpl();
+		cuentaService = new CuentaServiceImpl();
+		tipoMovimientoService = new TipoMovimientoServiceImpl();
+		clienteService = new ClienteServiceImpl();
+	}
+	
 	@RequestMapping("transferencia")
-	public ModelAndView transferencia() {
+	public ModelAndView transferencia(Integer dni) {
 		ModelAndView mv = new ModelAndView();
 		try {
-			mv.addObject("Cuentas", clienteService.buscarPorDni(123).getCuentas());
+			Cliente cliente = clienteService.buscarPorDni(dni);
+			
+			mv.addObject("Cuentas", cuentaService.buscarCantidadCuentas(cliente.getId()));
 			mv.setViewName("transferencia");
 			return mv;
 		} catch (Exception e) {
@@ -60,7 +70,7 @@ public class TrasferenciaController {
 			if(ValidarRequestTransferencia(request)){
 				cuentaOrigen = cuentaService.buscar(request.getParameter("cuentas"));
 				cuentaDestino = cuentaService.buscar(request.getParameter("txtDestino"));
-				Usuario usuario = (Usuario)session.getAttribute("user");
+				
 				TipoMovimiento tipoMovOrigen = tipoMovimientoService.buscar("Transferencia Débito");
 				TipoMovimiento tipoMovDestino = tipoMovimientoService.buscar("Transferencia Crédito");
 				
@@ -103,7 +113,7 @@ public class TrasferenciaController {
 
 	private boolean ValidarRequestTransferencia(HttpServletRequest request) {
 		String cbuDestino = request.getParameter("txtDestino").trim();
-		String importe = request.getParameter("importe").trim();
+		String importe = request.getParameter("txtImporte").trim();
 		
 		if (cbuDestino == null || cbuDestino == "") {
 			session.setAttribute("error", "No se ingresó CBU para la cuenta destino.");
