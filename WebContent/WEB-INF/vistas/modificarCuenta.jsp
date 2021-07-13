@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,7 +14,12 @@
     <body>
         <jsp:include page="myNavbar.jsp"></jsp:include>
 
-        <div class="m-5 p-5 rounded bg-white" id="">
+<form action="modificarCliente.html?dni=${Cliente.getDni()}" method="post">
+	<div class="d-flex justify-content-center" id="">
+
+
+
+        <div class="card m-5 p-5 col-6 rounded shadow p-3">
             <h1 class="d-flex justify-content-center">Modificar Cuenta</h1>
     		<div class="col-6 container d-flex justify-content-center">
             	<div class="row d-flex justify-content-center">
@@ -71,8 +77,12 @@
     			</div>
         	</div>
 		</div>
+
+
+	</div>
+</form>
         <jsp:include page="myFooter.jsp"></jsp:include>
-        <script src="${pageContext.request.contextPath}/resources/Js/DataTableMovimientos.js"></script>
+<%--         <script src="${pageContext.request.contextPath}/resources/Js/DataTableMovimientos.js"></script> --%>
     </body>
 
     </html>

@@ -19,11 +19,11 @@
         <div class="m-5 p-5 rounded bg-white" id="">
             <h1>Cuentas</h1>
             <!-- <div class="container pb-3"> -->
-            <form action="altaCuentaView.html" method="get">
-            <div class="justify-content-between mt-3">
-                <button type="submit"  class="btn btn-primary"><i class="bi bi-layout-text-window-reverse"></i></i> Nueva Cuenta</button>
-            </div>
-            </form>
+<!--             <form action="altaCuenta.html" method="get"> -->
+<!--             <div class="justify-content-between mt-3"> -->
+<!--                 <button type="submit"  class="btn btn-primary"><i class="bi bi-layout-text-window-reverse"></i></i> Nueva Cuenta</button> -->
+<!--             </div> -->
+<!--             </form> -->
             <!-- </div> -->
             <br>
             <table id="example" class="table table-striped table-bordered dt-responsive nowrap pt-1 mt-5"

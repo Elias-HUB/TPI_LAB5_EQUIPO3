@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -45,9 +46,22 @@ public class Cuenta implements Serializable{
 	@Column()
 	private String fechaUltimaModificacion;
 	
-	@OneToMany(mappedBy= "id_cuenta", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy= "cuenta", fetch = FetchType.LAZY)
 	private List<Movimiento> movimientos = new ArrayList<Movimiento>();
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="id_cliente")
+//	@ManyToOne(fetch = FetchType.LAZY)
+	private Cliente cliente;
+	
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
 	public Cuenta() {}
 
 	public Integer getId() {

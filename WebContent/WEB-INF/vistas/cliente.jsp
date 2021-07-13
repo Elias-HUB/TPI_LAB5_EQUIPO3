@@ -47,6 +47,14 @@
                         <td>${ Cliente.getDomicilio().getDireccion() }</td>
                         <td>${Cliente.getEstado() == true ? "Activo" : "Inactivo"}</td>                        
                         <td class="text-center" style="width: 190px">
+                        	<button type="submit" id="" name="BtnNuevaCuenta" class="btn btn-info" onclick="location.href='altaCuenta.html?dni=${Cliente.getDni()}'">
+                                <i class="bi bi-plus-square" data-toggle="tooltip" data-placement="bottom"
+                                    title="Agregar cuenta"></i>
+                            </button>
+                        	<button type="submit" id="" name="BtnCuentas" class="btn btn-info" onclick="location.href='listarCuentas.html?dni=${Cliente.getDni()}'">
+                                <i class="bi bi-list-stars" data-toggle="tooltip" data-placement="bottom"
+                                    title="Ver cuentas"></i>
+                            </button>
                             <button type="submit" id="" name="BtnVer" class="btn btn-info" onclick="location.href='detalleCliente.html?dni=${Cliente.getDni()}'">
                                 <i class="bi bi-file-person" data-toggle="tooltip" data-placement="bottom"
                                     title="Ver Cliente"></i>
