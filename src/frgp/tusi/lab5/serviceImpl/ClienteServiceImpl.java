@@ -44,5 +44,4 @@ public class ClienteServiceImpl implements ClienteService {
 	public Cliente buscarPorDni(Integer dni) throws Exception {
 		return clienteDaoImpl.buscarPorDni(dni);		
 	}
-
 }

@@ -10,4 +10,5 @@ public interface CuentaService {
 	public Cuenta actualizar(Cuenta cuenta) throws Exception;
 	public Cuenta crear(Cuenta cuenta) throws Exception;
 	public Cuenta buscar(String cbu) throws Exception;
+	public Cuenta buscaPorId(Integer idCli) throws Exception;
 }

@@ -114,8 +114,8 @@ public class ClienteController {
 		    	movimientosCuentaOrigen.add(movAltaCuenta);		    	
 		    	
 		    	Cuenta cuentaAlta = new Cuenta();
-		    	cuentaAlta.setCbu(rnd.nextInt(100000));
-		    	cuentaAlta.setNroCuenta(rnd.nextInt(100000));
+		    	cuentaAlta.setCbu(rnd.nextInt(1000000000));
+		    	cuentaAlta.setNroCuenta(rnd.nextInt(1000000000));
 		    	cuentaAlta.setNombre("Cuenta CA");
 		    	cuentaAlta.setSaldo(10000);
 		    	cuentaAlta.setEstado(true);

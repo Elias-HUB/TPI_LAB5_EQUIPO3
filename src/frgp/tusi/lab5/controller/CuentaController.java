@@ -13,110 +13,98 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import frgp.tusi.lab5.model.Cliente;
 import frgp.tusi.lab5.model.Cuenta;
 import frgp.tusi.lab5.model.TipoCuenta;
 import frgp.tusi.lab5.serviceImpl.ClienteServiceImpl;
 import frgp.tusi.lab5.serviceImpl.CuentaServiceImpl;
-import frgp.tusi.lab5.serviceImpl.UsuarioServiceImpl;
+import frgp.tusi.lab5.serviceImpl.TipoCuentaServiceImpl;
 
 @Controller
 public class CuentaController {
 	
-	private UsuarioServiceImpl usuarioService;
 	private ClienteServiceImpl clienteService;
 	private CuentaServiceImpl cuentaService;
+	private TipoCuentaServiceImpl tipoCuentaService;
 	
 	public CuentaController() {
-		usuarioService = new UsuarioServiceImpl();
 		clienteService = new ClienteServiceImpl();
 		cuentaService = new CuentaServiceImpl();
+		tipoCuentaService = new TipoCuentaServiceImpl();
 	}
 	
 	@RequestMapping("listarCuentas")
-	public ModelAndView listarCuenta() {
+	public ModelAndView listarCuenta(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
+		HttpSession session = request.getSession();
 		try {
-//			List<Cuenta> cuentas = cuentaService.listar();
-//			mv.addObject(cuentas);			
 			mv.addObject("Cuenta", cuentaService.listar());
+			mv.setViewName("listarCuentas");
 		} catch (Exception e) {
-			mv.addObject(e.getMessage());
+			session.setAttribute("error", "Problemas para buscar las cuentas.");
+			mv.setViewName("listarCuentas");
 		}
-		mv.setViewName("listarCuentas");
 		return mv;
 	}
-		
-//	private ModelAndView listarCuentas() {
-//		ModelAndView mv = new ModelAndView();
-//		try {
-////			List<Cuenta> cuentas = cuentaService.listar();
-////			mv.addObject(cuentas);			
-//			mv.addObject("Cuenta", cuentaService.listar());
-//		} catch (Exception e) {
-//			mv.addObject(e.getMessage());
-//		}
-//		mv.setViewName("listarCuentas");
-//		return mv;
-//	}
-	
-//	@RequestMapping("altaCuenta")
-//	public ModelAndView altaCuenta(HttpServletRequest request, String user, String pass) throws Exception  {
-//		ModelAndView mv = new ModelAndView();
-////		mv = new ModelAndView("redirect:altaCliente.html");
-//		mv.setViewName("altaCuenta");
-//		return mv;
-//	}
 
 	@RequestMapping("altaCuenta")
-	public ModelAndView altaCuenta( HttpServletRequest request, String dni, String tipoCuenta) {
+	public ModelAndView altaCuenta( HttpServletRequest request, Integer dni) {
 		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
 		try {
 			if (request.getParameter("txtNombre") != null) {
-//				Cuenta
-				Random rnd = new Random();
-				Cuenta cuen = new Cuenta();
-				cuen.setCbu(rnd.nextInt(10));
-				cuen.setNroCuenta(rnd.nextInt(10));
-				cuen.setNombre(tipoCuenta);
 				
-				TipoCuenta tc = new TipoCuenta();
-				tc.setDescripcion(tipoCuenta);
-				cuen.setTipoCuenta(tc);
-				cuen.setSaldo(0);
-				cuen.setEstado(true);
+				Cliente cli = clienteService.buscarPorDni(Integer.parseInt(request.getParameter("txtDni")));
+				cli.setId(cli.getId());
 				
-		    	SimpleDateFormat dtf = new SimpleDateFormat("yyyy/MM/dd");
-		        Calendar calendar = Calendar.getInstance();
-		        Date dateObj = calendar.getTime();
-		        String formattedDate = dtf.format(dateObj);
+				List<Cuenta> listCli = cuentaService.buscarCantidadCuentas(cli.getId());
 				
-				cuen.setFechaAlta(formattedDate);
+				if(listCli.size() < 4) {
+					
+					Random rnd = new Random();
+					Cuenta cuen = new Cuenta();
+					cuen.setCbu(rnd.nextInt(1000000000));
+					cuen.setNroCuenta(rnd.nextInt(1000000000));
+					
+					if (request.getParameter("btnradio").equals("Cuenta CA")) {
+							cuen.setNombre("Cuenta CA");
+							TipoCuenta tc = tipoCuentaService.buscar("Caja de ahorro en pesos");
+							cuen.setTipoCuenta(tc);
+					} else {
+						cuen.setNombre("Cuenta CD");
+						TipoCuenta tc = tipoCuentaService.buscar("Caja de ahorro en dólares");
+						cuen.setTipoCuenta(tc);
+					}
 
-				
+					cuen.setSaldo(0);
+					cuen.setEstado(true);
+					
+			    	SimpleDateFormat dtf = new SimpleDateFormat("yyyy/MM/dd");
+			        Calendar calendar = Calendar.getInstance();
+			        Date dateObj = calendar.getTime();
+			        String formattedDate = dtf.format(dateObj);
+					cuen.setFechaAlta(formattedDate);
+					cuen.setFechaUltimaModificacion("");
+					cuen.setCliente(cli);
+					cuentaService.crear(cuen);
+
+					session.setAttribute("success", "Se creo la cuenta " + cuen.getNroCuenta() + " de manera correcta.");
+					Integer dniCli = Integer.parseInt(request.getParameter("txtDni"));
+					System.out.println(dniCli);
+					mv = new ModelAndView("redirect:listarCuentasPorCliente.html?dni="+ dniCli);
+				}else {
+					session.setAttribute("error", "El cliente no puede tener más de 4 cuentas");
+//					mv.setViewName("listarCuentas");
+					mv = new ModelAndView("redirect:listarClientes.html");
+				}
 			}else {
-				mv.addObject("DNI", dni);				
-			}
-//			String a = request.getParameter("btnCaja");
-//			String b = request.getParameter("txtNombre");
-//			String c = request.getParameter("txtApellido");
-//			String d = request.getParameter("TboxFecha");
-//			String e = request.getParameter("btnradio");
-//			String f = request.getParameter("txtCalle");
-//			String g = request.getParameter("txtLocalidad");
-//			String h = request.getParameter("txtProvincia");
-//			String i = request.getParameter("TboxNacionalidad");
-//			String j = request.getParameter("txtDni");
-			
-//			mv.addObject("Cliente", clienteService.buscarPorDni(dni));
-			
-			
-			
+				mv.addObject("Cliente", clienteService.buscarPorDni(dni));
+				mv.setViewName("altaCuenta");
+			}	
 		} catch (Exception e) {
-			// TODO: handle exception
+			session.setAttribute("error", "Problemas para crear la cuenta.");
+			mv = new ModelAndView("redirect:listarClientes.html");
 		}
-		
-		mv.setViewName("altaCuenta");
 		return mv;
 	}
 	
@@ -125,6 +113,26 @@ public class CuentaController {
 		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
 		mv.setViewName("modificarCuenta");
+		return mv;
+	}
+	
+	@RequestMapping("listarCuentasPorCliente")
+	public ModelAndView listarCuentasPorCliente(HttpServletRequest request, Integer dni) throws NumberFormatException, Exception {
+		ModelAndView mv = new ModelAndView();
+		HttpSession session = request.getSession();
+		
+		if (dni != null) {
+			try {
+				Cliente cli = clienteService.buscarPorDni(dni);
+				cli.setId(cli.getId());
+				mv.addObject("Cuenta", cuentaService.buscarCantidadCuentas(cli.getId()));
+				mv.setViewName("listarCuentasPorCliente");
+
+			} catch (Exception e) {
+				session.setAttribute("error", "Problemas para buscar las cuentas.");
+				mv.setViewName("listarCuentasPorCliente");
+			}	
+		}
 		return mv;
 	}
 	

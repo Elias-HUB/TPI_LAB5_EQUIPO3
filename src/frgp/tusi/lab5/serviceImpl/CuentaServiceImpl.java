@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import frgp.tusi.lab5.daoImpl.CuentaDaoImpl;
 import frgp.tusi.lab5.daoImpl.TipoMovimientoDaoImpl;
+import frgp.tusi.lab5.model.Cliente;
 import frgp.tusi.lab5.model.Cuenta;
 import frgp.tusi.lab5.model.Movimiento;
 import frgp.tusi.lab5.model.TipoMovimiento;
@@ -43,14 +44,14 @@ public Cuenta actualizar(Cuenta cuenta) throws Exception {
 
 @Override
 public Cuenta crear(Cuenta cuenta) throws Exception {
-	Movimiento mov = new Movimiento();
-	TipoMovimiento tipoMov = tipoMovimientoDaoImpl.buscar(1);
-	mov.setTipoMovimiento(tipoMov);
-	mov.setImporte(10000);
-	mov.setDetalle("Alta");
-	mov.setEstado(true);
-	mov.setFecha(new Date());
-	mov.setFechaUltimaModificacion(new Date());
+//	Movimiento mov = new Movimiento();
+//	TipoMovimiento tipoMov = tipoMovimientoDaoImpl.buscar(1);
+//	mov.setTipoMovimiento(tipoMov);
+//	mov.setImporte(10000);
+//	mov.setDetalle("Alta");
+//	mov.setEstado(true);
+//	mov.setFecha(new Date());
+//	mov.setFechaUltimaModificacion(new Date());
 	
 	return cuentaDaoImpl.crear(cuenta);	
 }
@@ -58,5 +59,14 @@ public Cuenta crear(Cuenta cuenta) throws Exception {
 @Override
 public Cuenta buscar(String cbu) throws Exception {
 	return cuentaDaoImpl.buscar(cbu);	
+}
+
+@Override
+public Cuenta buscaPorId(Integer idCli) throws Exception {
+	return cuentaDaoImpl.buscaPorId(idCli);
+}
+
+public List<Cuenta> buscarCantidadCuentas(Integer idCli) throws Exception {
+	return cuentaDaoImpl.buscarCantidadCuentas(idCli);
 }
 }

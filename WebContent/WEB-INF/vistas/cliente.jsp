@@ -51,7 +51,7 @@
                                 <i class="bi bi-plus-square" data-toggle="tooltip" data-placement="bottom"
                                     title="Agregar cuenta"></i>
                             </button>
-                        	<button type="submit" id="" name="BtnCuentas" class="btn btn-info" onclick="location.href='listarCuentas.html?dni=${Cliente.getDni()}'">
+                        	<button type="submit" id="" name="BtnCuentas" class="btn btn-info" onclick="location.href='listarCuentasPorCliente.html?dni=${Cliente.getDni()}'">
                                 <i class="bi bi-list-stars" data-toggle="tooltip" data-placement="bottom"
                                     title="Ver cuentas"></i>
                             </button>
