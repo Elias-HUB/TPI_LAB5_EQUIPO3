@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
     <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
     <html>
 
@@ -22,38 +23,38 @@
                 <div class="form-group col-md-1">
                     <label class="control-label">Cuenta</label>
                     <select class="form-select">
-                        <option value="1" selected>20164</option>
-                        <option value="2">24567</option>
-                        <option value="3">32654</option>
+						<c:forEach var="LCuenta" items="${ Cuentas }">
+							<option value="${ LCuenta.getNroCuenta() }">${ LCuenta.getNroCuenta() }</option>
+						</c:forEach>
                     </select>
                 </div>
 
                 <div class="form-group col-md-3">
                     <label Class="control-label">CBU</label>
-                    <input id="TboxCBUCuenta" name="TboxCBUCuenta" Class="form-control" value="0170231820000000010500"
+                    <input id="TboxCBUCuenta" name="TboxCBUCuenta" Class="form-control" value="${ Cuenta.getCbu() }"
                         readonly>
                 </div>
 
                 <div class="form-group col-md-3">
                     <label Class="control-label">Nombre</label>
-                    <input id="TboxNombreCuenta" name="TboxNombreCuenta" Class="form-control" value="Valenzuela Elias"
+                    <input id="TboxNombreCuenta" name="TboxNombreCuenta" Class="form-control" value="${ Cliente.getNombre() } ${ Cliente.getApellido() }"
                         readonly>
                 </div>
 
                 <div class="form-group col-md-2">
                     <label Class="control-label">Tipo de cuenta</label>
                     <input id="TboxTipoCuenta" name="TboxTipoCuenta" Class="form-control"
-                        value="Caja de ahorro en pesos" readonly>
+                        value="${ Cuenta.getTipoCuenta().getDescripcion() }" readonly>
                 </div>
 
                 <div class="form-group col-md-2">
                     <label Class="control-label">Saldo</label>
-                    <input id="TboxSaldoCuenta" name="TboxSaldoCuenta" Class="form-control" value="$10299.5" readonly>
+                    <input id="TboxSaldoCuenta" name="TboxSaldoCuenta" Class="form-control" value="${ Cuenta.getSaldo() }" readonly>
                 </div>
 
                 <div class="form-group col-md-1">
                     <label Class="control-label">Estado</label>
-                    <input id="TboxEstadoCuenta" name="TboxEstadoCuenta" Class="form-control" value="Activo" readonly>
+                    <input id="TboxEstadoCuenta" name="TboxEstadoCuenta" Class="form-control" value="${ Cuenta.getEstado() }" readonly>
                 </div>
             </div>
             </div>
@@ -66,7 +67,6 @@
                 cellspacing="0" width="100%" style="font-size: small;">
                 <thead>
                     <tr>
-                        <th style="text-align: center">Nro</th>
                         <th style="text-align: center">Tipo Movimiento</th>
                         <th style="text-align: center">Detalle</th>
                         <th style="text-align: center">Importe</th>
@@ -74,27 +74,14 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <c:forEach var="Movimiento" items="${ Movimientos }">
                     <tr>
-                        <td>1</td>
-                        <td>Alta Cuenta</td>
-                        <td>1</td>
-                        <td>$10.000</td>
-                        <td>Alta</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Transferencia</td>
-                        <td>1</td>
-                        <td>$-1550.5</td>
-                        <td>Transferido</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Transferencia</td>
-                        <td>5</td>
-                        <td>$1850</td>
-                        <td>Transferido</td>
-                    </tr>
+                		<td>${ Movimiento.getTipoMovimiento().getDescripcion() }</td>
+                		<td>${ Movimiento.getDetalle() }</td>
+                		<td>$ ${ Cuenta.getImporte() }</td>
+                		<td>${ Cuenta.getEstado() == true ? "Activo" : "Inactivo"}</td>
+                	</tr>
+                </c:forEach>                    
                 </tbody>
             </table>
         </div>

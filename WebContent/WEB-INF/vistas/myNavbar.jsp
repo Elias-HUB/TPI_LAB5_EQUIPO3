@@ -18,7 +18,7 @@
         			%>
             <ul id="menuCliente" class="navbar-nav ">
                 <li class="nav-item mr-2">
-                    <a class="nav-link" href="resumen.html">CUENTAS</a>
+                    <a class="nav-link" href="resumen.html?Val=1">CUENTAS</a>
                 </li>
                 <li class="nav-item mr-2">
                     <a class="nav-link" href="detalleCliente.html">MIS DATOS</a>

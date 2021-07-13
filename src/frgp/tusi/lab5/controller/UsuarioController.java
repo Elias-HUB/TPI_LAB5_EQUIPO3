@@ -71,7 +71,7 @@ public class UsuarioController {
 				else {
 					Cliente cliente = clienteService.buscarPorDni(Integer.parseInt(user));
 					session.setAttribute("persona", cliente);
-					return new ModelAndView("redirect:resumen.html");
+					return new ModelAndView("redirect:resumen.html?Val=1");
 				}
 			} else {
 				session.setAttribute("error", "Usuario desactivado.");

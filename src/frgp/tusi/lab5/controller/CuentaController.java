@@ -15,9 +15,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import frgp.tusi.lab5.model.Cliente;
 import frgp.tusi.lab5.model.Cuenta;
+import frgp.tusi.lab5.model.Movimiento;
 import frgp.tusi.lab5.model.TipoCuenta;
+import frgp.tusi.lab5.service.ClienteService;
 import frgp.tusi.lab5.serviceImpl.ClienteServiceImpl;
 import frgp.tusi.lab5.serviceImpl.CuentaServiceImpl;
+import frgp.tusi.lab5.serviceImpl.MovimientoServiceImpl;
 import frgp.tusi.lab5.serviceImpl.TipoCuentaServiceImpl;
 
 @Controller
@@ -26,11 +29,12 @@ public class CuentaController {
 	private ClienteServiceImpl clienteService;
 	private CuentaServiceImpl cuentaService;
 	private TipoCuentaServiceImpl tipoCuentaService;
-	
+	private MovimientoServiceImpl movimientoService;
 	public CuentaController() {
 		clienteService = new ClienteServiceImpl();
 		cuentaService = new CuentaServiceImpl();
 		tipoCuentaService = new TipoCuentaServiceImpl();
+		movimientoService = new MovimientoServiceImpl();
 	}
 	
 	@RequestMapping("listarCuentas")
@@ -155,10 +159,22 @@ public class CuentaController {
 	}
 	
 	@RequestMapping("resumen")
-	public ModelAndView resumen() {
+	public ModelAndView resumen(HttpServletRequest request, Integer Val) throws Exception {
 		ModelAndView mv = new ModelAndView();
-//		Cliente cliente = clienteService.buscarPorDni(dni);
-//		mv.addObject("Cuentas", cuentaService.buscarCantidadCuentas(cliente.getId()));
+		HttpSession session = request.getSession();
+		Cliente cliente = (Cliente)session.getAttribute("persona");
+		List<Cuenta> cuentas = cuentaService.buscarCantidadCuentas(cliente.getId());
+		
+		mv.addObject("Cliente", cliente);
+		mv.addObject("Cuentas", cuentas);
+		if(Val == 1) {
+		Cuenta cuenta = cuentas.get(0);
+		mv.addObject("Cuenta", cuenta);
+		List<Movimiento> mov = cuenta.getMovimientos();
+		mv.addObject("Movimientos", cuenta.getMovimientos());
+		}else {
+			
+		}
 		mv.setViewName("resumen");
 		return mv;
 	}
