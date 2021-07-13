@@ -47,7 +47,17 @@
 					</div>
 				</div>
 				<div class="form-group mt-4">
-					<label class="control-label" for="txtCalle">Calle</label> 
+					<label class="control-label" for="txtNacionalidad">Nacionalidad</label>
+					<select id="TboxNacionalidad" name="TboxNacionalidad"
+						class="form-select">
+						<c:forEach var="Nacion" items="${ Nacionalidades }">
+    					<option value="${ Nacion.getId() }">${ Nacion.getNombre() }</option>
+    					</c:forEach>
+					</select>
+				</div>
+				<h4 class="d-flex mt-5 justify-content-left">Domicilio</h4>
+				<div class="form-group mt-4">
+					<label class="control-label" for="txtCalle">Calle y Número</label> 
 					<input class="form-control" name="txtCalle"  id="txtCalle" type="text" value="" required>
 				</div>
 				<div class="form-group mt-4">
@@ -60,15 +70,6 @@
 						class="form-select">
 						<c:forEach var="Provincia" items="${ Provincias }">
     					<option value="${ Provincia.getId() }">${ Provincia.getNombre() }</option>
-    					</c:forEach>
-					</select>
-				</div>
-				<div class="form-group mt-4">
-					<label class="control-label" for="txtNacionalidad">Nacionalidad</label>
-					<select id="TboxNacionalidad" name="TboxNacionalidad"
-						class="form-select">
-						<c:forEach var="Nacion" items="${ Nacionalidades }">
-    					<option value="${ Nacion.getId() }">${ Nacion.getNombre() }</option>
     					</c:forEach>
 					</select>
 				</div>

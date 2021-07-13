@@ -42,7 +42,7 @@
 				</div>
 
 						<div class="form-group mt-4 d-flex justify-content-center">
-							<button type="button" class="btn btn-primary mx-2" value="Volver" onclick="location.href='cliente.html'">Volver</button>
+							<button type="button" class="btn btn-primary mx-2" value="Volver" onclick="location.href='listarClientes.html'">Volver</button>
 							<button type="submit" id="BtnAgregar" name="BtnAgregar" class="btn btn-success mx-2" value="Guardar">Guardar</button>
 						</div>
 					</div>

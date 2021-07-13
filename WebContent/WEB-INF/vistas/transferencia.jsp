@@ -39,7 +39,7 @@
 	                        <input class="form-control" name="txtImporte" id="txtImporte" type="text" value="0">
 	                    </div>
 	                     <div class="form-group mt-4 d-flex justify-content-center">
-	                         <button class="btn btn-primary mx-2" type="button" name="back" onclick="location.href='resumen.html" value="Volver">Volver</button>
+	                         <button type="button" class="btn btn-primary mx-2" value="Volver" onclick="location.href='resumen.html?Val=1'">Volver</button>
 	                         <button type="submit" class="btn btn-success mx-2" value="Guardar">Transferir</button>                                
 	                     </div>
 	    			</div>

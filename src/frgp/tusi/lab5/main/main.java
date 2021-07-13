@@ -47,10 +47,13 @@ public class main {
     	TipoMovimiento tipoTransferenciaDeb = new TipoMovimiento();
     	TipoMovimiento tipoTransferenciaCred = new TipoMovimiento();
     	TipoMovimiento tipoAltaCuenta = new TipoMovimiento();
+    	
     	tipoTransferenciaDeb.setDescripcion("Transferencia Débito");
     	tipoTransferenciaCred.setDescripcion("Transferencia Crédito");
     	tipoAltaCuenta.setDescripcion("Alta de Cuenta");
     	session.save(tipoAltaCuenta);
+    	session.save(tipoTransferenciaDeb);
+    	session.save(tipoTransferenciaCred);
     	
     	TipoCuenta tipoCuentaCA = new TipoCuenta();
     	tipoCuentaCA.setDescripcion("Caja de ahorro en pesos");

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
     <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
     <html>
 
@@ -75,8 +76,8 @@
             <div class="card rounded shadow p-4">
             
             <h2 class="my-3">Movimientos</h2>
-            <table id="example" class="table table-striped table-bordered dt-responsive nowrap pt-1 "
-                cellspacing="0" width="100%" style="font-size: small;">
+			<table id="example" class="table table-striped table-bordered dt-responsive nowrap pt-1 mt-5"
+                cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th style="text-align: center">Tipo Movimiento</th>

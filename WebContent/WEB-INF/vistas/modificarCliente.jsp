@@ -72,12 +72,22 @@
 					</div>
 				</div>
 				<div class="form-group mt-4">
-					<label class="control-label" for="txtCalle">Calle</label> 
-					<input class="form-control" name="txtCalle"  id="txtCalle" type="text" value="${ Cliente.getDomicilio().getDireccion() }" required>
+					<label class="control-label" for="txtNacionalidad">Nacionalidad</label>
+					<select id="TboxNacionalidad" name="TboxNacionalidad"
+						class="form-select">
+						<c:forEach var="Nacion" items="${ Nacionalidades }">
+    					<option value="${ Nacion.getId() }">${ Nacion.getNombre() }</option>
+    					</c:forEach>
+					</select>
+				</div>
+				<h4 class="d-flex mt-5 justify-content-left">Domicilio</h4>
+				<div class="form-group mt-4">
+					<label class="control-label" for="txtCalle">Calle y Número</label> 
+					<input class="form-control" name="txtCalle"  id="txtCalle" type="text" value="" required>
 				</div>
 				<div class="form-group mt-4">
 					<label class="control-label" for="txtLocalidad">Localidad</label> 
-					<input class="form-control" name="txtLocalidad"  id="txtLocalidad" type="text" value="${ Cliente.getDomicilio().getLocalidad() }" required>
+					<input class="form-control" name="txtLocalidad"  id="txtLocalidad" type="text" value="" required>
 				</div>
 				<div class="form-group mt-4">
 					<label class="control-label" for="txtProvincia">Provincia</label> 
@@ -94,22 +104,6 @@
 							</c:choose>    					
     					</c:forEach>
 					</select>
-				</div>
-				<div class="form-group mt-4">
-					<label class="control-label" for="txtNacionalidad">Nacionalidad</label>
-					<select id="TboxNacionalidad" name="TboxNacionalidad"
-						class="form-select">
-						<c:forEach var="Nacion" items="${ Nacionalidades }">
-							<c:choose>
-    							<c:when test="${Nacion.getId().equals(Cliente.getNacionalidad().getId())}">
-    								<option value="${ Nacion.getId() }" selected>${ Nacion.getNombre() }</option>
-    							</c:when>
-								<c:otherwise>
-									<option value="${ Nacion.getId() }">${ Nacion.getNombre() }</option>
-								</c:otherwise>
-							</c:choose>
-    					</c:forEach>
-    				</select>
 				</div>
 				<div class="form-group mt-4 d-flex justify-content-center">
 					<button type="button" class="btn btn-primary mx-2" value="Volver" onclick="location.href='listarClientes.html'">Volver</button>

@@ -1,14 +1,5 @@
 $(document).ready(function () {
   $("#example").DataTable({
-    // columnDefs: [
-    //   {
-    //     orderable: false,
-    //     targets: [6],
-    //   },
-    //   { visible: false, targets: 1 },
-    //   { responsivePriority: 1, targets: 0 },
-    //   { responsivePriority: 2, targets: -1 },
-    // ],
     lengthMenu: [
       [5, 10, 15, -1],
       [5, 10, 15, "Todos"],

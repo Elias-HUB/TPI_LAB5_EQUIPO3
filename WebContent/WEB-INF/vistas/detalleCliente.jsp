@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import="frgp.tusi.lab5.model.Usuario"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -50,7 +51,12 @@
 					</div>
 				</div>
 				<div class="form-group mt-4">
-					<label class="control-label" for="txtCalle">Calle</label> 
+					<label class="control-label" for="txtNacionalidad">Nacionalidad</label>
+					<input readonly class="form-control" id="txtNacionalidad" type="text" value="${ Cliente.getNacionalidad().getNombre() }" readonly>
+				</div>
+				<h4 class="d-flex mt-5 justify-content-left">Domicilio</h4>
+				<div class="form-group mt-4">
+					<label class="control-label" for="txtCalle">Calle y Número</label> 
 					<input class="form-control" name="txtCalle"  id="txtCalle" type="text" value="${ Cliente.getDomicilio().getDireccion() }" readonly>
 				</div>
 				<div class="form-group mt-4">
@@ -61,12 +67,21 @@
 					<label class="control-label" for="txtProvincia">Provincia</label> 
 					<input class="form-control" name="txtProvincia"  id="txtProvincia" type="text" value="${ Cliente.getProvincia().getNombre() }" readonly>
 				</div>
-				<div class="form-group mt-4">
-					<label class="control-label" for="txtNacionalidad">Nacionalidad</label>
-					<input readonly class="form-control" id="txtNacionalidad" type="text" value="${ Cliente.getNacionalidad().getNombre() }" readonly>
-				</div>
+
 				<div class="form-group mt-4 d-flex justify-content-center">
-					<button class="btn btn-primary mx-2" value="Volver" onclick="location.href='listarClientes.html'">Volver</button>
+				<% 	
+					session = request.getSession();
+	        		Usuario user = (Usuario)session.getAttribute("user");
+	        		if(user.getTipoUsuario().equals("cliente")) {
+	        			%>
+						<button class="btn btn-primary mx-2" value="Volver" onclick="location.href='resumen.html?Val=1'">Volver</button>
+						<% 
+	        		} else {	
+	        			%>
+						<button class="btn btn-primary mx-2" value="Volver" onclick="location.href='listarClientes.html'">Volver</button>
+						<% 
+	        		}
+	        		%>
 				</div>
 			</div>
 		</div>
