@@ -55,12 +55,11 @@ public class UsuarioController {
 		try {
 			Usuario usuario = usuarioService.buscarUsuario(user, pass);
 			if(usuario.getEstado() == true) {
+				session.setAttribute("user", usuario);
 				if (usuario.getTipoUsuario().equals("empleado")) {
-					session.setAttribute("user", usuario.getTipoUsuario());
 					return new ModelAndView("redirect:listarClientes.html");
 				}
 				else {
-					session.setAttribute("user", usuario.getTipoUsuario());
 					return new ModelAndView("redirect:resumen.html");
 				}
 			} else {

@@ -13,6 +13,7 @@ import frgp.tusi.lab5.model.Cuenta;
 import frgp.tusi.lab5.model.Movimiento;
 import frgp.tusi.lab5.model.TipoMovimiento;
 import frgp.tusi.lab5.model.Transferencia;
+import frgp.tusi.lab5.model.Usuario;
 import frgp.tusi.lab5.serviceImpl.ClienteServiceImpl;
 import frgp.tusi.lab5.serviceImpl.CuentaServiceImpl;
 import frgp.tusi.lab5.serviceImpl.TipoMovimientoServiceImpl;
@@ -59,7 +60,7 @@ public class TrasferenciaController {
 			if(ValidarRequestTransferencia(request)){
 				cuentaOrigen = cuentaService.buscar(request.getParameter("cuentas"));
 				cuentaDestino = cuentaService.buscar(request.getParameter("txtDestino"));
-				
+				Usuario usuario = (Usuario)session.getAttribute("user");
 				TipoMovimiento tipoMovOrigen = tipoMovimientoService.buscar("Transferencia Débito");
 				TipoMovimiento tipoMovDestino = tipoMovimientoService.buscar("Transferencia Crédito");
 				
