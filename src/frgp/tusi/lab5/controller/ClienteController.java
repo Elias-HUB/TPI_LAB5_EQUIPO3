@@ -57,80 +57,80 @@ public class ClienteController {
 			if (request.getParameter("txtNombre") != null) {
 				Cliente cli = new Cliente();
 				try {
-				usuarioService.buscarPorUsuario(request.getParameter("txtDni").toString());			
-				session.setAttribute("error", "Ya existe un usuario con el mismo documento.");
-				mv = new ModelAndView("redirect:listarClientes.html");
+					usuarioService.buscarPorUsuario(request.getParameter("txtDni").toString());			
+					session.setAttribute("error", "Ya existe un usuario con el mismo documento.");
+					mv = new ModelAndView("redirect:listarClientes.html");
 				} catch (Exception e) {
-				cli.setApellido(request.getParameter("txtApellido").substring(0,1).toUpperCase() + request.getParameter("txtApellido").substring(1));				
-				cli.setNombre(request.getParameter("txtNombre").substring(0,1).toUpperCase() + request.getParameter("txtNombre").substring(1));
-				cli.setDni(Integer.parseInt(request.getParameter("txtDni").toString()));
-				if (request.getParameter("btnradio").equals("on")) {
-					cli.setSexo("M");
-				} else {
-					cli.setSexo("F");
-				}
-				cli.setEstado(true);
-				Nacionalidad nacionalidad = nacionalidadService.BuscarPorID(Integer.parseInt(request.getParameter("TboxNacionalidad").toString()));				
-				Provincia provincia = provinciaService.BuscarPorID(Integer.parseInt(request.getParameter("txtProvincia").toString()));
-				cli.setNacionalidad(nacionalidad);
-				cli.setProvincia(provincia);
-				cli.setFechaNacimiento(request.getParameter("TboxFecha"));
-				
-				Domicilio domicilio = new Domicilio();
-				domicilio.setDireccion(request.getParameter("txtCalle"));
-				domicilio.setLocalidad(request.getParameter("txtLocalidad"));
-				
-				Usuario usuario = new Usuario();
-		    	usuario.setEstado(true);
-		    	usuario.setFechaAlta(new Date());
-		    	usuario.setFechaUltimaModificacion(new Date());
-		    	usuario.setTipoUsuario("cliente");
-		    	usuario.setPass("1234");
-		    	usuario.setUserName(cli.getDni().toString());
-		    	
-		    	cli.setUsuario(usuario);
-				cli.setDomicilio(domicilio);
-				
-				//Generar cuenta y movimiento
-				Random rnd = new Random();
-				List<Cuenta> cuentasCliente = new ArrayList<Cuenta>();
-				List<Movimiento> movimientosCuentaOrigen = new ArrayList<Movimiento>();
-				
-				SimpleDateFormat dtf = new SimpleDateFormat("yyyy/MM/dd");
-		        Calendar calendar = Calendar.getInstance();
-		        Date dateObj = calendar.getTime();
-		        String formattedDate = dtf.format(dateObj);
-				
-				TipoCuenta tipoCuentaCA = tipoCuentaService.buscar("Caja de ahorro en pesos");
-		    	TipoMovimiento tipoAltaCuenta = tipoMovimientoService.buscar("Alta de Cuenta");
-		    	
-		    	Movimiento movAltaCuenta = new Movimiento();
-		    	movAltaCuenta.setDetalle("Alta de Cuenta");
-		    	movAltaCuenta.setEstado(true);
-		    	movAltaCuenta.setFecha(new Date());
-		    	movAltaCuenta.setFechaUltimaModificacion(new Date());
-		    	movAltaCuenta.setTipoMovimiento(tipoAltaCuenta);
-		    	movAltaCuenta.setImporte(10000);
-		    	movimientosCuentaOrigen.add(movAltaCuenta);		    	
-		    	
-		    	Cuenta cuentaAlta = new Cuenta();
-		    	cuentaAlta.setCbu(rnd.nextInt(1000000000));
-		    	cuentaAlta.setNroCuenta(rnd.nextInt(1000000000));
-		    	cuentaAlta.setNombre("Cuenta CA");
-		    	cuentaAlta.setSaldo(10000);
-		    	cuentaAlta.setEstado(true);
-		    	cuentaAlta.setTipoCuenta(tipoCuentaCA);
-		    	cuentaAlta.setFechaAlta(formattedDate);
-		    	cuentaAlta.setFechaUltimaModificacion(formattedDate);    	
-		    	cuentaAlta.setMovimientos(movimientosCuentaOrigen);				
-		    	cuentasCliente.add(cuentaAlta);
-		    	
-		    	cli.setCuentas(cuentasCliente);
-				clienteService.crear(cli);
-		    	
-				session.setAttribute("success",
-						"Se creó al cliente " + cli.getNombre() + " " + cli.getApellido() + " con su usuario y cuenta de manera correcta.");
-				mv = new ModelAndView("redirect:listarClientes.html");
+					cli.setApellido(request.getParameter("txtApellido").substring(0,1).toUpperCase() + request.getParameter("txtApellido").substring(1));				
+					cli.setNombre(request.getParameter("txtNombre").substring(0,1).toUpperCase() + request.getParameter("txtNombre").substring(1));
+					cli.setDni(Integer.parseInt(request.getParameter("txtDni").toString()));
+					if (request.getParameter("btnradio").equals("on")) {
+						cli.setSexo("M");
+					} else {
+						cli.setSexo("F");
+					}
+					cli.setEstado(true);
+					Nacionalidad nacionalidad = nacionalidadService.BuscarPorID(Integer.parseInt(request.getParameter("TboxNacionalidad").toString()));				
+					Provincia provincia = provinciaService.BuscarPorID(Integer.parseInt(request.getParameter("txtProvincia").toString()));
+					cli.setNacionalidad(nacionalidad);
+					cli.setProvincia(provincia);
+					cli.setFechaNacimiento(request.getParameter("TboxFecha"));
+					
+					Domicilio domicilio = new Domicilio();
+					domicilio.setDireccion(request.getParameter("txtCalle"));
+					domicilio.setLocalidad(request.getParameter("txtLocalidad"));
+					
+					Usuario usuario = new Usuario();
+			    	usuario.setEstado(true);
+			    	usuario.setFechaAlta(new Date());
+			    	usuario.setFechaUltimaModificacion(new Date());
+			    	usuario.setTipoUsuario("cliente");
+			    	usuario.setPass("1234");
+			    	usuario.setUserName(cli.getDni().toString());
+			    	
+			    	cli.setUsuario(usuario);
+					cli.setDomicilio(domicilio);
+					
+					//Generar cuenta y movimiento
+					Random rnd = new Random();
+					List<Cuenta> cuentasCliente = new ArrayList<Cuenta>();
+					List<Movimiento> movimientosCuentaOrigen = new ArrayList<Movimiento>();
+					
+					SimpleDateFormat dtf = new SimpleDateFormat("yyyy/MM/dd");
+			        Calendar calendar = Calendar.getInstance();
+			        Date dateObj = calendar.getTime();
+			        String formattedDate = dtf.format(dateObj);
+					
+					TipoCuenta tipoCuentaCA = tipoCuentaService.buscar("Caja de ahorro en pesos");
+			    	TipoMovimiento tipoAltaCuenta = tipoMovimientoService.buscar("Alta de Cuenta");
+			    	
+			    	Movimiento movAltaCuenta = new Movimiento();
+			    	movAltaCuenta.setDetalle("Alta de Cuenta");
+			    	movAltaCuenta.setEstado(true);
+			    	movAltaCuenta.setFecha(new Date());
+			    	movAltaCuenta.setFechaUltimaModificacion(new Date());
+			    	movAltaCuenta.setTipoMovimiento(tipoAltaCuenta);
+			    	movAltaCuenta.setImporte(10000);
+			    	movimientosCuentaOrigen.add(movAltaCuenta);		    	
+			    	
+			    	Cuenta cuentaAlta = new Cuenta();
+			    	cuentaAlta.setCbu(rnd.nextInt(1000000000));
+			    	cuentaAlta.setNroCuenta(rnd.nextInt(1000000000));
+			    	cuentaAlta.setNombre("Cuenta CA");
+			    	cuentaAlta.setSaldo(10000);
+			    	cuentaAlta.setEstado(true);
+			    	cuentaAlta.setTipoCuenta(tipoCuentaCA);
+			    	cuentaAlta.setFechaAlta(formattedDate);
+			    	cuentaAlta.setFechaUltimaModificacion(formattedDate);    	
+			    	cuentaAlta.setMovimientos(movimientosCuentaOrigen);				
+			    	cuentasCliente.add(cuentaAlta);
+			    	
+			    	cli.setCuentas(cuentasCliente);
+					clienteService.crear(cli);
+			    	
+					session.setAttribute("success",
+							"Se creó al cliente " + cli.getNombre() + " " + cli.getApellido() + " con su usuario y cuenta de manera correcta.");
+					mv = new ModelAndView("redirect:listarClientes.html");
 				}
 			} else {
 				mv = new ModelAndView("redirect:altaCliente.html");
