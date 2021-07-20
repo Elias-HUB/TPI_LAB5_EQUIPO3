@@ -3,11 +3,13 @@ package frgp.tusi.lab5.daoImpl;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 
 import frgp.tusi.lab5.config.HibernateConfiguration;
 import frgp.tusi.lab5.dao.TransferenciaDao;
 import frgp.tusi.lab5.model.Transferencia;
 
+@Repository
 public class TransferenciaDaoImpl implements TransferenciaDao {
 
 	@Override

@@ -6,6 +6,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 
+import org.springframework.stereotype.Component;
+
+@Component
 @MappedSuperclass
 public class Persona {
 

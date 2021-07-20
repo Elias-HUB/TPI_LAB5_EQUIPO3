@@ -83,11 +83,11 @@
 				<h4 class="d-flex mt-5 justify-content-left">Domicilio</h4>
 				<div class="form-group mt-4">
 					<label class="control-label" for="txtCalle">Calle y Número</label> 
-					<input class="form-control" name="txtCalle"  id="txtCalle" type="text" value="" required>
+					<input class="form-control" name="txtCalle"  id="txtCalle" type="text" value="${ Cliente.getDomicilio().getDireccion() }" required>
 				</div>
 				<div class="form-group mt-4">
 					<label class="control-label" for="txtLocalidad">Localidad</label> 
-					<input class="form-control" name="txtLocalidad"  id="txtLocalidad" type="text" value="" required>
+					<input class="form-control" name="txtLocalidad"  id="txtLocalidad" type="text" value="${ Cliente.getDomicilio().getLocalidad() }" required>
 				</div>
 				<div class="form-group mt-4">
 					<label class="control-label" for="txtProvincia">Provincia</label> 

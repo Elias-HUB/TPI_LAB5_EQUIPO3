@@ -2,10 +2,13 @@ package frgp.tusi.lab5.serviceImpl;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import frgp.tusi.lab5.daoImpl.NacionalidadDaoImpl;
 import frgp.tusi.lab5.model.Nacionalidad;
 import frgp.tusi.lab5.service.NacionalidadService;
 
+@Service
 public class NacionalidadServicesImpl implements NacionalidadService{
 
 	private NacionalidadDaoImpl NacionalidadDaoImpl;

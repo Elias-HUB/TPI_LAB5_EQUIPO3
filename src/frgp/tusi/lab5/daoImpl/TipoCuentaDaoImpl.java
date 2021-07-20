@@ -1,10 +1,13 @@
 package frgp.tusi.lab5.daoImpl;
 
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
+
 import frgp.tusi.lab5.config.HibernateConfiguration;
 import frgp.tusi.lab5.dao.TipoCuentaDao;
 import frgp.tusi.lab5.model.TipoCuenta;
 
+@Repository
 public class TipoCuentaDaoImpl implements TipoCuentaDao{
 
 	

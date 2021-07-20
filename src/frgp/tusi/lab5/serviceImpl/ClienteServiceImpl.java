@@ -13,11 +13,10 @@ import frgp.tusi.lab5.service.ClienteService;
 @Service
 public class ClienteServiceImpl implements ClienteService {
 	
-	
+	@Autowired
 	private ClienteDaoImpl clienteDaoImpl;
-	//@Autowired
+	
 	public ClienteServiceImpl() {
-		clienteDaoImpl = new ClienteDaoImpl();
 	}
 
 	@Override

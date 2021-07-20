@@ -10,6 +10,8 @@ import java.util.Random;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,17 +27,21 @@ import frgp.tusi.lab5.model.TipoMovimiento;
 import frgp.tusi.lab5.model.Usuario;
 import frgp.tusi.lab5.serviceImpl.ClienteServiceImpl;
 import frgp.tusi.lab5.serviceImpl.CuentaServiceImpl;
-import frgp.tusi.lab5.serviceImpl.UsuarioServiceImpl;
 import frgp.tusi.lab5.serviceImpl.NacionalidadServicesImpl;
 import frgp.tusi.lab5.serviceImpl.ProvinciaServicesImpl;
 import frgp.tusi.lab5.serviceImpl.TipoCuentaServiceImpl;
-import frgp.tusi.lab5.serviceImpl.TipoMovimientoServiceImpl;;
+import frgp.tusi.lab5.serviceImpl.TipoMovimientoServiceImpl;
+import frgp.tusi.lab5.serviceImpl.UsuarioServiceImpl;;
 
 @Controller
 public class ClienteController {
 
+	@Autowired
+	@Qualifier("ClienteServiceImplBean")
 	private ClienteServiceImpl clienteService;
 	private CuentaServiceImpl cuentaService;
+	@Autowired
+	@Qualifier("UsuarioServiceImplBean")
 	private UsuarioServiceImpl usuarioService;
 	private NacionalidadServicesImpl nacionalidadService;
 	private ProvinciaServicesImpl provinciaService;
@@ -43,9 +49,7 @@ public class ClienteController {
 	private TipoMovimientoServiceImpl tipoMovimientoService;
 
 	public ClienteController() {
-		clienteService = new ClienteServiceImpl();
 		cuentaService = new CuentaServiceImpl();
-		usuarioService = new UsuarioServiceImpl();
 		nacionalidadService = new NacionalidadServicesImpl();
 		provinciaService = new ProvinciaServicesImpl();
 		tipoCuentaService = new TipoCuentaServiceImpl();

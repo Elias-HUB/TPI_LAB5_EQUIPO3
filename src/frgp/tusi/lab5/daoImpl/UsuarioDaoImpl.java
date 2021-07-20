@@ -1,11 +1,13 @@
 package frgp.tusi.lab5.daoImpl;
 
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 
 import frgp.tusi.lab5.config.HibernateConfiguration;
 import frgp.tusi.lab5.dao.UsuarioDao;
 import frgp.tusi.lab5.model.Usuario;
 
+@Repository
 public class UsuarioDaoImpl implements UsuarioDao {
 	
 	public Usuario buscar(String username, String password) throws Exception {

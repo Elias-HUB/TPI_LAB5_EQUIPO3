@@ -6,6 +6,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.servlet.ModelAndView;
 
+import frgp.tusi.lab5.daoImpl.ClienteDaoImpl;
+import frgp.tusi.lab5.daoImpl.EmpleadoDaoImpl;
+import frgp.tusi.lab5.daoImpl.UsuarioDaoImpl;
 import frgp.tusi.lab5.serviceImpl.ClienteServiceImpl;
 import frgp.tusi.lab5.serviceImpl.EmpleadoServiceImpl;
 import frgp.tusi.lab5.serviceImpl.UsuarioServiceImpl;
@@ -15,7 +18,7 @@ public class Config {
 
 	@Bean
 	public ClienteServiceImpl ClienteServiceImplBean() {
-		ClienteServiceImpl ClienteServiceImplBean = new ClienteServiceImpl(); //Inyeccion de dependencia por Set
+		ClienteServiceImpl ClienteServiceImplBean = new ClienteServiceImpl();
 		return ClienteServiceImplBean;
 	}
 	
@@ -38,7 +41,22 @@ public class Config {
 		return ModelAndViewBean;
 	}
 	
+	@Bean
+	public ClienteDaoImpl ClienteDaoImplBean() {
+		ClienteDaoImpl clienteDaoImplBean = new ClienteDaoImpl();
+		return clienteDaoImplBean;
+	}
 	
+	@Bean
+	public UsuarioDaoImpl UsuarioDaoImplBean() {
+		UsuarioDaoImpl usuarioDaoImplBean = new UsuarioDaoImpl();
+		return usuarioDaoImplBean;
+	}
 	
+	@Bean
+	public EmpleadoDaoImpl EmpleadoDaoImplBean() {
+		EmpleadoDaoImpl empleadoDaoImplBean = new EmpleadoDaoImpl();
+		return empleadoDaoImplBean;
+	}
 
 }

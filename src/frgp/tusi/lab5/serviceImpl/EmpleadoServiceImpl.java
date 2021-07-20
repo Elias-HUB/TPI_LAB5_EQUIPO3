@@ -2,6 +2,7 @@ package frgp.tusi.lab5.serviceImpl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import frgp.tusi.lab5.daoImpl.EmpleadoDaoImpl;
@@ -11,11 +12,11 @@ import frgp.tusi.lab5.service.EmpleadoService;
 @Service
 public class EmpleadoServiceImpl implements EmpleadoService {
 
-//	@Autowired(required = true)
+	@Autowired
 	private EmpleadoDaoImpl empleadoDaoImpl;
 	
 	public EmpleadoServiceImpl() {
-		empleadoDaoImpl = new EmpleadoDaoImpl();
+		
 	}
 
 	@Override

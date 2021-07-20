@@ -2,10 +2,13 @@ package frgp.tusi.lab5.serviceImpl;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import frgp.tusi.lab5.daoImpl.ProvinciaDaoImpl;
 import frgp.tusi.lab5.model.Provincia;
 import frgp.tusi.lab5.service.ProvinciaService;
 
+@Service
 public class ProvinciaServicesImpl implements ProvinciaService{
 
 	private ProvinciaDaoImpl provinciaDaoImpl;
