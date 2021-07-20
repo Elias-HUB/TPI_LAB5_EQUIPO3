@@ -60,7 +60,7 @@
 
         <jsp:include page="myFooter.jsp"></jsp:include>
         <script	src="${pageContext.request.contextPath}/resources/Js/Funciones.js"></script>
-        <script src="${pageContext.request.contextPath}/resources/Js/dataTableClientes.js"></script>
+        <script src="${pageContext.request.contextPath}/resources/Js/dataTableCuentas.js"></script>
         <script type="text/javascript">
     	<%
    	 session = request.getSession();

@@ -3,7 +3,7 @@ $(document).ready(function () {
      columnDefs: 
        [{
          orderable: false,
-         targets: 5,
+         targets: 6,
        }],
     lengthMenu: [
       [5, 10, 15, -1],

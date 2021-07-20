@@ -13,9 +13,9 @@ import frgp.tusi.lab5.service.ClienteService;
 @Service
 public class ClienteServiceImpl implements ClienteService {
 	
-//	@Autowired(required = true)
-	private ClienteDaoImpl clienteDaoImpl;
 	
+	private ClienteDaoImpl clienteDaoImpl;
+	//@Autowired
 	public ClienteServiceImpl() {
 		clienteDaoImpl = new ClienteDaoImpl();
 	}
