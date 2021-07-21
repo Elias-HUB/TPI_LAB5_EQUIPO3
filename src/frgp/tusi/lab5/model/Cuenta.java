@@ -51,7 +51,7 @@ public class Cuenta implements Serializable{
 	
 	@OneToMany(cascade= {CascadeType.ALL})
 	@JoinColumn(name="id_cuenta")
-	private List<Movimiento> movimientos = new ArrayList<Movimiento>();
+	private List<Movimiento> movimientos;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="id_cliente")

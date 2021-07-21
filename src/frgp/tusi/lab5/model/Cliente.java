@@ -28,7 +28,7 @@ public class Cliente extends Persona implements Serializable{
 	
 	@OneToMany(cascade= {CascadeType.ALL})
 	@JoinColumn(name="id_cliente")
-	private List<Cuenta> cuentas = new ArrayList<Cuenta>();
+	private List<Cuenta> cuentas;
 	
 	public Integer getId() {
 		return id;
