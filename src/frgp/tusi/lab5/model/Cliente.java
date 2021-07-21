@@ -30,6 +30,9 @@ public class Cliente extends Persona implements Serializable{
 	@JoinColumn(name="id_cliente")
 	private List<Cuenta> cuentas;
 	
+//	@OneToMany(fetch= FetchType.LAZY, mappedBy = "cliente")
+//	private List<Cuenta> cuentas = new ArrayList<Cuenta>();
+	
 	public Integer getId() {
 		return id;
 	}

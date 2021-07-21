@@ -43,8 +43,7 @@ public class Config {
 	@Bean
 	public Cuenta CuentaBean() {
 		Cuenta cuenta = new Cuenta();
-		TipoCuenta tipoCuenta = this.TipoCuentaBean();
-		cuenta.setTipoCuenta(tipoCuenta);
+		cuenta.setTipoCuenta(this.TipoCuentaBean());
 		List<Movimiento> movimientos = new ArrayList<Movimiento>();
 		cuenta.setMovimientos(movimientos);
 		return cuenta; 
