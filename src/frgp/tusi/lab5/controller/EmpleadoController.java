@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,13 +17,16 @@ import frgp.tusi.lab5.serviceImpl.EmpleadoServiceImpl;
 @Controller
 public class EmpleadoController {
 
+	@Autowired
+	@Qualifier("EmpleadoServiceImplBean")
 	private EmpleadoServiceImpl empleadoServiceImpl;
+	
+	@Autowired
+	@Qualifier("ModelAndViewBean")
+	private ModelAndView mv;
 
-//	@RequestMapping("altaEmpleado")
 	@RequestMapping(value ="/altaEmpleado.html" , method= { RequestMethod.POST})
-	public ModelAndView altaEmpleado() {
-		ModelAndView mv = new ModelAndView();
-		
+	public ModelAndView altaEmpleado() {		
 		try {
 			SimpleDateFormat dtf = new SimpleDateFormat("yyyy/MM/dd");
 	        Calendar calendar = Calendar.getInstance();
@@ -33,21 +38,11 @@ public class EmpleadoController {
 	    	em.setApellido("Oscar");
 	    	em.setNombre("Ditolbi");
 	    	em.setDni(12546514);
-//	    	em.setDomicilio("Fagnano 2784");
 	    	em.setEstado(true);
 	    	em.setFechaNacimiento(formattedDate);
-//	    	em.setNacionalidad("Argentina");
 	    	em.setSexo("M");
 			empleadoServiceImpl.crear(em);
 			
-//				if (usuario.getTipoUsuario() == "cliente") {
-//					mv.setViewName("cliente");
-//					session.setAttribute("user", usuario.getTipoUsuario());
-//				}
-//				else {
-//					mv.setViewName("resumen");
-//					session.setAttribute("user", usuario.getTipoUsuario());
-//				}
 		} catch (Exception e) {
 			mv.addObject("Usuario o contraseña invalida.");
 			mv.setViewName("login");
@@ -55,24 +50,18 @@ public class EmpleadoController {
 		return mv;
 	}
 	
-//	@RequestMapping("modificacionEmpleado")
 	@RequestMapping(value ="/modificacionEmpleado.html" , method= { RequestMethod.POST})
 	public ModelAndView modificacionEmpleado() {
-		ModelAndView mv = new ModelAndView();
 		return mv;
 	}
 	
-//	@RequestMapping("eliminacionEmpleado")
 	@RequestMapping(value ="/eliminacionEmpleado.html" , method= { RequestMethod.POST})
 	public ModelAndView eliminacionEmpleado() {
-		ModelAndView mv = new ModelAndView();
 		return mv;
 	}
 	
-//	@RequestMapping("listarEmpleados")
 	@RequestMapping(value ="/listarEmpleados.html" , method= { RequestMethod.POST})
 	public ModelAndView listarEmpleados() {
-		ModelAndView mv = new ModelAndView();
 		return mv;
 	}
 }

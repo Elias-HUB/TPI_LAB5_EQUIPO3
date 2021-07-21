@@ -1,6 +1,8 @@
 package frgp.tusi.lab5.daoImpl;
 
 import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import frgp.tusi.lab5.config.HibernateConfiguration;
@@ -9,6 +11,10 @@ import frgp.tusi.lab5.model.Usuario;
 
 @Repository
 public class UsuarioDaoImpl implements UsuarioDao {
+	
+//	@Autowired
+//	@Qualifier("HibernateConfigurationBean")
+//	private HibernateConfiguration ch;
 	
 	public Usuario buscar(String username, String password) throws Exception {
 		HibernateConfiguration ch = new HibernateConfiguration();
@@ -43,5 +49,4 @@ public class UsuarioDaoImpl implements UsuarioDao {
 			throw new Exception("");
 		return usuario;
 	}
-
 }

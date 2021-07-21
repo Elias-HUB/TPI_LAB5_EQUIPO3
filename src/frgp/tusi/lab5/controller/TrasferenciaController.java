@@ -1,206 +1,213 @@
-//package frgp.tusi.lab5.controller;
-//
-//import java.util.ArrayList;
-//import java.util.Date;
-//import java.util.List;
-//
-//import javax.servlet.http.HttpServletRequest;
-//import javax.servlet.http.HttpSession;
-//
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.context.ApplicationContext;
-//import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-//import org.springframework.stereotype.Controller;
-//import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.servlet.ModelAndView;
-//
-//import frgp.tusi.lab5.config.Config;
-//import frgp.tusi.lab5.model.Cliente;
-//import frgp.tusi.lab5.model.Cuenta;
-//import frgp.tusi.lab5.model.Movimiento;
-//import frgp.tusi.lab5.model.TipoMovimiento;
-//import frgp.tusi.lab5.model.Transferencia;
-//import frgp.tusi.lab5.model.Usuario;
-//import frgp.tusi.lab5.serviceImpl.ClienteServiceImpl;
-//import frgp.tusi.lab5.serviceImpl.CuentaServiceImpl;
-//import frgp.tusi.lab5.serviceImpl.EmpleadoServiceImpl;
-//import frgp.tusi.lab5.serviceImpl.MovimientoServiceImpl;
-//import frgp.tusi.lab5.serviceImpl.TipoMovimientoServiceImpl;
-//import frgp.tusi.lab5.serviceImpl.TransferenciaServiceImpl;
-//import frgp.tusi.lab5.serviceImpl.UsuarioServiceImpl;
-//
-//@Controller
-//public class TrasferenciaController {
-//	@Autowired
-//	private MovimientoServiceImpl movimientoService;
-//	@Autowired
-//	private TransferenciaServiceImpl transferenciaService;
-//	@Autowired
-//	private CuentaServiceImpl cuentaService;
-//	@Autowired
-//	private TipoMovimientoServiceImpl tipoMovimientoService;
-//	@Autowired
-//	private ClienteServiceImpl clienteService;
-//	@Autowired
-//	private HttpSession session;
-//	@Autowired
-//	private Cliente cliente;
-//	@Autowired
-//	private Transferencia transferencia;
-//	@Autowired
-//	private Cuenta cuentaOrigen;
-//	@Autowired
-//	private Cuenta cuentaDestino;
-//	@Autowired
-//	private Movimiento movimientoOrigen;
-//	@Autowired
-//	private Movimiento movimientoDestino;
-//	
-//	public TrasferenciaController() {
-//
-//	}
-//	
-//	@RequestMapping("transferencia")
-//	public ModelAndView transferencia(Integer dni) {
-//		ModelAndView mv = new ModelAndView();
-//		try {
-//			cliente = clienteService.buscarPorDni(dni);
-//			mv.addObject("Cliente", cliente);
-//			mv.addObject("Cuentas", cuentaService.buscarCantidadCuentas(cliente.getId()));
-//			mv.setViewName("transferencia");
-//			return mv;
-//		} catch (Exception e) {
-//			mv.setViewName("index");
-//			return mv;
-//		}		
-//	}
-//	
-//	@RequestMapping("listarTransferencias")
-//	public ModelAndView listarTransferencias() {
-//		ModelAndView mv = new ModelAndView();
-//		return mv;
-//	}
-//	
-//	@RequestMapping("crearTransferencia")
-//	public ModelAndView crearTransferencia(HttpServletRequest request) {
-//		ModelAndView mv = new ModelAndView();
-//		session = request.getSession();
-////		List<Movimiento> movimientosCuentaOrigen = new ArrayList<Movimiento>();
-////		List<Movimiento> movimientosCuentaDestino = new ArrayList<Movimiento>();
-//		try {
-//			if(ValidarRequestTransferencia(request)){
-//				cuentaOrigen = cuentaService.buscar(request.getParameter("cuentas"));
-//				cuentaDestino = cuentaService.buscar(request.getParameter("txtDestino"));
-//				double importe = Double.parseDouble(request.getParameter("txtImporte"));
-//				ValidarCuentas(cuentaOrigen, cuentaDestino, importe);
-//				
-//				TipoMovimiento tipoMovOrigen = tipoMovimientoService.buscar("Transferencia Débito");
-//				TipoMovimiento tipoMovDestino = tipoMovimientoService.buscar("Transferencia Crédito");
-//				
-//				movimientoOrigen.setImporte(Double.parseDouble(request.getParameter("txtImporte"))*-1);
-//				movimientoOrigen.setCuenta(cuentaOrigen);
-//				movimientoOrigen.setTipoMovimiento(tipoMovOrigen);
-//				movimientoOrigen.setDetalle("Transferencia");
-//				movimientoOrigen.setFecha(new Date());
-//				movimientoOrigen.setEstado(true);
-//				
-//				
-//				movimientoDestino.setImporte(importe);
-//				movimientoDestino.setCuenta(cuentaDestino);
-//				movimientoDestino.setTipoMovimiento(tipoMovDestino);
-//				movimientoDestino.setDetalle("Transferencia");
-//				movimientoDestino.setFecha(new Date());
-//				movimientoDestino.setEstado(true);
-//				
-//				cuentaOrigen.setSaldo(cuentaOrigen.getSaldo() - importe);
-////				movimientosCuentaOrigen = movimientoService.listarPorIdCuenta(cuentaOrigen.getId());
-////				movimientosCuentaOrigen.add(movimientoOrigen);
-//				cuentaOrigen.getMovimientos().add(movimientoOrigen);
-//				
-//				cuentaDestino.setSaldo(cuentaDestino.getSaldo() + importe);
-////				movimientosCuentaDestino = movimientoService.listarPorIdCuenta(cuentaDestino.getId());
-////				movimientosCuentaDestino.add(movimientoDestino);
-////				cuentaDestino.setMovimientos(movimientosCuentaDestino);
-//				cuentaDestino.getMovimientos().add(movimientoDestino);
-//				
-//				transferencia.setCuentaOrigen(cuentaOrigen);
-//				transferencia.setCuentaDestino(cuentaDestino);
-//				transferencia.setMovimientoOrigen(movimientoOrigen);
-//				transferencia.setMovimientoDestino(movimientoDestino);	
-//				
-//				transferenciaService.crear(transferencia);
-//				
-//				session.setAttribute("success", "Se realizó la transferencia a la cuenta CBU " + cuentaDestino.getCbu() + " por un total de $ " + movimientoDestino.getImporte());
-//				mv = new ModelAndView("redirect:resumen.html?Val=1");
-//			}
-//			else {
-//				String dni = request.getParameter("txtDni");
-//				mv = new ModelAndView("redirect:transferencia.html?dni=" + dni);
-//			}
-//		}
-//		catch(Exception ex) {
-//			if(session.getAttribute("error") == null || session.getAttribute("error") ==  "")
-//				session.setAttribute("error", ex.getMessage());
-//			String dni = request.getParameter("txtDni");
-//			mv = new ModelAndView("redirect:transferencia.html?dni=" + dni);	
-//		}		
-//		return mv;
-//	}
-//
-//	private void ValidarCuentas(Cuenta cuentaOrigen, Cuenta cuentaDestino, double importe) throws Exception {
-//		if (cuentaOrigen == null) {
-//			session.setAttribute("error", "Cuenta origen inexistente.");
-//			throw new Exception();
-//		}
-//		if (cuentaDestino == null) {
-//			session.setAttribute("error", "Cuenta destino inexistente.");
-//			throw new Exception();
-//		}		
-//		if (!cuentaOrigen.getEstado()) {
-//			session.setAttribute("error", "Cuenta origen inactiva.");
-//			throw new Exception();
-//		} 
-//		if (!cuentaDestino.getEstado()) {
-//			session.setAttribute("error", "Cuenta destino inactiva.");
-//			throw new Exception();
-//		}
-//		if (cuentaOrigen.getSaldo() < importe ) {
-//			session.setAttribute("error", "Saldo insuficiente.");
-//			throw new Exception();
-//		}	        
-//	}
-//
-//	private boolean ValidarRequestTransferencia(HttpServletRequest request) {
-//		String cbuDestino = request.getParameter("txtDestino").trim();
-//		String importe = request.getParameter("txtImporte").trim();
-//		
-//		if (cbuDestino == null || cbuDestino == "") {
-//			session.setAttribute("error", "No se ingresó CBU para la cuenta destino.");
-//	        return false;
-//	    }
-//	    try {
-//	        double d = Double.parseDouble(cbuDestino);
-//	    } 
-//	    catch (NumberFormatException nfe) {
-//	    	session.setAttribute("error", "El CBU de destino debe tener sólo números.");
-//	        return false;
-//	    }
-//	    if (importe == null || importe == "") {
-//			session.setAttribute("error", "No se ingresó importe.");
-//	        return false;
-//	    }
-//	    try {
-//	        double d = Double.parseDouble(importe);
-//	        if (d <= 0) {
-//	        	session.setAttribute("error", "El importe a transferir debe ser mayor que cero.");
-//		        return false;
-//	        }
-//	        	
-//	    } catch (NumberFormatException nfe) {
-//	    	session.setAttribute("error", "El importe debe tener sólo números.");
-//	        return false;
-//	    }
-//	    return true;		    
-//	}
-//
-//}
+package frgp.tusi.lab5.controller;
+
+import java.util.Date;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import frgp.tusi.lab5.model.Cliente;
+import frgp.tusi.lab5.model.Cuenta;
+import frgp.tusi.lab5.model.Movimiento;
+import frgp.tusi.lab5.model.TipoMovimiento;
+import frgp.tusi.lab5.model.Transferencia;
+import frgp.tusi.lab5.serviceImpl.ClienteServiceImpl;
+import frgp.tusi.lab5.serviceImpl.CuentaServiceImpl;
+import frgp.tusi.lab5.serviceImpl.MovimientoServiceImpl;
+import frgp.tusi.lab5.serviceImpl.TipoMovimientoServiceImpl;
+import frgp.tusi.lab5.serviceImpl.TransferenciaServiceImpl;
+
+@Controller
+public class TrasferenciaController {
+
+	@Autowired
+	@Qualifier("MovimientoServiceImplBean")
+	private MovimientoServiceImpl movimientoService;
+	
+	@Autowired
+	@Qualifier("TransferenciaServiceImplBean")
+	private TransferenciaServiceImpl transferenciaService;
+	
+	@Autowired
+	@Qualifier("CuentaServiceImplBean")
+	private CuentaServiceImpl cuentaService;
+	
+	@Autowired
+	@Qualifier("TipoMovimientoServiceImplBean")
+	private TipoMovimientoServiceImpl tipoMovimientoService;
+
+	@Autowired
+	@Qualifier("ClienteServiceImplBean")
+	private ClienteServiceImpl clienteService;
+	
+	@Autowired
+	private HttpSession session;
+	
+	@Autowired
+	@Qualifier("ClienteBean")
+	private Cliente cliente;
+	
+	@Autowired
+	@Qualifier("TransferenciaBean")
+	private Transferencia transferencia;
+	
+	@Autowired
+	@Qualifier("CuentaBean")
+	private Cuenta cuentaOrigen;
+
+	@Autowired
+	@Qualifier("CuentaBean")
+	private Cuenta cuentaDestino;
+	
+	@Autowired
+	@Qualifier("MovimientoBean")
+	private Movimiento movimientoOrigen;
+	
+	@Autowired
+	@Qualifier("MovimientoBean")
+	private Movimiento movimientoDestino;
+	
+	@Autowired
+	@Qualifier("ModelAndViewBean")
+	private ModelAndView mv;
+	
+	public TrasferenciaController() {}
+	
+	@RequestMapping("transferencia")
+	public ModelAndView transferencia(Integer dni) {
+		try {
+			cliente = clienteService.buscarPorDni(dni);
+			mv.addObject("Cliente", cliente);
+			mv.addObject("Cuentas", cuentaService.buscarCantidadCuentas(cliente.getId()));
+			mv.setViewName("transferencia");
+			return mv;
+		} catch (Exception e) {
+			mv.setViewName("index");
+			return mv;
+		}		
+	}
+	
+	@RequestMapping("listarTransferencias")
+	public ModelAndView listarTransferencias() {
+		return mv;
+	}
+	
+	@RequestMapping("crearTransferencia")
+	public ModelAndView crearTransferencia(HttpServletRequest request) {
+		session = request.getSession();
+		try {
+			if(ValidarRequestTransferencia(request)){
+				cuentaOrigen = cuentaService.buscar(request.getParameter("cuentas"));
+				cuentaDestino = cuentaService.buscar(request.getParameter("txtDestino"));
+				double importe = Double.parseDouble(request.getParameter("txtImporte"));
+				ValidarCuentas(cuentaOrigen, cuentaDestino, importe);
+				
+				TipoMovimiento tipoMovOrigen = tipoMovimientoService.buscar("Transferencia Débito");
+				TipoMovimiento tipoMovDestino = tipoMovimientoService.buscar("Transferencia Crédito");
+				
+				movimientoOrigen.setImporte(Double.parseDouble(request.getParameter("txtImporte"))*-1);
+				movimientoOrigen.setCuenta(cuentaOrigen);
+				movimientoOrigen.setTipoMovimiento(tipoMovOrigen);
+				movimientoOrigen.setDetalle("Transferencia");
+				movimientoOrigen.setFecha(new Date());
+				movimientoOrigen.setEstado(true);
+				
+				
+				movimientoDestino.setImporte(importe);
+				movimientoDestino.setCuenta(cuentaDestino);
+				movimientoDestino.setTipoMovimiento(tipoMovDestino);
+				movimientoDestino.setDetalle("Transferencia");
+				movimientoDestino.setFecha(new Date());
+				movimientoDestino.setEstado(true);
+				
+				cuentaOrigen.setSaldo(cuentaOrigen.getSaldo() - importe);
+				cuentaOrigen.getMovimientos().add(movimientoOrigen);
+				
+				cuentaDestino.setSaldo(cuentaDestino.getSaldo() + importe);
+				cuentaDestino.getMovimientos().add(movimientoDestino);
+				
+				transferencia.setCuentaOrigen(cuentaOrigen);
+				transferencia.setCuentaDestino(cuentaDestino);
+				transferencia.setMovimientoOrigen(movimientoOrigen);
+				transferencia.setMovimientoDestino(movimientoDestino);	
+				
+				transferenciaService.crear(transferencia);
+				
+				session.setAttribute("success", "Se realizó la transferencia a la cuenta CBU " + cuentaDestino.getCbu() + " por un total de $ " + movimientoDestino.getImporte());
+				mv = new ModelAndView("redirect:resumen.html?Val=1");
+			}
+			else {
+				String dni = request.getParameter("txtDni");
+				mv = new ModelAndView("redirect:transferencia.html?dni=" + dni);
+			}
+		}
+		catch(Exception ex) {
+			if(session.getAttribute("error") == null || session.getAttribute("error") ==  "")
+				session.setAttribute("error", ex.getMessage());
+			String dni = request.getParameter("txtDni");
+			mv = new ModelAndView("redirect:transferencia.html?dni=" + dni);	
+		}		
+		return mv;
+	}
+
+	private void ValidarCuentas(Cuenta cuentaOrigen, Cuenta cuentaDestino, double importe) throws Exception {
+		if (cuentaOrigen == null) {
+			session.setAttribute("error", "Cuenta origen inexistente.");
+			throw new Exception();
+		}
+		if (cuentaDestino == null) {
+			session.setAttribute("error", "Cuenta destino inexistente.");
+			throw new Exception();
+		}		
+		if (!cuentaOrigen.getEstado()) {
+			session.setAttribute("error", "Cuenta origen inactiva.");
+			throw new Exception();
+		} 
+		if (!cuentaDestino.getEstado()) {
+			session.setAttribute("error", "Cuenta destino inactiva.");
+			throw new Exception();
+		}
+		if (cuentaOrigen.getSaldo() < importe ) {
+			session.setAttribute("error", "Saldo insuficiente.");
+			throw new Exception();
+		}	        
+	}
+
+	private boolean ValidarRequestTransferencia(HttpServletRequest request) {
+		String cbuDestino = request.getParameter("txtDestino").trim();
+		String importe = request.getParameter("txtImporte").trim();
+		
+		if (cbuDestino == null || cbuDestino == "") {
+			session.setAttribute("error", "No se ingresó CBU para la cuenta destino.");
+	        return false;
+	    }
+	    try {
+	        double d = Double.parseDouble(cbuDestino);
+	    } 
+	    catch (NumberFormatException nfe) {
+	    	session.setAttribute("error", "El CBU de destino debe tener sólo números.");
+	        return false;
+	    }
+	    if (importe == null || importe == "") {
+			session.setAttribute("error", "No se ingresó importe.");
+	        return false;
+	    }
+	    try {
+	        double d = Double.parseDouble(importe);
+	        if (d <= 0) {
+	        	session.setAttribute("error", "El importe a transferir debe ser mayor que cero.");
+		        return false;
+	        }
+	        	
+	    } catch (NumberFormatException nfe) {
+	    	session.setAttribute("error", "El importe debe tener sólo números.");
+	        return false;
+	    }
+	    return true;		    
+	}
+}

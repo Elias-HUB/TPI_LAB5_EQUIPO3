@@ -12,21 +12,22 @@ import frgp.tusi.lab5.model.Transferencia;
 @Repository
 public class TransferenciaDaoImpl implements TransferenciaDao {
 
+//	@Autowired
+//	@Qualifier("HibernateConfigurationBean")
+//	private HibernateConfiguration ch;
+	
 	@Override
 	public List<Transferencia> listar() throws Exception {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Transferencia eliminar(Transferencia transferencia) throws Exception {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Transferencia actualizar(Transferencia transferencia) throws Exception {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -39,5 +40,4 @@ public class TransferenciaDaoImpl implements TransferenciaDao {
 		ch.cerrarSession();
 		return transferencia;
 	}
-
 }

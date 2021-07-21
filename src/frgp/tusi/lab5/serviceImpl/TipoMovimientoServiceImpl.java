@@ -1,5 +1,6 @@
 package frgp.tusi.lab5.serviceImpl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import frgp.tusi.lab5.daoImpl.TipoMovimientoDaoImpl;
@@ -9,10 +10,10 @@ import frgp.tusi.lab5.service.TipoMovimientoService;
 @Service
 public class TipoMovimientoServiceImpl implements TipoMovimientoService{
 
+	@Autowired
 	private TipoMovimientoDaoImpl tipoMovimientoDaoImpl;
-	public TipoMovimientoServiceImpl() {
-		tipoMovimientoDaoImpl = new TipoMovimientoDaoImpl();
-	}
+	
+	public TipoMovimientoServiceImpl() {}
 	
 	@Override
 	public TipoMovimiento buscar(int id) throws Exception {
@@ -23,6 +24,4 @@ public class TipoMovimientoServiceImpl implements TipoMovimientoService{
 	public TipoMovimiento buscar(String descripcion) throws Exception {
 		return tipoMovimientoDaoImpl.buscar(descripcion);
 	}
-
-
 }

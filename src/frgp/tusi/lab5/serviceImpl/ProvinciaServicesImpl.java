@@ -2,6 +2,7 @@ package frgp.tusi.lab5.serviceImpl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import frgp.tusi.lab5.daoImpl.ProvinciaDaoImpl;
@@ -11,10 +12,10 @@ import frgp.tusi.lab5.service.ProvinciaService;
 @Service
 public class ProvinciaServicesImpl implements ProvinciaService{
 
+	@Autowired
 	private ProvinciaDaoImpl provinciaDaoImpl;
-	public ProvinciaServicesImpl() {
-		provinciaDaoImpl = new ProvinciaDaoImpl();
-	}
+	
+	public ProvinciaServicesImpl() {}
 
 	@Override
 	public List<Provincia> listar() throws Exception {		
@@ -25,5 +26,4 @@ public class ProvinciaServicesImpl implements ProvinciaService{
 	public Provincia BuscarPorID(Integer id) throws Exception {
 		return provinciaDaoImpl.BuscarPorID(id);
 	}
-
 }

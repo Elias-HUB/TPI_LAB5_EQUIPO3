@@ -10,6 +10,9 @@ import frgp.tusi.lab5.model.TipoCuenta;
 @Repository
 public class TipoCuentaDaoImpl implements TipoCuentaDao{
 
+//	@Autowired
+//	@Qualifier("HibernateConfigurationBean")
+//	private HibernateConfiguration ch;
 	
 	@Override
 	public TipoCuenta buscar(String descripcion) throws Exception {

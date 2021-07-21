@@ -10,7 +10,14 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.web.servlet.ModelAndView;
 
 import frgp.tusi.lab5.daoImpl.ClienteDaoImpl;
+import frgp.tusi.lab5.daoImpl.CuentaDaoImpl;
 import frgp.tusi.lab5.daoImpl.EmpleadoDaoImpl;
+import frgp.tusi.lab5.daoImpl.MovimientoDaoImpl;
+import frgp.tusi.lab5.daoImpl.NacionalidadDaoImpl;
+import frgp.tusi.lab5.daoImpl.ProvinciaDaoImpl;
+import frgp.tusi.lab5.daoImpl.TipoCuentaDaoImpl;
+import frgp.tusi.lab5.daoImpl.TipoMovimientoDaoImpl;
+import frgp.tusi.lab5.daoImpl.TransferenciaDaoImpl;
 import frgp.tusi.lab5.daoImpl.UsuarioDaoImpl;
 import frgp.tusi.lab5.model.Cliente;
 import frgp.tusi.lab5.model.Cuenta;
@@ -25,7 +32,14 @@ import frgp.tusi.lab5.model.TipoMovimiento;
 import frgp.tusi.lab5.model.Transferencia;
 import frgp.tusi.lab5.model.Usuario;
 import frgp.tusi.lab5.serviceImpl.ClienteServiceImpl;
+import frgp.tusi.lab5.serviceImpl.CuentaServiceImpl;
 import frgp.tusi.lab5.serviceImpl.EmpleadoServiceImpl;
+import frgp.tusi.lab5.serviceImpl.MovimientoServiceImpl;
+import frgp.tusi.lab5.serviceImpl.NacionalidadServicesImpl;
+import frgp.tusi.lab5.serviceImpl.ProvinciaServicesImpl;
+import frgp.tusi.lab5.serviceImpl.TipoCuentaServiceImpl;
+import frgp.tusi.lab5.serviceImpl.TipoMovimientoServiceImpl;
+import frgp.tusi.lab5.serviceImpl.TransferenciaServiceImpl;
 import frgp.tusi.lab5.serviceImpl.UsuarioServiceImpl;
 
 @Configuration
@@ -48,12 +62,7 @@ public class Config {
 		cuenta.setMovimientos(movimientos);
 		return cuenta; 
 	}
-	
-	@Bean
-	public TipoCuenta TipoCuentaBean() {
-		return new TipoCuenta(); 
-	}
-	
+		
 	@Bean
 	public Domicilio DomicilioBean() {
 		return new Domicilio(); 
@@ -93,9 +102,9 @@ public class Config {
 	}
 	
 	@Bean
-	public Usuario UsuarioBean() {
-		return new Usuario(); 
-	}	
+	public TipoCuenta TipoCuentaBean() {
+		return new TipoCuenta(); 
+	}
 	
 	@Bean
 	public TipoMovimiento TipoMovimientoBean() {
@@ -111,6 +120,11 @@ public class Config {
 		transferencia.setMovimientoDestino(this.MovimientoBean());
 		return transferencia;
 	}
+
+	@Bean
+	public Usuario UsuarioBean() {
+		return new Usuario(); 
+	}	
 	
 	//Dao
 	@Bean
@@ -120,15 +134,51 @@ public class Config {
 	}
 	
 	@Bean
-	public UsuarioDaoImpl UsuarioDaoImplBean() {
-		UsuarioDaoImpl usuarioDaoImplBean = new UsuarioDaoImpl();
-		return usuarioDaoImplBean;
+	public CuentaDaoImpl CuentaDaoImplBean() {
+		CuentaDaoImpl cuentaDaoImplBean = new CuentaDaoImpl();
+		return cuentaDaoImplBean;
 	}
 	
 	@Bean
 	public EmpleadoDaoImpl EmpleadoDaoImplBean() {
 		EmpleadoDaoImpl empleadoDaoImplBean = new EmpleadoDaoImpl();
 		return empleadoDaoImplBean;
+	}
+	
+	@Bean
+	public MovimientoDaoImpl MovimientoDaoImplBean() { 
+		return new MovimientoDaoImpl();
+	}
+	
+	@Bean
+	public NacionalidadDaoImpl NacionalidadDaoImplBean() {
+		return new NacionalidadDaoImpl();
+	}
+	
+	@Bean
+	public ProvinciaDaoImpl ProvinciaDaoImplBean() {
+		return new ProvinciaDaoImpl();
+	}
+	
+	@Bean
+	public TipoCuentaDaoImpl TipoCuentaDaoImplBean() {
+		return new TipoCuentaDaoImpl();
+	}
+	
+	@Bean
+	public TipoMovimientoDaoImpl TipoMovimientoDaoImplBean() {
+		return new TipoMovimientoDaoImpl();
+	}
+	
+	@Bean
+	public TransferenciaDaoImpl TransferenciaDaoImplBean() {
+		return new TransferenciaDaoImpl();
+	}
+	
+	@Bean
+	public UsuarioDaoImpl UsuarioDaoImplBean() {
+		UsuarioDaoImpl usuarioDaoImplBean = new UsuarioDaoImpl();
+		return usuarioDaoImplBean;
 	}
 	
 	//Config
@@ -139,6 +189,11 @@ public class Config {
 		return ModelAndViewBean;
 	}
 	
+//	@Bean
+//	public HibernateConfiguration HibernateConfigurationBean() {
+//		return new HibernateConfiguration();
+//	}
+	
 	//Services
 	@Bean
 	public ClienteServiceImpl ClienteServiceImplBean() {
@@ -147,15 +202,49 @@ public class Config {
 	}
 	
 	@Bean
-	public UsuarioServiceImpl UsuarioServiceImplBean() {
-		UsuarioServiceImpl UsuarioServiceImplBean = new UsuarioServiceImpl();
-		return UsuarioServiceImplBean;
+	public CuentaServiceImpl CuentaServiceImplBean() {
+		return new CuentaServiceImpl();
 	}
 	
 	@Bean
 	public EmpleadoServiceImpl EmpleadoServiceImplBean() {
 		EmpleadoServiceImpl EmpleadoServiceImplBean = new EmpleadoServiceImpl();
 		return EmpleadoServiceImplBean;
+	}	
+	
+	@Bean
+	public MovimientoServiceImpl MovimientoServiceImplBean() {
+		return new MovimientoServiceImpl();
 	}
-
+	
+	@Bean
+	public NacionalidadServicesImpl NacionalidadServicesImplBean() {
+		return new NacionalidadServicesImpl();
+	}
+	
+	@Bean
+	public ProvinciaServicesImpl ProvinciaServicesImplBean() {
+		return new ProvinciaServicesImpl();
+	}
+	
+	@Bean
+	public TipoCuentaServiceImpl TipoCuentaServiceImplBean() {
+		return new TipoCuentaServiceImpl();
+	}
+	
+	@Bean
+	public TipoMovimientoServiceImpl TipoMovimientoServiceImplBean() {
+		return new TipoMovimientoServiceImpl();
+	}
+	
+	@Bean
+	public TransferenciaServiceImpl TransferenciaServiceImplBean() {
+		return new TransferenciaServiceImpl();
+	}
+	
+	@Bean
+	public UsuarioServiceImpl UsuarioServiceImplBean() {
+		UsuarioServiceImpl UsuarioServiceImplBean = new UsuarioServiceImpl();
+		return UsuarioServiceImplBean;
+	}
 }

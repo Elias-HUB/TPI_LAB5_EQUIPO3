@@ -6,10 +6,13 @@ import org.hibernate.Session;
 
 import frgp.tusi.lab5.config.HibernateConfiguration;
 import frgp.tusi.lab5.dao.CuentaDao;
-import frgp.tusi.lab5.model.Cliente;
 import frgp.tusi.lab5.model.Cuenta;
 
 public class CuentaDaoImpl implements CuentaDao {
+	
+//	@Autowired
+//	@Qualifier("HibernateConfigurationBean")
+//	private HibernateConfiguration ch;
 
 	@Override
 	public List<Cuenta> listar() throws Exception {

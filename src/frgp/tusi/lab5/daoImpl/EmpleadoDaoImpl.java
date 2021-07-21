@@ -10,6 +10,10 @@ import frgp.tusi.lab5.model.Empleado;
 
 public class EmpleadoDaoImpl implements EmpleadoDao {
 	
+//	@Autowired
+//	@Qualifier("HibernateConfigurationBean")
+//	private HibernateConfiguration ch;
+	
 	@Override
 	public List<Empleado> listar() throws Exception {
 		HibernateConfiguration ch = new HibernateConfiguration();
@@ -64,5 +68,4 @@ public class EmpleadoDaoImpl implements EmpleadoDao {
 			throw new Exception("Cliente inexistente.");
 		return empleado;
 	}
-
 }

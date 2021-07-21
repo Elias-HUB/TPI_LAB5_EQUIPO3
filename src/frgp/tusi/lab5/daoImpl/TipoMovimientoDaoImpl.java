@@ -10,6 +10,10 @@ import frgp.tusi.lab5.model.TipoMovimiento;
 @Repository
 public class TipoMovimientoDaoImpl implements TipoMovimientoDao{
 
+//	@Autowired
+//	@Qualifier("HibernateConfigurationBean")
+//	private HibernateConfiguration ch;
+	
 	@Override
 	public TipoMovimiento buscar(int id) throws Exception {
 		HibernateConfiguration ch = new HibernateConfiguration();

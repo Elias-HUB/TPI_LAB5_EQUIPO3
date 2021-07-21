@@ -19,7 +19,6 @@ import frgp.tusi.lab5.model.Cliente;
 import frgp.tusi.lab5.model.Cuenta;
 import frgp.tusi.lab5.model.Movimiento;
 import frgp.tusi.lab5.model.TipoCuenta;
-import frgp.tusi.lab5.service.ClienteService;
 import frgp.tusi.lab5.serviceImpl.ClienteServiceImpl;
 import frgp.tusi.lab5.serviceImpl.CuentaServiceImpl;
 import frgp.tusi.lab5.serviceImpl.MovimientoServiceImpl;
@@ -31,18 +30,27 @@ public class CuentaController {
 	@Autowired
 	@Qualifier("ClienteServiceImplBean")
 	private ClienteServiceImpl clienteService;
+	
+	@Autowired
+	@Qualifier("CuentaServiceImplBean")
 	private CuentaServiceImpl cuentaService;
+	
+	@Autowired
+	@Qualifier("TipoCuentaServiceImplBean")
 	private TipoCuentaServiceImpl tipoCuentaService;
+	
+	@Autowired
+	@Qualifier("MovimientoServiceImplBean")
 	private MovimientoServiceImpl movimientoService;
-	public CuentaController() {
-		cuentaService = new CuentaServiceImpl();
-		tipoCuentaService = new TipoCuentaServiceImpl();
-		movimientoService = new MovimientoServiceImpl();
-	}
+	
+	@Autowired
+	@Qualifier("ModelAndViewBean")
+	private ModelAndView mv;
+	
+	public CuentaController() {}
 	
 	@RequestMapping("listarCuentas")
 	public ModelAndView listarCuenta(HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
 		try {
 			mv.addObject("Cuenta", cuentaService.listar());
@@ -56,7 +64,6 @@ public class CuentaController {
 
 	@RequestMapping("altaCuenta")
 	public ModelAndView altaCuenta( HttpServletRequest request, Integer dni) {
-		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
 		try {
 			if (request.getParameter("txtNombre") != null) {
@@ -117,15 +124,12 @@ public class CuentaController {
 	
 	@RequestMapping("modificarCuenta")
 	public ModelAndView modificacionCuenta(HttpServletRequest request, Integer cbu) {
-		ModelAndView mv = new ModelAndView();
-		HttpSession session = request.getSession();
 		mv.setViewName("modificarCuenta");
 		return mv;
 	}
 	
 	@RequestMapping("listarCuentasPorCliente")
 	public ModelAndView listarCuentasPorCliente(HttpServletRequest request, Integer dni) throws NumberFormatException, Exception {
-		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
 		
 		if (dni != null) {
@@ -145,7 +149,6 @@ public class CuentaController {
 	
 	@RequestMapping("eliminarCuenta")
 	public ModelAndView eliminacionCuenta(HttpServletRequest request, Integer cbu) throws Exception {
-		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
 		try {
 			Cuenta cuen = cuentaService.buscar(cbu.toString());
@@ -163,7 +166,6 @@ public class CuentaController {
 	
 	@RequestMapping("resumen")
 	public ModelAndView resumen(HttpServletRequest request, Integer Val) throws Exception {
-		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
 		Cliente cliente = (Cliente)session.getAttribute("persona");
 		List<Cuenta> cuentas = cuentaService.buscarCantidadCuentas(cliente.getId());
@@ -185,5 +187,4 @@ public class CuentaController {
 		mv.setViewName("resumen");
 		return mv;
 	}
-
 }

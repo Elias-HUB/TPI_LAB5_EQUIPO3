@@ -39,26 +39,39 @@ public class ClienteController {
 	@Autowired
 	@Qualifier("ClienteServiceImplBean")
 	private ClienteServiceImpl clienteService;
+	
+	@Autowired
+	@Qualifier("CuentaServiceImplBean")
 	private CuentaServiceImpl cuentaService;
+	
 	@Autowired
 	@Qualifier("UsuarioServiceImplBean")
 	private UsuarioServiceImpl usuarioService;
+	
+	@Autowired
+	@Qualifier("NacionalidadServicesImplBean")
 	private NacionalidadServicesImpl nacionalidadService;
+	
+	@Autowired
+	@Qualifier("ProvinciaServicesImplBean")
 	private ProvinciaServicesImpl provinciaService;
+	
+	@Autowired
+	@Qualifier("TipoCuentaServiceImplBean")
 	private TipoCuentaServiceImpl tipoCuentaService;
+	
+	@Autowired
+	@Qualifier("TipoMovimientoServiceImplBean")
 	private TipoMovimientoServiceImpl tipoMovimientoService;
+	
+	@Autowired
+	@Qualifier("ModelAndViewBean")
+	private ModelAndView mv;
 
-	public ClienteController() {
-		cuentaService = new CuentaServiceImpl();
-		nacionalidadService = new NacionalidadServicesImpl();
-		provinciaService = new ProvinciaServicesImpl();
-		tipoCuentaService = new TipoCuentaServiceImpl();
-		tipoMovimientoService = new TipoMovimientoServiceImpl();
-	}
+	public ClienteController() {}
 
 	@RequestMapping("altaCliente")
 	public ModelAndView altaCliente(HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
 		try {
 			if (request.getParameter("txtNombre") != null) {
@@ -160,7 +173,6 @@ public class ClienteController {
 	public ModelAndView detalleCliente(HttpServletRequest request, Integer dni) {
 		HttpSession session = request.getSession();
 		Cliente cliente;
-		ModelAndView mv = new ModelAndView();
 		try {
 			if (dni == null) {
 				cliente = (Cliente) session.getAttribute("persona");
@@ -179,7 +191,6 @@ public class ClienteController {
 
 	@RequestMapping("modificarCliente")
 	public ModelAndView modificarCliente(HttpServletRequest request, Integer dni) throws Exception {
-		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
 		try {
 			if (request.getParameter("txtDni") != null) {
@@ -242,7 +253,6 @@ public class ClienteController {
 
 	@RequestMapping("eliminarCliente")
 	public ModelAndView eliminarCliente(HttpServletRequest request, Integer dni) throws Exception {
-		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
 		try {
 			Cliente cli = clienteService.buscarPorDni(dni);
@@ -265,7 +275,6 @@ public class ClienteController {
 
 	@RequestMapping("listarClientes")
 	public ModelAndView listarClientes() throws Exception {
-		ModelAndView mv = new ModelAndView();
 		try {
 			mv.addObject("Clientes", clienteService.listar());
 			mv.setViewName("cliente");

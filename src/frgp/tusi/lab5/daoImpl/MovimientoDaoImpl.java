@@ -6,11 +6,14 @@ import org.hibernate.Session;
 
 import frgp.tusi.lab5.config.HibernateConfiguration;
 import frgp.tusi.lab5.dao.MovimientoDao;
-import frgp.tusi.lab5.model.Cuenta;
 import frgp.tusi.lab5.model.Movimiento;
 
 public class MovimientoDaoImpl implements MovimientoDao{
 
+//	@Autowired
+//	@Qualifier("HibernateConfigurationBean")
+//	private HibernateConfiguration ch;
+	
 	@Override
 	public List<Movimiento> listar() throws Exception {
 		HibernateConfiguration ch = new HibernateConfiguration();
@@ -77,5 +80,4 @@ public class MovimientoDaoImpl implements MovimientoDao{
 			throw new Exception("Movimiento inexistente");
 		return movimiento;
 	}
-
 }

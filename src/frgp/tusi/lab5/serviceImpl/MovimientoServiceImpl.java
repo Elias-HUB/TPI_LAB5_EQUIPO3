@@ -7,19 +7,16 @@ import org.springframework.stereotype.Service;
 
 import frgp.tusi.lab5.daoImpl.MovimientoDaoImpl;
 import frgp.tusi.lab5.model.Movimiento;
-import frgp.tusi.lab5.model.Cuenta;
-import frgp.tusi.lab5.model.Transferencia;
 import frgp.tusi.lab5.service.MovimientoService;
 
 @Service
 public class MovimientoServiceImpl implements MovimientoService{
 
-//	@Autowired(required = true)
+	@Autowired
 	private MovimientoDaoImpl movimientoDaoImpl;
 	
-	public MovimientoServiceImpl() {
-		movimientoDaoImpl = new MovimientoDaoImpl();
-	}
+	public MovimientoServiceImpl() {}
+	
 	@Override
 	public List<Movimiento> listar() throws Exception {
 		return movimientoDaoImpl.listar();
@@ -45,7 +42,6 @@ public class MovimientoServiceImpl implements MovimientoService{
 	public Movimiento crear(Movimiento movimiento) throws Exception {
 		Movimiento mov = new Movimiento();	
 		return mov;
-		
 	}
 
 	@Override

@@ -6,14 +6,15 @@ import org.hibernate.Session;
 
 import frgp.tusi.lab5.config.HibernateConfiguration;
 import frgp.tusi.lab5.dao.NacionalidadDao;
-import frgp.tusi.lab5.model.Cliente;
 import frgp.tusi.lab5.model.Nacionalidad;
 
 public class NacionalidadDaoImpl implements NacionalidadDao {
 
-	public NacionalidadDaoImpl() {
-		// TODO Auto-generated constructor stub
-	}
+//	@Autowired
+//	@Qualifier("HibernateConfigurationBean")
+//	private HibernateConfiguration ch;
+	
+	public NacionalidadDaoImpl() {}
 
 	@SuppressWarnings("unchecked")
 	@Override

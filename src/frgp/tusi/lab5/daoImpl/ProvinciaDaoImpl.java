@@ -6,15 +6,15 @@ import org.hibernate.Session;
 
 import frgp.tusi.lab5.config.HibernateConfiguration;
 import frgp.tusi.lab5.dao.ProvinciaDao;
-import frgp.tusi.lab5.model.Cliente;
-import frgp.tusi.lab5.model.Nacionalidad;
 import frgp.tusi.lab5.model.Provincia;
 
 public class ProvinciaDaoImpl implements ProvinciaDao {
 
-	public ProvinciaDaoImpl() {
-		// TODO Auto-generated constructor stub
-	}
+//	@Autowired
+//	@Qualifier("HibernateConfigurationBean")
+//	private HibernateConfiguration ch;
+	
+	public ProvinciaDaoImpl() {}
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -40,5 +40,4 @@ public class ProvinciaDaoImpl implements ProvinciaDao {
 			throw new Exception("Provincia inexistente.");
 		return provincia;
 	}
-
 }
