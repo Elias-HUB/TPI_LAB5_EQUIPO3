@@ -47,6 +47,14 @@ public class CuentaController {
 	@Qualifier("ModelAndViewBean")
 	private ModelAndView mv;
 	
+	@Autowired
+	@Qualifier("ClienteBean")
+	private Cliente cliente;
+	
+	@Autowired
+	@Qualifier("CuentaBean")
+	private Cuenta cuenta;
+	
 	public CuentaController() {}
 	
 	@RequestMapping("listarCuentas")
@@ -68,41 +76,40 @@ public class CuentaController {
 		try {
 			if (request.getParameter("txtNombre") != null) {
 				
-				Cliente cli = clienteService.buscarPorDni(Integer.parseInt(request.getParameter("txtDni")));
-				cli.setId(cli.getId());
+				cliente = clienteService.buscarPorDni(Integer.parseInt(request.getParameter("txtDni")));
+				cliente.setId(cliente.getId());
 				
-				List<Cuenta> listCli = cuentaService.buscarCantidadCuentas(cli.getId());
+				List<Cuenta> listCli = cuentaService.buscarCantidadCuentas(cliente.getId());
 				
 				if(listCli.size() < 4) {
 					
 					Random rnd = new Random();
-					Cuenta cuen = new Cuenta();
-					cuen.setCbu(rnd.nextInt(1000000000));
-					cuen.setNroCuenta(rnd.nextInt(1000000000));
+					cuenta.setCbu(rnd.nextInt(1000000000));
+					cuenta.setNroCuenta(rnd.nextInt(1000000000));
 					
 					if (request.getParameter("btnradio").equals("Cuenta CA")) {
-							cuen.setNombre("Cuenta CA");
-							TipoCuenta tc = tipoCuentaService.buscar("Caja de ahorro en pesos");
-							cuen.setTipoCuenta(tc);
+						cuenta.setNombre("Cuenta CA");
+						TipoCuenta tc = tipoCuentaService.buscar("Caja de ahorro en pesos");
+						cuenta.setTipoCuenta(tc);
 					} else {
-						cuen.setNombre("Cuenta CD");
+						cuenta.setNombre("Cuenta CD");
 						TipoCuenta tc = tipoCuentaService.buscar("Caja de ahorro en dólares");
-						cuen.setTipoCuenta(tc);
+						cuenta.setTipoCuenta(tc);
 					}
 
-					cuen.setSaldo(0);
-					cuen.setEstado(true);
+					cuenta.setSaldo(0);
+					cuenta.setEstado(true);
 					
 			    	SimpleDateFormat dtf = new SimpleDateFormat("yyyy/MM/dd");
 			        Calendar calendar = Calendar.getInstance();
 			        Date dateObj = calendar.getTime();
 			        String formattedDate = dtf.format(dateObj);
-					cuen.setFechaAlta(formattedDate);
-					cuen.setFechaUltimaModificacion("");
-					cuen.setCliente(cli);
-					cuentaService.crear(cuen);
+			        cuenta.setFechaAlta(formattedDate);
+			        cuenta.setFechaUltimaModificacion("");
+			        cuenta.setCliente(cliente);
+					cuentaService.crear(cuenta);
 
-					session.setAttribute("success", "Se creo la cuenta " + cuen.getNroCuenta() + " de manera correcta.");
+					session.setAttribute("success", "Se creo la cuenta " + cuenta.getNroCuenta() + " de manera correcta.");
 					Integer dniCli = Integer.parseInt(request.getParameter("txtDni"));
 					System.out.println(dniCli);
 					mv = new ModelAndView("redirect:listarCuentasPorCliente.html?dni="+ dniCli);
@@ -134,9 +141,9 @@ public class CuentaController {
 		
 		if (dni != null) {
 			try {
-				Cliente cli = clienteService.buscarPorDni(dni);
-				cli.setId(cli.getId());
-				mv.addObject("Cuenta", cuentaService.buscarCantidadCuentas(cli.getId()));
+				cliente = clienteService.buscarPorDni(dni);
+				cliente.setId(cliente.getId());
+				mv.addObject("Cuenta", cuentaService.buscarCantidadCuentas(cliente.getId()));
 				mv.setViewName("listarCuentasPorCliente");
 
 			} catch (Exception e) {
@@ -151,10 +158,9 @@ public class CuentaController {
 	public ModelAndView eliminacionCuenta(HttpServletRequest request, Integer cbu) throws Exception {
 		HttpSession session = request.getSession();
 		try {
-			Cuenta cuen = cuentaService.buscar(cbu.toString());
-			cuentaService.eliminar(cuen);
-			session.setAttribute("success",
-					"Se desactivó la cuenta " + cuen.getNroCuenta() + " de manera correcta.");
+			cuenta = cuentaService.buscar(cbu.toString());
+			cuentaService.eliminar(cuenta);
+			session.setAttribute("success", "Se desactivó la cuenta " + cuenta.getNroCuenta() + " de manera correcta.");
 			mv = new ModelAndView("redirect:listarCuentas.html");		
 			
 		} catch (Exception e) {
@@ -167,19 +173,19 @@ public class CuentaController {
 	@RequestMapping("resumen")
 	public ModelAndView resumen(HttpServletRequest request, Integer Val) throws Exception {
 		HttpSession session = request.getSession();
-		Cliente cliente = (Cliente)session.getAttribute("persona");
+		cliente = (Cliente)session.getAttribute("persona");
 		List<Cuenta> cuentas = cuentaService.buscarCantidadCuentas(cliente.getId());
 		
 		mv.addObject("Cliente", cliente);
 		mv.addObject("Cuentas", cuentas);
 		if(Val == 1) {
-			Cuenta cuenta = cuentas.get(0);
+			cuenta = cuentas.get(0);
 			mv.addObject("Cuenta", cuenta);
 			List<Movimiento> mov = movimientoService.listarPorIdCuenta(cuenta.getId());
 			mv.addObject("Movimientos", mov);
 		}else {
 			String cbu = request.getParameter("selectCuenta").toString();
-			Cuenta cuenta = cuentaService.buscar(cbu);
+			cuenta = cuentaService.buscar(cbu);
 			mv.addObject("Cuenta", cuenta);
 			List<Movimiento> mov = movimientoService.listarPorIdCuenta(cuenta.getId());
 			mv.addObject("Movimientos", mov);
