@@ -23,10 +23,12 @@ import frgp.tusi.lab5.model.Cliente;
 import frgp.tusi.lab5.model.Cuenta;
 import frgp.tusi.lab5.model.Movimiento;
 import frgp.tusi.lab5.model.TipoCuenta;
+import frgp.tusi.lab5.model.TipoMovimiento;
 import frgp.tusi.lab5.serviceImpl.ClienteServiceImpl;
 import frgp.tusi.lab5.serviceImpl.CuentaServiceImpl;
 import frgp.tusi.lab5.serviceImpl.MovimientoServiceImpl;
 import frgp.tusi.lab5.serviceImpl.TipoCuentaServiceImpl;
+import frgp.tusi.lab5.serviceImpl.TipoMovimientoServiceImpl;
 
 @Controller
 public class CuentaController {
@@ -48,12 +50,22 @@ public class CuentaController {
 	private MovimientoServiceImpl movimientoService;
 	
 	@Autowired
+	@Qualifier("TipoMovimientoServiceImplBean")
+	private TipoMovimientoServiceImpl tipoMovimientoService;
+	
+	@Autowired
+	@Qualifier("MovimientoServiceImplBean")
+	private MovimientoServiceImpl movimientoServiceImpl;
+	
+	@Autowired
 	@Qualifier("ModelAndViewBean")
 	private ModelAndView mv;
 	
 	private Cliente cliente;
 
 	private Cuenta cuenta;
+	
+	private Movimiento movimiento;
 	
 	public CuentaController() {}
 	
@@ -94,7 +106,7 @@ public class CuentaController {
 					if (request.getParameter("btnradio").equals("Cuenta CA")) {
 						cuenta.setNombre("Cuenta CA");
 						TipoCuenta tc = tipoCuentaService.buscar("Caja de ahorro en pesos");
-						cuenta.setTipoCuenta(tc);
+					cuenta.setTipoCuenta(tc);
 					} else {
 						cuenta.setNombre("Cuenta CD");
 						TipoCuenta tc = tipoCuentaService.buscar("Caja de ahorro en dólares");
@@ -111,8 +123,21 @@ public class CuentaController {
 			        cuenta.setFechaAlta(formattedDate);
 			        cuenta.setFechaUltimaModificacion("");
 			        cuenta.setCliente(cliente);
-					cuentaService.crear(cuenta);
+					cuentaService.crear(cuenta);					
+					
+					TipoMovimiento tipoAltaCuenta = tipoMovimientoService.buscar("Alta de Cuenta");
 
+					movimiento = (Movimiento)appContext.getBean("MovimientoBean");
+					movimiento.setDetalle("Alta de Cuenta");
+					movimiento.setEstado(true);
+					movimiento.setFecha(new Date());
+					movimiento.setFechaUltimaModificacion(new Date());
+					movimiento.setTipoMovimiento(tipoAltaCuenta);
+					movimiento.setImporte(10000);
+
+					movimiento.setCuenta(cuenta);
+					movimientoServiceImpl.crear(movimiento);
+					
 					session.setAttribute("success", "Se creo la cuenta " + cuenta.getNroCuenta() + " de manera correcta.");
 					Integer dniCli = Integer.parseInt(request.getParameter("txtDni"));
 					System.out.println(dniCli);

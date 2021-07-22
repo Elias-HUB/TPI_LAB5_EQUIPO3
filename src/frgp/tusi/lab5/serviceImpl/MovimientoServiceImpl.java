@@ -40,8 +40,7 @@ public class MovimientoServiceImpl implements MovimientoService{
 
 	@Override
 	public Movimiento crear(Movimiento movimiento) throws Exception {
-		Movimiento mov = new Movimiento();	
-		return mov;
+		return movimientoDaoImpl.crear(movimiento);
 	}
 
 	@Override

@@ -30,6 +30,7 @@ import frgp.tusi.lab5.model.TipoMovimiento;
 import frgp.tusi.lab5.model.Usuario;
 import frgp.tusi.lab5.serviceImpl.ClienteServiceImpl;
 import frgp.tusi.lab5.serviceImpl.CuentaServiceImpl;
+import frgp.tusi.lab5.serviceImpl.MovimientoServiceImpl;
 import frgp.tusi.lab5.serviceImpl.NacionalidadServicesImpl;
 import frgp.tusi.lab5.serviceImpl.ProvinciaServicesImpl;
 import frgp.tusi.lab5.serviceImpl.TipoCuentaServiceImpl;
@@ -66,6 +67,10 @@ public class ClienteController {
 	@Autowired
 	@Qualifier("TipoMovimientoServiceImplBean")
 	private TipoMovimientoServiceImpl tipoMovimientoService;
+	
+	@Autowired
+	@Qualifier("MovimientoServiceImplBean")
+	private MovimientoServiceImpl movimientoServiceImpl;
 	
 	@Autowired
 	@Qualifier("ModelAndViewBean")
@@ -166,13 +171,17 @@ public class ClienteController {
 					cuenta.setTipoCuenta(tipoCuentaCA);
 					cuenta.setFechaAlta(formattedDate);
 					cuenta.setFechaUltimaModificacion(formattedDate);
-					cuenta.setMovimientos(movimientosCuentaOrigen);
+					cuenta.getMovimientos().add(movimiento);
 					
 					
 					cuentasCliente.add(cuenta);
 
 					cliente.setCuentas(cuentasCliente);
 					clienteService.crear(cliente);
+					//cuenta.setCliente(cliente);
+					movimiento.setCuenta(cuenta);
+					movimientoServiceImpl.crear(movimiento);
+//					cuentaService.crear(cuenta)
 //					Cliente cli = clienteService.buscarPorDni(cliente.getDni());
 //					cuenta.setCliente(cli);
 //					cuentaService.crear(cuenta);
@@ -188,7 +197,7 @@ public class ClienteController {
 				mv.setViewName("altaCliente");
 			}
 		} catch (Exception e) {
-			session.setAttribute("error", "Problemas para crear al clientes.");
+			session.setAttribute("error", "Problemas para crear al clientes." + e.getMessage());
 			mv = new ModelAndView("redirect:listarClientes.html");
 		}
 		return mv;
