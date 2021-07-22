@@ -25,23 +25,27 @@ public class EmpleadoController {
 	@Qualifier("ModelAndViewBean")
 	private ModelAndView mv;
 
+	@Autowired
+	@Qualifier("EmpleadoBean")
+	private Empleado empleado;
+	
+
 	@RequestMapping(value ="/altaEmpleado.html" , method= { RequestMethod.POST})
 	public ModelAndView altaEmpleado() {		
 		try {
 			SimpleDateFormat dtf = new SimpleDateFormat("yyyy/MM/dd");
 	        Calendar calendar = Calendar.getInstance();
 	        Date dateObj = calendar.getTime();
-	        String formattedDate = dtf.format(dateObj);
-	        
-			Empleado em = new Empleado();
-			em.setLegajo(4);
-	    	em.setApellido("Oscar");
-	    	em.setNombre("Ditolbi");
-	    	em.setDni(12546514);
-	    	em.setEstado(true);
-	    	em.setFechaNacimiento(formattedDate);
-	    	em.setSexo("M");
-			empleadoServiceImpl.crear(em);
+	        String formattedDate = dtf.format(dateObj);	        
+			
+	        empleado.setLegajo(4);
+	        empleado.setApellido("Oscar");
+	        empleado.setNombre("Ditolbi");
+	        empleado.setDni(12546514);
+	        empleado.setEstado(true);
+	        empleado.setFechaNacimiento(formattedDate);
+	        empleado.setSexo("M");
+			empleadoServiceImpl.crear(empleado);
 			
 		} catch (Exception e) {
 			mv.addObject("Usuario o contraseña invalida.");

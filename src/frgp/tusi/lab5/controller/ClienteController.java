@@ -68,6 +68,22 @@ public class ClienteController {
 	@Qualifier("ModelAndViewBean")
 	private ModelAndView mv;
 
+	@Autowired
+	@Qualifier("MovimientoBean")
+	private Movimiento movimiento;
+	
+	@Autowired
+	@Qualifier("DomicilioBean")
+	private Domicilio domicilio;
+
+	@Autowired
+	@Qualifier("UsuarioBean")
+	private Usuario usuario;
+	
+	@Autowired
+	@Qualifier("CuentaBean")
+	private Cuenta cuenta;
+	
 	public ClienteController() {}
 
 	@RequestMapping("altaCliente")
@@ -100,11 +116,9 @@ public class ClienteController {
 					cli.setProvincia(provincia);
 					cli.setFechaNacimiento(request.getParameter("TboxFecha"));
 
-					Domicilio domicilio = new Domicilio();
 					domicilio.setDireccion(request.getParameter("txtCalle"));
 					domicilio.setLocalidad(request.getParameter("txtLocalidad"));
 
-					Usuario usuario = new Usuario();
 					usuario.setEstado(true);
 					usuario.setFechaAlta(new Date());
 					usuario.setFechaUltimaModificacion(new Date());
@@ -128,26 +142,26 @@ public class ClienteController {
 					TipoCuenta tipoCuentaCA = tipoCuentaService.buscar("Caja de ahorro en pesos");
 					TipoMovimiento tipoAltaCuenta = tipoMovimientoService.buscar("Alta de Cuenta");
 
-					Movimiento movAltaCuenta = new Movimiento();
-					movAltaCuenta.setDetalle("Alta de Cuenta");
-					movAltaCuenta.setEstado(true);
-					movAltaCuenta.setFecha(new Date());
-					movAltaCuenta.setFechaUltimaModificacion(new Date());
-					movAltaCuenta.setTipoMovimiento(tipoAltaCuenta);
-					movAltaCuenta.setImporte(10000);
-					movimientosCuentaOrigen.add(movAltaCuenta);
 
-					Cuenta cuentaAlta = new Cuenta();
-					cuentaAlta.setCbu(rnd.nextInt(1000000000));
-					cuentaAlta.setNroCuenta(rnd.nextInt(1000000000));
-					cuentaAlta.setNombre("Cuenta CA");
-					cuentaAlta.setSaldo(10000);
-					cuentaAlta.setEstado(true);
-					cuentaAlta.setTipoCuenta(tipoCuentaCA);
-					cuentaAlta.setFechaAlta(formattedDate);
-					cuentaAlta.setFechaUltimaModificacion(formattedDate);
-					cuentaAlta.setMovimientos(movimientosCuentaOrigen);
-					cuentasCliente.add(cuentaAlta);
+					movimiento.setDetalle("Alta de Cuenta");
+					movimiento.setEstado(true);
+					movimiento.setFecha(new Date());
+					movimiento.setFechaUltimaModificacion(new Date());
+					movimiento.setTipoMovimiento(tipoAltaCuenta);
+					movimiento.setImporte(10000);
+					movimientosCuentaOrigen.add(movimiento);
+
+					
+					cuenta.setCbu(rnd.nextInt(1000000000));
+					cuenta.setNroCuenta(rnd.nextInt(1000000000));
+					cuenta.setNombre("Cuenta CA");
+					cuenta.setSaldo(10000);
+					cuenta.setEstado(true);
+					cuenta.setTipoCuenta(tipoCuentaCA);
+					cuenta.setFechaAlta(formattedDate);
+					cuenta.setFechaUltimaModificacion(formattedDate);
+					cuenta.setMovimientos(movimientosCuentaOrigen);
+					cuentasCliente.add(cuenta);
 
 					cli.setCuentas(cuentasCliente);
 					clienteService.crear(cli);
