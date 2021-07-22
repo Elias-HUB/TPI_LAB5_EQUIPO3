@@ -47,6 +47,7 @@ public class Config {
 
 	//Models
 	@Bean
+	@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 	public Cliente ClienteBean() {
 		Cliente cliente = new Cliente();
 		List<Cuenta> cuentas = new ArrayList<Cuenta>();
@@ -55,6 +56,7 @@ public class Config {
 	}
 	
 	@Bean
+	@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 	public Cuenta CuentaBean() {
 		Cuenta cuenta = new Cuenta();
 		cuenta.setTipoCuenta(this.TipoCuentaBean());
@@ -64,16 +66,19 @@ public class Config {
 	}
 		
 	@Bean
+	@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 	public Domicilio DomicilioBean() {
 		return new Domicilio(); 
 	}
 	
 	@Bean
+	@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 	public Empleado EmpleadoBean() {
 		return new Empleado(); 
 	}
 	
 	@Bean
+	@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 	public Movimiento MovimientoBean() {
 		Movimiento movimiento = new Movimiento();
 		movimiento.setTipoMovimiento(this.TipoMovimientoBean());
@@ -82,11 +87,13 @@ public class Config {
 	}
 	
 	@Bean
+	@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 	public Nacionalidad NacionalidadBean() {
 		return new Nacionalidad(); 
 	}
 	
 	@Bean
+	@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 	public Persona PersonaBean() {
 		Persona persona = new Persona();
 		persona.setDomicilio(this.DomicilioBean());
@@ -97,21 +104,25 @@ public class Config {
 	}
 	
 	@Bean
+	@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 	public Provincia ProvinciaBean() {
 		return new Provincia(); 
 	}
 	
 	@Bean
+	@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 	public TipoCuenta TipoCuentaBean() {
 		return new TipoCuenta(); 
 	}
 	
 	@Bean
+	@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 	public TipoMovimiento TipoMovimientoBean() {
 		return new TipoMovimiento(); 
 	}
 	
 	@Bean
+	@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 	public Transferencia TransferenciaBean() {
 		Transferencia transferencia = new Transferencia();
 		transferencia.setCuentaOrigen(this.CuentaBean());
@@ -122,6 +133,7 @@ public class Config {
 	}
 
 	@Bean
+	@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 	public Usuario UsuarioBean() {
 		return new Usuario(); 
 	}	

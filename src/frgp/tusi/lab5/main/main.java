@@ -320,13 +320,7 @@ public class main {
     	cuentaDestino.setMovimientos(movimientosCuentaDestino);
     	cuentasCliente.add(cuentaDestino);    	
     	
-    	Transferencia trans = new Transferencia();
-    	trans.setMovimientoOrigen(movOrigen);
-    	trans.setMovimientoDestino(movDestino);
-    	trans.setCuentaOrigen(cuentaOrigen);
-    	trans.setCuentaDestino(cuentaDestino);
-    	session.save(trans);
-    	
+
     	Usuario usuario = new Usuario();
     	usuario.setEstado(true);
     	usuario.setFechaAlta(new Date());
@@ -352,6 +346,13 @@ public class main {
     	cli.setUsuario(usuario);
     	cli.setCuentas(cuentasCliente);
     	session.save(cli);
+    	
+    	Transferencia trans = new Transferencia();
+    	trans.setMovimientoOrigen(movOrigen);
+    	trans.setMovimientoDestino(movDestino);
+    	trans.setCuentaOrigen(cuentaOrigen);
+    	trans.setCuentaDestino(cuentaDestino);
+    	session.save(trans);
     	
 ////////////////////////////////////////////////////////////////////////	2
     	

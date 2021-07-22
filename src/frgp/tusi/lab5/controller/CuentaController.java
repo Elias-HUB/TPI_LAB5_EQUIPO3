@@ -11,10 +11,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import frgp.tusi.lab5.config.Config;
 import frgp.tusi.lab5.model.Cliente;
 import frgp.tusi.lab5.model.Cuenta;
 import frgp.tusi.lab5.model.Movimiento;
@@ -47,12 +51,8 @@ public class CuentaController {
 	@Qualifier("ModelAndViewBean")
 	private ModelAndView mv;
 	
-	@Autowired
-	@Qualifier("ClienteBean")
 	private Cliente cliente;
-	
-	@Autowired
-	@Qualifier("CuentaBean")
+
 	private Cuenta cuenta;
 	
 	public CuentaController() {}
@@ -73,6 +73,10 @@ public class CuentaController {
 	@RequestMapping("altaCuenta")
 	public ModelAndView altaCuenta( HttpServletRequest request, Integer dni) {
 		HttpSession session = request.getSession();
+		ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);
+		
+		cliente = (Cliente)appContext.getBean("ClienteBean");
+		cuenta = (Cuenta)appContext.getBean("CuentaBean");
 		try {
 			if (request.getParameter("txtNombre") != null) {
 				
@@ -97,7 +101,7 @@ public class CuentaController {
 						cuenta.setTipoCuenta(tc);
 					}
 
-					cuenta.setSaldo(0);
+					cuenta.setSaldo(10000);
 					cuenta.setEstado(true);
 					
 			    	SimpleDateFormat dtf = new SimpleDateFormat("yyyy/MM/dd");
@@ -126,6 +130,7 @@ public class CuentaController {
 			session.setAttribute("error", "Problemas para crear la cuenta.");
 			mv = new ModelAndView("redirect:listarClientes.html");
 		}
+		((ConfigurableApplicationContext)(appContext)).close();
 		return mv;
 	}
 	

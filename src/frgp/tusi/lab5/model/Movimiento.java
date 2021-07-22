@@ -45,7 +45,7 @@ public class Movimiento implements Serializable {
 	@Column()
 	private Date fechaUltimaModificacion;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="id_cuenta")
 	private Cuenta cuenta;
 

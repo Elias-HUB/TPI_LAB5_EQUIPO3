@@ -31,7 +31,7 @@
 		            
 	            		<div class="form-group mt-4">
 	            			<h4 class="d-flex justify-content-start">Cuenta de Destino:</h4>
-	                    	<label class="control-label" for="txtDestino">Ingrese CBU o número de cuenta</label>
+	                    	<label class="control-label" for="txtDestino">Ingrese CBU</label>
 	                        <input class="form-control" name="txtDestino" id="txtDestino" type="text" placeholder="" value="">
 	                    </div>
 	                    <div class="form-group mt-4">
