@@ -6,11 +6,16 @@ import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import frgp.tusi.lab5.config.Config;
+import frgp.tusi.lab5.model.Cliente;
 import frgp.tusi.lab5.model.Empleado;
 import frgp.tusi.lab5.serviceImpl.EmpleadoServiceImpl;
 
@@ -25,19 +30,22 @@ public class EmpleadoController {
 	@Qualifier("ModelAndViewBean")
 	private ModelAndView mv;
 
-	@Autowired
-	@Qualifier("EmpleadoBean")
+//	@Autowired
+//	@Qualifier("EmpleadoBean")
 	private Empleado empleado;
 	
 
 	@RequestMapping(value ="/altaEmpleado.html" , method= { RequestMethod.POST})
-	public ModelAndView altaEmpleado() {		
+	public ModelAndView altaEmpleado() {
+		ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);		
+		
 		try {
 			SimpleDateFormat dtf = new SimpleDateFormat("yyyy/MM/dd");
 	        Calendar calendar = Calendar.getInstance();
 	        Date dateObj = calendar.getTime();
 	        String formattedDate = dtf.format(dateObj);	        
 			
+	        empleado = (Empleado)appContext.getBean("EmpleadoBean");
 	        empleado.setLegajo(4);
 	        empleado.setApellido("Oscar");
 	        empleado.setNombre("Ditolbi");
@@ -51,6 +59,7 @@ public class EmpleadoController {
 			mv.addObject("Usuario o contraseña invalida.");
 			mv.setViewName("login");
 		}
+		((ConfigurableApplicationContext)(appContext)).close();
 		return mv;
 	}
 	

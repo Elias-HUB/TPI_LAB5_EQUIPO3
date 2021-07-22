@@ -7,10 +7,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import frgp.tusi.lab5.config.Config;
 import frgp.tusi.lab5.model.Cliente;
 import frgp.tusi.lab5.model.Cuenta;
 import frgp.tusi.lab5.model.Movimiento;
@@ -45,30 +49,28 @@ public class TrasferenciaController {
 	@Qualifier("ClienteServiceImplBean")
 	private ClienteServiceImpl clienteService;
 	
-	private HttpSession session;
-	
-	@Autowired
-	@Qualifier("ClienteBean")
+	private HttpSession session;	
+
 	private Cliente cliente;
 	
-	@Autowired
-	@Qualifier("TransferenciaBean")
+//	@Autowired
+//	@Qualifier("TransferenciaBean")
 	private Transferencia transferencia;
 	
-	@Autowired
-	@Qualifier("CuentaBean")
+//	@Autowired
+//	@Qualifier("CuentaBean")
 	private Cuenta cuentaOrigen;
 
-	@Autowired
-	@Qualifier("CuentaBean")
+//	@Autowired
+//	@Qualifier("CuentaBean")
 	private Cuenta cuentaDestino;
 	
-	@Autowired
-	@Qualifier("MovimientoBean")
+//	@Autowired
+//	@Qualifier("MovimientoBean")
 	private Movimiento movimientoOrigen;
 	
-	@Autowired
-	@Qualifier("MovimientoBean")
+//	@Autowired
+//	@Qualifier("MovimientoBean")
 	private Movimiento movimientoDestino;
 	
 	@Autowired
@@ -99,6 +101,7 @@ public class TrasferenciaController {
 	@RequestMapping("crearTransferencia")
 	public ModelAndView crearTransferencia(HttpServletRequest request) {
 		session = request.getSession();
+		ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);
 		try {
 			if(ValidarRequestTransferencia(request)){
 				cuentaOrigen = cuentaService.buscar(request.getParameter("cuentas"));
@@ -109,6 +112,7 @@ public class TrasferenciaController {
 				TipoMovimiento tipoMovOrigen = tipoMovimientoService.buscar("Transferencia Débito");
 				TipoMovimiento tipoMovDestino = tipoMovimientoService.buscar("Transferencia Crédito");
 				
+				movimientoOrigen = (Movimiento)appContext.getBean("MovimientoBean");
 				movimientoOrigen.setImporte(Double.parseDouble(request.getParameter("txtImporte"))*-1);
 				movimientoOrigen.setCuenta(cuentaOrigen);
 				movimientoOrigen.setTipoMovimiento(tipoMovOrigen);
@@ -116,7 +120,7 @@ public class TrasferenciaController {
 				movimientoOrigen.setFecha(new Date());
 				movimientoOrigen.setEstado(true);
 				
-				
+				movimientoDestino = (Movimiento)appContext.getBean("MovimientoBean");
 				movimientoDestino.setImporte(importe);
 				movimientoDestino.setCuenta(cuentaDestino);
 				movimientoDestino.setTipoMovimiento(tipoMovDestino);
@@ -124,12 +128,16 @@ public class TrasferenciaController {
 				movimientoDestino.setFecha(new Date());
 				movimientoDestino.setEstado(true);
 				
+				cuentaOrigen = (Cuenta)appContext.getBean("CuentaBean");
 				cuentaOrigen.setSaldo(cuentaOrigen.getSaldo() - importe);
 				cuentaOrigen.getMovimientos().add(movimientoOrigen);
 				
+				cuentaDestino = (Cuenta)appContext.getBean("CuentaBean");
 				cuentaDestino.setSaldo(cuentaDestino.getSaldo() + importe);
 				cuentaDestino.getMovimientos().add(movimientoDestino);
 				
+				
+				transferencia = (Transferencia)appContext.getBean("TransferenciaBean");
 				transferencia.setCuentaOrigen(cuentaOrigen);
 				transferencia.setCuentaDestino(cuentaDestino);
 				transferencia.setMovimientoOrigen(movimientoOrigen);
@@ -150,7 +158,8 @@ public class TrasferenciaController {
 				session.setAttribute("error", ex.getMessage());
 			String dni = request.getParameter("txtDni");
 			mv = new ModelAndView("redirect:transferencia.html?dni=" + dni);	
-		}		
+		}
+		((ConfigurableApplicationContext)(appContext)).close();
 		return mv;
 	}
 
