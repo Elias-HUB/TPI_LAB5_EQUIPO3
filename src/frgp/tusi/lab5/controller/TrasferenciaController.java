@@ -142,6 +142,9 @@ public class TrasferenciaController {
 				
 				transferenciaService.crear(transferencia);
 				
+				cuentaService.actualizar(cuentaOrigen);
+				cuentaService.actualizar(cuentaDestino);
+				
 				session.setAttribute("success", "Se realizó la transferencia a la cuenta CBU " + cuentaDestino.getCbu() + " por un total de $ " + movimientoDestino.getImporte());
 				mv = new ModelAndView("redirect:resumen.html?Val=1");
 			}
