@@ -305,7 +305,7 @@ public class main {
     	cuentaOrigen.setTipoCuenta(tipoCuentaCA);
     	cuentaOrigen.setFechaAlta(formattedDate);
     	cuentaOrigen.setFechaUltimaModificacion(formattedDate);    	
-    	cuentaOrigen.setMovimientos(movimientosCuentaOrigen);
+//    	cuentaOrigen.setMovimientos(movimientosCuentaOrigen);
     	cuentasCliente.add(cuentaOrigen);
     	
     	
@@ -318,7 +318,7 @@ public class main {
     	cuentaDestino.setTipoCuenta(tipoCuentaCA);
     	cuentaDestino.setFechaAlta(formattedDate);
     	cuentaDestino.setFechaUltimaModificacion(formattedDate);
-    	cuentaDestino.setMovimientos(movimientosCuentaDestino);
+//    	cuentaDestino.setMovimientos(movimientosCuentaDestino);
     	cuentasCliente.add(cuentaDestino);    	
     	
 
@@ -348,8 +348,8 @@ public class main {
     	cli.setCuentas(cuentasCliente);
     	session.save(cli);
     	
-//    	movOrigen.setCuenta(cuentaOrigen);
-//    	movDestino.setCuenta(cuentaDestino);
+    	movOrigen.setCuenta(cuentaOrigen);
+    	movDestino.setCuenta(cuentaDestino);
 
     	Transferencia trans = new Transferencia();
     	trans.setMovimientoOrigen(movOrigen);
@@ -400,7 +400,7 @@ public class main {
     	cuentaOrigenDos.setTipoCuenta(tipoCuentaCA);
     	cuentaOrigenDos.setFechaAlta(formattedDate);
     	cuentaOrigenDos.setFechaUltimaModificacion(formattedDate);    	
-    	cuentaOrigenDos.setMovimientos(movimientosCuentaOrigenDos);
+//    	cuentaOrigenDos.setMovimientos(movimientosCuentaOrigenDos);
     	cuentasClienteDos.add(cuentaOrigenDos);    	
     	
     	Cuenta cuentaDestinoDos = new Cuenta();
@@ -412,8 +412,12 @@ public class main {
     	cuentaDestinoDos.setTipoCuenta(tipoCuentaCA);
     	cuentaDestinoDos.setFechaAlta(formattedDate);
     	cuentaDestinoDos.setFechaUltimaModificacion(formattedDate);
-    	cuentaDestinoDos.setMovimientos(movimientosCuentaDestinoDos);
+//    	cuentaDestinoDos.setMovimientos(movimientosCuentaDestinoDos);
     	cuentasClienteDos.add(cuentaDestinoDos);    	
+    	
+    	movOrigenDos.setCuenta(cuentaOrigenDos);
+    	movDestinoDos.setCuenta(cuentaDestinoDos);
+
     	
     	Transferencia transDos = new Transferencia();
     	transDos.setMovimientoOrigen(movOrigenDos);
@@ -490,7 +494,7 @@ public class main {
     	cuentaOrigenTres.setTipoCuenta(tipoCuentaCD);
     	cuentaOrigenTres.setFechaAlta(formattedDate);
     	cuentaOrigenTres.setFechaUltimaModificacion(formattedDate);    	
-    	cuentaOrigenTres.setMovimientos(movimientosCuentaOrigenTres);
+//    	cuentaOrigenTres.setMovimientos(movimientosCuentaOrigenTres);
     	cuentasClienteTres.add(cuentaOrigenTres);    	
     	
     	Cuenta cuentaDestinoTres = new Cuenta();
@@ -502,9 +506,12 @@ public class main {
     	cuentaDestinoTres.setTipoCuenta(tipoCuentaCD);
     	cuentaDestinoTres.setFechaAlta(formattedDate);
     	cuentaDestinoTres.setFechaUltimaModificacion(formattedDate);
-    	cuentaDestinoTres.setMovimientos(movimientosCuentaDestinoTres);
+//    	cuentaDestinoTres.setMovimientos(movimientosCuentaDestinoTres);
     	cuentasClienteTres.add(cuentaDestinoTres);    	
     	
+    	movOrigenTres.setCuenta(cuentaOrigenTres);
+    	movDestinoTres.setCuenta(cuentaDestinoTres);
+
     	Transferencia transTres = new Transferencia();
     	transTres.setMovimientoOrigen(movOrigenTres);
     	transTres.setMovimientoDestino(movDestinoTres);
