@@ -580,7 +580,7 @@ public class main {
     	cuentaOrigenCuatro.setTipoCuenta(tipoCuentaCA);
     	cuentaOrigenCuatro.setFechaAlta(formattedDate);
     	cuentaOrigenCuatro.setFechaUltimaModificacion(formattedDate);    	
-    	cuentaOrigenCuatro.setMovimientos(movimientosCuentaOrigenCuatro);
+//    	cuentaOrigenCuatro.setMovimientos(movimientosCuentaOrigenCuatro);
     	cuentasClienteCuatro.add(cuentaOrigenCuatro);    	
     	
     	Cuenta cuentaDestinoCuatro = new Cuenta();
@@ -592,7 +592,7 @@ public class main {
     	cuentaDestinoCuatro.setTipoCuenta(tipoCuentaCA);
     	cuentaDestinoCuatro.setFechaAlta(formattedDate);
     	cuentaDestinoCuatro.setFechaUltimaModificacion(formattedDate);
-    	cuentaDestinoCuatro.setMovimientos(movimientosCuentaDestinoCuatro);
+//    	cuentaDestinoCuatro.setMovimientos(movimientosCuentaDestinoCuatro);
     	cuentasClienteCuatro.add(cuentaDestinoCuatro);    	
     	
     	Transferencia transCuatro = new Transferencia();
@@ -609,6 +609,9 @@ public class main {
     	usuarioCuatro.setTipoUsuario("cliente");
     	usuarioCuatro.setPass("1234");
     	usuarioCuatro.setUserName("30452120");
+    	
+    	movOrigenCuatro.setCuenta(cuentaOrigenCuatro);
+    	movDestinoCuatro.setCuenta(cuentaDestinoCuatro);
     	
     	Domicilio domicilioCuatro = new Domicilio();
     	domicilioCuatro.setDireccion("9 Julio");
@@ -670,7 +673,7 @@ public class main {
     	cuentaOrigen.setTipoCuenta(tipoCuentaCA);
     	cuentaOrigen.setFechaAlta(formattedDate);
     	cuentaOrigen.setFechaUltimaModificacion(formattedDate);    	
-    	cuentaOrigen.setMovimientos(movimientosCuentaOrigen);
+//    	cuentaOrigen.setMovimientos(movimientosCuentaOrigen);
     	cuentasCliente.add(cuentaOrigen);    	
     	
     	cuentaDestino = new Cuenta();
@@ -682,7 +685,7 @@ public class main {
     	cuentaDestino.setTipoCuenta(tipoCuentaCA);
     	cuentaDestino.setFechaAlta(formattedDate);
     	cuentaDestino.setFechaUltimaModificacion(formattedDate);
-    	cuentaDestino.setMovimientos(movimientosCuentaDestino);
+//    	cuentaDestino.setMovimientos(movimientosCuentaDestino);
     	cuentasCliente.add(cuentaDestino);    	
     	
     	trans = new Transferencia();
@@ -703,6 +706,9 @@ public class main {
     	domicilio = new Domicilio();
     	domicilio.setDireccion("Fagnano");
     	domicilio.setLocalidad("Pacheco");
+    	
+    	movOrigen.setCuenta(cuentaOrigen);
+        movDestino.setCuenta(cuentaDestino);
     	
     	cli = new Cliente();
     	cli.setApellido("Contento");
@@ -760,7 +766,7 @@ public class main {
     	cuentaOrigen.setTipoCuenta(tipoCuentaCA);
     	cuentaOrigen.setFechaAlta(formattedDate);
     	cuentaOrigen.setFechaUltimaModificacion(formattedDate);    	
-    	cuentaOrigen.setMovimientos(movimientosCuentaOrigen);
+//    	cuentaOrigen.setMovimientos(movimientosCuentaOrigen);
     	cuentasCliente.add(cuentaOrigen);    	
     	
     	cuentaDestino = new Cuenta();
@@ -772,7 +778,7 @@ public class main {
     	cuentaDestino.setTipoCuenta(tipoCuentaCA);
     	cuentaDestino.setFechaAlta(formattedDate);
     	cuentaDestino.setFechaUltimaModificacion(formattedDate);
-    	cuentaDestino.setMovimientos(movimientosCuentaDestino);
+//    	cuentaDestino.setMovimientos(movimientosCuentaDestino);
     	cuentasCliente.add(cuentaDestino);    	
     	
     	trans = new Transferencia();
@@ -781,6 +787,9 @@ public class main {
     	trans.setCuentaOrigen(cuentaOrigen);
     	trans.setCuentaDestino(cuentaDestino);
     	session.save(trans);
+    	
+    	movOrigen.setCuenta(cuentaOrigen);
+        movDestino.setCuenta(cuentaDestino);
     	
     	usuario = new Usuario();
     	usuario.setEstado(true);
@@ -850,7 +859,7 @@ public class main {
     	cuentaOrigen.setTipoCuenta(tipoCuentaCA);
     	cuentaOrigen.setFechaAlta(formattedDate);
     	cuentaOrigen.setFechaUltimaModificacion(formattedDate);    	
-    	cuentaOrigen.setMovimientos(movimientosCuentaOrigen);
+//    	cuentaOrigen.setMovimientos(movimientosCuentaOrigen);
     	cuentasCliente.add(cuentaOrigen);    	
     	
     	cuentaDestino = new Cuenta();
@@ -862,7 +871,7 @@ public class main {
     	cuentaDestino.setTipoCuenta(tipoCuentaCA);
     	cuentaDestino.setFechaAlta(formattedDate);
     	cuentaDestino.setFechaUltimaModificacion(formattedDate);
-    	cuentaDestino.setMovimientos(movimientosCuentaDestino);
+//    	cuentaDestino.setMovimientos(movimientosCuentaDestino);
     	cuentasCliente.add(cuentaDestino);
     	
     	trans = new Transferencia();
@@ -871,6 +880,9 @@ public class main {
     	trans.setCuentaOrigen(cuentaOrigen);
     	trans.setCuentaDestino(cuentaDestino);
     	session.save(trans);
+    	
+    	movOrigen.setCuenta(cuentaOrigen);
+        movDestino.setCuenta(cuentaDestino);
     	
     	usuario = new Usuario();
     	usuario.setEstado(true);
@@ -940,7 +952,7 @@ public class main {
     	cuentaOrigen.setTipoCuenta(tipoCuentaCA);
     	cuentaOrigen.setFechaAlta(formattedDate);
     	cuentaOrigen.setFechaUltimaModificacion(formattedDate);    	
-    	cuentaOrigen.setMovimientos(movimientosCuentaOrigen);
+//    	cuentaOrigen.setMovimientos(movimientosCuentaOrigen);
     	cuentasCliente.add(cuentaOrigen);    	
     	
     	cuentaDestino = new Cuenta();
@@ -952,7 +964,7 @@ public class main {
     	cuentaDestino.setTipoCuenta(tipoCuentaCA);
     	cuentaDestino.setFechaAlta(formattedDate);
     	cuentaDestino.setFechaUltimaModificacion(formattedDate);
-    	cuentaDestino.setMovimientos(movimientosCuentaDestino);
+//    	cuentaDestino.setMovimientos(movimientosCuentaDestino);
     	cuentasCliente.add(cuentaDestino);
     	
     	trans = new Transferencia();
@@ -969,6 +981,9 @@ public class main {
     	usuario.setTipoUsuario("cliente");
     	usuario.setPass("1234");
     	usuario.setUserName("40123698");
+    	
+    	movOrigen.setCuenta(cuentaOrigen);
+        movDestino.setCuenta(cuentaDestino);
     	
     	domicilio = new Domicilio();
     	domicilio.setDireccion("Rawson");
@@ -1030,7 +1045,7 @@ public class main {
     	cuentaOrigen.setTipoCuenta(tipoCuentaCA);
     	cuentaOrigen.setFechaAlta(formattedDate);
     	cuentaOrigen.setFechaUltimaModificacion(formattedDate);    	
-    	cuentaOrigen.setMovimientos(movimientosCuentaOrigen);
+//    	cuentaOrigen.setMovimientos(movimientosCuentaOrigen);
     	cuentasCliente.add(cuentaOrigen);    	
     	
     	cuentaDestino = new Cuenta();
@@ -1042,7 +1057,7 @@ public class main {
     	cuentaDestino.setTipoCuenta(tipoCuentaCA);
     	cuentaDestino.setFechaAlta(formattedDate);
     	cuentaDestino.setFechaUltimaModificacion(formattedDate);
-    	cuentaDestino.setMovimientos(movimientosCuentaDestino);
+//    	cuentaDestino.setMovimientos(movimientosCuentaDestino);
     	cuentasCliente.add(cuentaDestino);
     	
     	trans = new Transferencia();
@@ -1059,6 +1074,9 @@ public class main {
     	usuario.setTipoUsuario("cliente");
     	usuario.setPass("1234");
     	usuario.setUserName("12564987");
+    	
+    	movOrigen.setCuenta(cuentaOrigen);
+        movDestino.setCuenta(cuentaDestino);
     	
     	domicilio = new Domicilio();
     	domicilio.setDireccion("Cardenal Fagnano");
@@ -1120,7 +1138,7 @@ public class main {
     	cuentaOrigen.setTipoCuenta(tipoCuentaCA);
     	cuentaOrigen.setFechaAlta(formattedDate);
     	cuentaOrigen.setFechaUltimaModificacion(formattedDate);    	
-    	cuentaOrigen.setMovimientos(movimientosCuentaOrigen);
+//    	cuentaOrigen.setMovimientos(movimientosCuentaOrigen);
     	cuentasCliente.add(cuentaOrigen);    	
     	
     	cuentaDestino = new Cuenta();
@@ -1132,7 +1150,7 @@ public class main {
     	cuentaDestino.setTipoCuenta(tipoCuentaCA);
     	cuentaDestino.setFechaAlta(formattedDate);
     	cuentaDestino.setFechaUltimaModificacion(formattedDate);
-    	cuentaDestino.setMovimientos(movimientosCuentaDestino);
+//    	cuentaDestino.setMovimientos(movimientosCuentaDestino);
     	cuentasCliente.add(cuentaDestino);
     	
     	trans = new Transferencia();
@@ -1149,6 +1167,9 @@ public class main {
     	usuario.setTipoUsuario("cliente");
     	usuario.setPass("1234");
     	usuario.setUserName("12564327");
+    	
+    	movOrigen.setCuenta(cuentaOrigen);
+        movDestino.setCuenta(cuentaDestino);
     	
     	domicilio = new Domicilio();
     	domicilio.setDireccion("Uriburu");
