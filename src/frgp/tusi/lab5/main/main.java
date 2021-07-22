@@ -308,6 +308,7 @@ public class main {
     	cuentaOrigen.setMovimientos(movimientosCuentaOrigen);
     	cuentasCliente.add(cuentaOrigen);
     	
+    	
     	Cuenta cuentaDestino = new Cuenta();
     	cuentaDestino.setCbu(23452346);
     	cuentaDestino.setNroCuenta(5346);
@@ -347,6 +348,9 @@ public class main {
     	cli.setCuentas(cuentasCliente);
     	session.save(cli);
     	
+//    	movOrigen.setCuenta(cuentaOrigen);
+//    	movDestino.setCuenta(cuentaDestino);
+
     	Transferencia trans = new Transferencia();
     	trans.setMovimientoOrigen(movOrigen);
     	trans.setMovimientoDestino(movDestino);
