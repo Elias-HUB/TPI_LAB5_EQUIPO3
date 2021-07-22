@@ -56,7 +56,7 @@ public class Config {
 	}
 	
 	@Bean
-//	@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+	@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 	public Cuenta CuentaBean() {
 		Cuenta cuenta = new Cuenta();
 		cuenta.setTipoCuenta(this.TipoCuentaBean());

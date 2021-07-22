@@ -56,7 +56,7 @@ public class Cuenta implements Serializable{
 	@OneToMany(fetch= FetchType.EAGER, mappedBy = "cuenta")
 	private List<Movimiento> movimientos = new ArrayList<Movimiento>();
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="id_cliente")
 	private Cliente cliente;
 	

@@ -30,10 +30,10 @@ public class Transferencia implements Serializable {
 	@OneToOne(cascade= {CascadeType.ALL})
 	@JoinColumn(name="idMovDestino")
 	private Movimiento movimientoDestino;
-	@OneToOne(cascade= {CascadeType.ALL})
+	@OneToOne()
 	@JoinColumn(name="idCuentaOrigen")
 	private Cuenta cuentaOrigen;
-	@OneToOne(cascade= {CascadeType.ALL})
+	@OneToOne()
 	@JoinColumn(name="idCuentaDestino")
 	private Cuenta cuentaDestino;
 	
