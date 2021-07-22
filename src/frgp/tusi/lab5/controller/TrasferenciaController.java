@@ -128,14 +128,11 @@ public class TrasferenciaController {
 				movimientoDestino.setFecha(new Date());
 				movimientoDestino.setEstado(true);
 				
-				cuentaOrigen = (Cuenta)appContext.getBean("CuentaBean");
 				cuentaOrigen.setSaldo(cuentaOrigen.getSaldo() - importe);
 				cuentaOrigen.getMovimientos().add(movimientoOrigen);
 				
-				cuentaDestino = (Cuenta)appContext.getBean("CuentaBean");
 				cuentaDestino.setSaldo(cuentaDestino.getSaldo() + importe);
-				cuentaDestino.getMovimientos().add(movimientoDestino);
-				
+				cuentaDestino.getMovimientos().add(movimientoDestino);	
 				
 				transferencia = (Transferencia)appContext.getBean("TransferenciaBean");
 				transferencia.setCuentaOrigen(cuentaOrigen);

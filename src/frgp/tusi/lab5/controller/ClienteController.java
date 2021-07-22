@@ -12,10 +12,13 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import frgp.tusi.lab5.config.Config;
 import frgp.tusi.lab5.model.Cliente;
 import frgp.tusi.lab5.model.Cuenta;
 import frgp.tusi.lab5.model.Domicilio;
@@ -68,53 +71,56 @@ public class ClienteController {
 	@Qualifier("ModelAndViewBean")
 	private ModelAndView mv;
 
-	@Autowired
-	@Qualifier("MovimientoBean")
 	private Movimiento movimiento;
 	
-	@Autowired
-	@Qualifier("DomicilioBean")
 	private Domicilio domicilio;
 
-	@Autowired
-	@Qualifier("UsuarioBean")
 	private Usuario usuario;
 	
-	@Autowired
-	@Qualifier("CuentaBean")
 	private Cuenta cuenta;
+	
+	private Cliente cliente;
 	
 	public ClienteController() {}
 
 	@RequestMapping("altaCliente")
 	public ModelAndView altaCliente(HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
+		
+		ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);
+		
+		cliente = (Cliente)appContext.getBean("ClienteBean");
+		cuenta = (Cuenta)appContext.getBean("CuentaBean");
+		usuario = (Usuario)appContext.getBean("UsuarioBean");
+		movimiento = (Movimiento)appContext.getBean("MovimientoBean");
+		domicilio = (Domicilio)appContext.getBean("DomicilioBean");
+		
 		try {
 			if (request.getParameter("txtNombre") != null) {
-				Cliente cli = new Cliente();
+
 				try {
 					usuarioService.buscarPorUsuario(request.getParameter("txtDni").toString());
 					session.setAttribute("error", "Ya existe un usuario con el mismo documento.");
 					mv = new ModelAndView("redirect:listarClientes.html");
 				} catch (Exception e) {
-					cli.setApellido(request.getParameter("txtApellido").substring(0, 1).toUpperCase()
+					cliente.setApellido(request.getParameter("txtApellido").substring(0, 1).toUpperCase()
 							+ request.getParameter("txtApellido").substring(1));
-					cli.setNombre(request.getParameter("txtNombre").substring(0, 1).toUpperCase()
+					cliente.setNombre(request.getParameter("txtNombre").substring(0, 1).toUpperCase()
 							+ request.getParameter("txtNombre").substring(1));
-					cli.setDni(Integer.parseInt(request.getParameter("txtDni").toString()));
+					cliente.setDni(Integer.parseInt(request.getParameter("txtDni").toString()));
 					if (request.getParameter("btnradio").equals("on")) {
-						cli.setSexo("M");
+						cliente.setSexo("M");
 					} else {
-						cli.setSexo("F");
+						cliente.setSexo("F");
 					}
-					cli.setEstado(true);
+					cliente.setEstado(true);
 					Nacionalidad nacionalidad = nacionalidadService
 							.BuscarPorID(Integer.parseInt(request.getParameter("TboxNacionalidad").toString()));
 					Provincia provincia = provinciaService
 							.BuscarPorID(Integer.parseInt(request.getParameter("txtProvincia").toString()));
-					cli.setNacionalidad(nacionalidad);
-					cli.setProvincia(provincia);
-					cli.setFechaNacimiento(request.getParameter("TboxFecha"));
+					cliente.setNacionalidad(nacionalidad);
+					cliente.setProvincia(provincia);
+					cliente.setFechaNacimiento(request.getParameter("TboxFecha"));
 
 					domicilio.setDireccion(request.getParameter("txtCalle"));
 					domicilio.setLocalidad(request.getParameter("txtLocalidad"));
@@ -124,10 +130,10 @@ public class ClienteController {
 					usuario.setFechaUltimaModificacion(new Date());
 					usuario.setTipoUsuario("cliente");
 					usuario.setPass("1234");
-					usuario.setUserName(cli.getDni().toString());
+					usuario.setUserName(cliente.getDni().toString());
 
-					cli.setUsuario(usuario);
-					cli.setDomicilio(domicilio);
+					cliente.setUsuario(usuario);
+					cliente.setDomicilio(domicilio);
 
 					// Generar cuenta y movimiento
 					Random rnd = new Random();
@@ -161,12 +167,17 @@ public class ClienteController {
 					cuenta.setFechaAlta(formattedDate);
 					cuenta.setFechaUltimaModificacion(formattedDate);
 					cuenta.setMovimientos(movimientosCuentaOrigen);
+					
+					
 					cuentasCliente.add(cuenta);
 
-					cli.setCuentas(cuentasCliente);
-					clienteService.crear(cli);
-
-					session.setAttribute("success", "Se creó al cliente " + cli.getNombre() + " " + cli.getApellido()
+					cliente.setCuentas(cuentasCliente);
+					clienteService.crear(cliente);
+//					Cliente cli = clienteService.buscarPorDni(cliente.getDni());
+//					cuenta.setCliente(cli);
+//					cuentaService.crear(cuenta);
+//					
+					session.setAttribute("success", "Se creó al cliente " + cliente.getNombre() + " " + cliente.getApellido()
 							+ " con su usuario y cuenta de manera correcta.");
 					mv = new ModelAndView("redirect:listarClientes.html");
 				}
@@ -230,10 +241,8 @@ public class ClienteController {
 					} else {
 						cli.setSexo("F");
 					}
-					Nacionalidad nacionalidad = nacionalidadService
-							.BuscarPorID(Integer.parseInt(request.getParameter("TboxNacionalidad").toString()));
-					Provincia provincia = provinciaService
-							.BuscarPorID(Integer.parseInt(request.getParameter("txtProvincia").toString()));
+					Nacionalidad nacionalidad = nacionalidadService.BuscarPorID(Integer.parseInt(request.getParameter("TboxNacionalidad").toString()));
+					Provincia provincia = provinciaService.BuscarPorID(Integer.parseInt(request.getParameter("txtProvincia").toString()));
 					cli.setNacionalidad(nacionalidad);
 					cli.setProvincia(provincia);
 					cli.setFechaNacimiento(request.getParameter("TboxFecha"));
