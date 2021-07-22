@@ -45,7 +45,6 @@ public class TrasferenciaController {
 	@Qualifier("ClienteServiceImplBean")
 	private ClienteServiceImpl clienteService;
 	
-	@Autowired
 	private HttpSession session;
 	
 	@Autowired
